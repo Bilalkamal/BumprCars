@@ -6,6 +6,10 @@ public class Name {
 	private String firstName ;   
 	private String lastName ;
 
+	
+//	Constructor Method
+	
+	
     public Name(String firstName, String lastName) {
     	this.firstName = firstName;
     	this.lastName = lastName;

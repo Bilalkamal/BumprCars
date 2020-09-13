@@ -8,7 +8,9 @@ public class Person {
 	
 	
 	
-
+	
+//	Constructor Method
+	
 	
 
 	public Person(String personCode, String name, Address adress, String emailAddress) {

@@ -1,9 +1,13 @@
-import java.util.List;
 
 public class EmailAddress {
 
 
 	private String emailAddress;
+
+	
+	
+//	Constructor Method
+	
 	
 	public EmailAddress( String emailAddress) {
 		
@@ -11,6 +15,9 @@ public class EmailAddress {
 		this.emailAddress = emailAddress;
 	}
 
+	
+	
+	
 	public String getEmailAddress() {
 		return emailAddress;
 	}
