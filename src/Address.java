@@ -8,6 +8,11 @@ public class Address {
 	private String zip;
 	private String country;
 	
+	
+	
+//	Constructor Method
+	
+	
 	public Address(String street, String city, String state, String zip, String country) {
 		
 		this.street = street;
@@ -18,9 +23,7 @@ public class Address {
 
 
 	}
-	
-	
-	
+
 	
 	
 	//getters and setters
