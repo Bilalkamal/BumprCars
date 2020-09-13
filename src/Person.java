@@ -3,7 +3,7 @@ public class Person {
 
 	private String personCode;
 	private String name;
-	protected Address adress;
+	private Address adress;
 	private String emailAddress;
 	
 	
