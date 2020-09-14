@@ -10,8 +10,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		
 //		File Paths to read 
 		
@@ -24,12 +22,11 @@ public class Main {
 //		Calling the readFile method on the files paths
 		
 		readFile(personsFile);
-		System.out.println("\n" + "\n"+ "****************************************************************" +  "\n");
 		
 		readFile(customersFile);
-		System.out.println("\n" + "\n"+ "****************************************************************" +  "\n");
+		
 		readFile(productFile);
-		System.out.println("\n" + "\n"+ "****************************************************************" +  "\n");
+		
 		
 	}
 
@@ -61,7 +58,7 @@ public class Main {
 		}
 		
 		System.out.print(output);
-	
+		System.out.println("\n" + "\n"+ "****************************************************************" +  "\n");
 		
 		
 		
