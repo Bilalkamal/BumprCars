@@ -12,11 +12,16 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+//		File Paths to read 
+		
 		File  personsFile = new File("data/Persons.dat");
 	
 		File  customersFile = new File("data/Customers.dat");
 		File  productFile = new File("data/Products.dat");
 		
+		
+//		Calling the readFile method on the files paths
 		
 		readFile(personsFile);
 		System.out.println("\n" + "\n"+ "****************************************************************" +  "\n");
@@ -30,9 +35,12 @@ public class Main {
 
 	
 	
-//	Scanner function
+//	Read file function
 //	TO-DO:
 //	Add returning array of lines
+	
+	
+	
 	
 	public static void readFile(File file) {
 
