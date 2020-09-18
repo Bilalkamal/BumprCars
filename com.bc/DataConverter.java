@@ -11,6 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+
+// Built by Mohammed Al-Wahaibi and Bilal Hamada
+
+
+
+
 public class DataConverter {
 
 	static String personsPaths = "data/Persons.dat";
@@ -25,11 +31,11 @@ public class DataConverter {
 
 		ArrayList<Customer> parseCustomer = (ArrayList<Customer>)parseCustomers(customersPaths, parsePerson);
 
-		System.out.println(parseCustomer);
+
 		
 		ArrayList<Product> parseProduct = (ArrayList<Product>)parseProducts(productsPaths);
 
-		System.out.println(parseProduct);
+
 		
 		
 		JasonWriter.printJason("data/Products.json",parseProduct, "assets" );
