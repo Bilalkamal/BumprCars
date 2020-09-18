@@ -1,9 +1,9 @@
 
 public class Product {
 	
-	private String productCode;
-	private String productType;
-	private String productLabel;
+	private String code;
+	private String type;
+	private String label;
 //	private Double dailyCost;
 //	private Double deposit;
 //	private Double cleaningFee;
@@ -15,11 +15,11 @@ public class Product {
 	
 	
 //	Constructor Method
-	public Product(String productCode, String productType, String productLabel) {
+	public Product(String code, String type, String label) {
 		
-		this.productCode = productCode;
-		this.productType = productType;
-		this.productLabel = productLabel;
+		this.code = code;
+		this.type = type;
+		this.label = label;
 	}
 	
 	
@@ -30,37 +30,37 @@ public class Product {
 	 * @return the productCode
 	 */
 	public String getProductCode() {
-		return productCode;
+		return code;
 	}
 	/**
 	 * @param productCode the productCode to set
 	 */
 	public void setProductCode(String productCode) {
-		this.productCode = productCode;
+		this.code = productCode;
 	}
 	/**
 	 * @return the productType
 	 */
 	public String getProductType() {
-		return productType;
+		return type;
 	}
 	/**
 	 * @param productType the productType to set
 	 */
 	public void setProductType(String productType) {
-		this.productType = productType;
+		this.type = productType;
 	}
 	/**
 	 * @return the productLabel
 	 */
 	public String getProductLabel() {
-		return productLabel;
+		return label;
 	}
 	/**
 	 * @param productLabel the productLabel to set
 	 */
 	public void setProductLabel(String productLabel) {
-		this.productLabel = productLabel;
+		this.label = productLabel;
 	}
 
 	
