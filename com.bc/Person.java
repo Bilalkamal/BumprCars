@@ -1,10 +1,12 @@
 
 public class Person {
 
-	private String personCode;
-	private Name name;
+	private String code;
+//	private Name name;
+	private String firstName;
+	private String lastName;
 	private Address address;
-	private EmailAddress emailAddress;
+	private EmailAddress emails;
 	
 	
 	
@@ -13,18 +15,20 @@ public class Person {
 	
 	
 
-	public Person(String personCode, Name name, Address address, EmailAddress emailAddress) {
+	public Person(String code, String firstName, String lastName, Address address, EmailAddress emails) {
 		super();
-		this.personCode = personCode;
-		this.name = name;
+		this.code = code;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
-		this.emailAddress = emailAddress;
+		this.emails = emails;
 	}
 	
-	public Person(String personCode, Name name, Address address) {
+	public Person(String code, Name name, Address address) {
 		super();
-		this.personCode = personCode;
-		this.name = name;
+		this.code = code;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 
 	}
@@ -33,19 +37,41 @@ public class Person {
 	
 
 	public String getPersonCode() {
-		return personCode;
+		return code;
 	}
 
 	public void setPersonCode(String personCode) {
-		this.personCode = personCode;
+		this.code = personCode;
 	}
 
-	public Name getName() {
-		return name;
+
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(Name name) {
-		this.name = name;
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public Address getAddress() {
@@ -57,11 +83,11 @@ public class Person {
 	}
 
 	public EmailAddress getEmailAddress() {
-		return emailAddress;
+		return emails;
 	}
 
 	public void setEmailAddress(EmailAddress emailAddress) {
-		this.emailAddress = emailAddress;
+		this.emails = emailAddress;
 	}
 	
 	

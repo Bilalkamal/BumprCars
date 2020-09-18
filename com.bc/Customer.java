@@ -2,14 +2,20 @@
 public class Customer {
 	private String customerCode;
 	private String customerType;
-	private Name name;
-	private String customerContactCode;
+	private String name;
+	private String firstName;
+	/**
+	 * @return the firstName
+	 */
+
+	private String lastName;
+	private Person customerContactCode;
 	private Address address;
 	
 	
 	
 //	constructor method
-	public Customer(String customerCode, String customerType, Name name, String customerContactCode, Address address) {
+	public Customer(String customerCode, String customerType, String name, Person customerContactCode, Address address) {
 		
 		this.customerCode = customerCode;
 		this.customerType = customerType;
@@ -17,6 +23,7 @@ public class Customer {
 		this.customerContactCode = customerContactCode;
 		this.address = address;
 	}
+
 	// getters and setters
 	public String getCustomerCode() {
 		return customerCode;
@@ -30,10 +37,10 @@ public class Customer {
 	public void setCustomerType(String customerType) {
 		this.customerType = customerType;
 	}
-	public String getCustomerContactCode() {
+	public Person getCustomerContactCode() {
 		return customerContactCode;
 	}
-	public void setCustomerContactCode(String customerContactCode) {
+	public void setCustomerContactCode(Person customerContactCode) {
 		this.customerContactCode = customerContactCode;
 	}
 	public Address getAddress() {
@@ -42,12 +49,33 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public Name getName() {
+	public String getName() {
 		return name;
 	}
-	public void setName(Name name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-
+	public String getFirstName() {
+		return firstName;
+	}
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 }

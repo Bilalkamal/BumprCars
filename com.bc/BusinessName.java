@@ -1,30 +1,30 @@
 
 public class BusinessName extends Name{
 
-	String businessName;
+	String name;
 
-	public BusinessName(String businessName) {
+	public BusinessName(String name) {
 		super();
-		this.businessName = businessName;
+		this.name = name;
 	}
 
 	/**
 	 * @return the businessName
 	 */
 	public String getBusinessName() {
-		return businessName;
+		return name;
 	}
 
 	/**
 	 * @param businessName the businessName to set
 	 */
 	public void setBusinessName(String businessName) {
-		this.businessName = businessName;
+		this.name = businessName;
 	}
 
 	@Override
 	public String toString() {
-		return "BusinessName [businessName=" + businessName + "]";
+		return "BusinessName [businessName=" + name + "]";
 	}
 	
 	

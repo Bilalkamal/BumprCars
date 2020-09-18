@@ -19,19 +19,22 @@ public class DataConverter {
 
 	public static void main(String[] args) {
 
-		List<Person> parsePerson = parsePersons(personsPaths);
+		ArrayList<Person> parsePerson = (ArrayList<Person>) parsePersons(personsPaths);
 
-		System.out.println(parsePerson);
+		
 
-		List<Customer> parseCustomer = parseCustomers(customersPaths);
+		ArrayList<Customer> parseCustomer = (ArrayList<Customer>)parseCustomers(customersPaths, parsePerson);
 
 		System.out.println(parseCustomer);
 		
-		List<Product> parseProduct = parseProducts(productsPaths);
+		ArrayList<Product> parseProduct = (ArrayList<Product>)parseProducts(productsPaths);
 
 		System.out.println(parseProduct);
 		
 		
+		JasonWriter.printJason("data/Products.json",parseProduct, "assets" );
+		JasonWriter.printJason("data/Persons.json",parsePerson,"persons" );
+		JasonWriter.printJason("data/Customers.json",parseCustomer, "customers");
 		
 
 	}
@@ -76,7 +79,7 @@ public class DataConverter {
 			String personCode = tokens[0];
 
 //			Name personName = tokens[1];
-			Name personName = null;
+			
 			String addressTokens[] = tokens[2].split(",");
 
 			String street = addressTokens[0];
@@ -87,6 +90,12 @@ public class DataConverter {
 
 			Address personAddress = new Address(street, city, state, zip, country);
 
+			
+			String pName[] = tokens[1].split(",");
+			Name personName = new PersonName( pName[1],  pName[0]);
+			
+			
+			
 //			without email address
 			if (tokens.length == 3) {
 				p = new Person(personCode, personName, personAddress);
@@ -97,7 +106,7 @@ public class DataConverter {
 				String emailAddressTokens[] = tokens[3].split(",");
 				EmailAddress emails = new EmailAddress(Arrays.asList(emailAddressTokens));
 
-				p = new Person(personCode, personName, personAddress, null);
+				p = new Person(personCode,  pName[1], pName[0] ,personAddress, emails);
 			}
 
 			myPersonList.add(p);
@@ -108,7 +117,7 @@ public class DataConverter {
 	}
 
 // Customer Parser
-public static List<Customer> parseCustomers(String path){
+public static List<Customer> parseCustomers(String path, ArrayList<Person> listOfPersons){
 
 File pf = new File(path);
 	Scanner s;
@@ -134,7 +143,7 @@ File pf = new File(path);
 	int numOfLines = Integer.parseInt(myArrayList.get(0)); 
 	System.out.println(numOfLines);
 
-	myArrayList.remove(0);
+
 	System.out.println(myArrayList);
 	List<Customer> coustomersList = new ArrayList<Customer>();
 
@@ -145,27 +154,9 @@ File pf = new File(path);
 		String tokens[] = (myArrayList.get(i)).split(";");
 		String customerCode= tokens[0];
 		String customerType =tokens[1];
-		Name personalName = new PersonName(null,null);
-		Name businesslName = new BusinessName(null);
+	
 
-		if(customerType=="p") {
-			String lastName="";
-			String customerName[] = tokens[2].split(" ");
-			String firstName=customerName[0];
-			for(int r=1;r<customerName.length;r++) {
-				lastName=lastName+" "+customerName[r];
-
-			}
-			personalName = new PersonName(firstName, lastName);
-			//c = new Customer(PersonName)
-
-		}else {
-			String business= tokens[2]; 
-			businesslName = new BusinessName(business);
-
-
-		}
-
+		String customerName = tokens[2];
 		String customerContactCode = tokens[3];
 
 		String addressTokens[] = tokens[4].split(",");
@@ -177,15 +168,22 @@ File pf = new File(path);
 		String country = addressTokens[4];
 
 		Address address = new Address(street, city, state, zip, country);
-
-		if(customerType=="p") {
-			c=new Customer(customerCode, customerType, personalName, customerContactCode, address);
-
-
-
-		}else {
-			c=new Customer(customerCode, customerType, businesslName, customerContactCode, address);
+		
+		
+		Person pers = null;
+		for (Person person:  listOfPersons) {
+			if (customerContactCode.equals(person.getPersonCode())) {
+				pers = person;
+			}
+				
+			
 		}
+		
+		
+	
+			c=new Customer(customerCode, customerType, customerName, pers, address);
+
+
 
 		coustomersList.add(c);
 
@@ -230,7 +228,7 @@ File pf = new File(path);
 			String tokens[] = str.split(";");
 
 			String productCode = tokens[0];
-			String productType = tokens[1];
+			String type = tokens[1];
 			String productLabel = tokens[2];
 
 			if (tokens[1].equals("R")) {
@@ -238,23 +236,23 @@ File pf = new File(path);
 				Double dailyCost = Double.parseDouble(tokens[3]);
 				Double deposit = Double.parseDouble(tokens[4]);
 				Double cleaningFee = Double.parseDouble(tokens[5]);
-				p = new Rental(productCode, productType, productLabel, dailyCost, deposit, cleaningFee);
+				p = new Rental(productCode, type, productLabel, dailyCost, deposit, cleaningFee);
 
 			} else if (tokens[1].equals("F")) {
 
 				Double partsCost = Double.parseDouble(tokens[3]);
 				Double hourlyLaborCost = Double.parseDouble(tokens[4]);
-				p = new Repair(productCode, productType, productLabel, partsCost, hourlyLaborCost);
+				p = new Repair(productCode, type, productLabel, partsCost, hourlyLaborCost);
 
 			} else if (tokens[1].equals("C")) {
 
 				Double unitCost = Double.parseDouble(tokens[3]);
-				p = new Concession(productCode, productType, productLabel, unitCost);
+				p = new Concession(productCode, type, productLabel, unitCost);
 
 			} else if (tokens[1].equals("T")) {
 
 				Double costPerMile = Double.parseDouble(tokens[3]);
-				p = new Towing(productCode, productType, productLabel, costPerMile);
+				p = new Towing(productCode, type, productLabel, costPerMile);
 
 			}
 
