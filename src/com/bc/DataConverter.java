@@ -1,3 +1,5 @@
+package com.bc;
+
 import java.io.DataInputStream;
 
 import java.io.DataOutputStream;
@@ -11,9 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
 // Built by Mohammed Al-Wahaibi and Bilal Hamada
-
 
 
 
@@ -27,21 +27,13 @@ public class DataConverter {
 
 		ArrayList<Person> parsePerson = (ArrayList<Person>) parsePersons(personsPaths);
 
-		
+		ArrayList<Customer> parseCustomer = (ArrayList<Customer>) parseCustomers(customersPaths, parsePerson);
 
-		ArrayList<Customer> parseCustomer = (ArrayList<Customer>)parseCustomers(customersPaths, parsePerson);
+		ArrayList<Product> parseProduct = (ArrayList<Product>) parseProducts(productsPaths);
 
-
-		
-		ArrayList<Product> parseProduct = (ArrayList<Product>)parseProducts(productsPaths);
-
-
-		
-		
-		JasonWriter.printJason("data/Products.json",parseProduct, "assets" );
-		JasonWriter.printJason("data/Persons.json",parsePerson,"persons" );
-		JasonWriter.printJason("data/Customers.json",parseCustomer, "customers");
-		
+		JasonWriter.printJason("data/Products.json", parseProduct, "assets");
+		JasonWriter.printJason("data/Persons.json", parsePerson, "persons");
+		JasonWriter.printJason("data/Customers.json", parseCustomer, "customers");
 
 	}
 
@@ -84,8 +76,6 @@ public class DataConverter {
 
 			String personCode = tokens[0];
 
-//			Name personName = tokens[1];
-			
 			String addressTokens[] = tokens[2].split(",");
 
 			String street = addressTokens[0];
@@ -96,12 +86,9 @@ public class DataConverter {
 
 			Address personAddress = new Address(street, city, state, zip, country);
 
-			
 			String pName[] = tokens[1].split(",");
-			Name personName = new PersonName( pName[1],  pName[0]);
-			
-			
-			
+			Name personName = new PersonName(pName[1], pName[0]);
+
 //			without email address
 			if (tokens.length == 3) {
 				p = new Person(personCode, personName, personAddress);
@@ -112,7 +99,7 @@ public class DataConverter {
 				String emailAddressTokens[] = tokens[3].split(",");
 				EmailAddress emails = new EmailAddress(Arrays.asList(emailAddressTokens));
 
-				p = new Person(personCode,  pName[1], pName[0] ,personAddress, emails);
+				p = new Person(personCode, pName[1], pName[0], personAddress, emails);
 			}
 
 			myPersonList.add(p);
@@ -123,78 +110,66 @@ public class DataConverter {
 	}
 
 // Customer Parser
-public static List<Customer> parseCustomers(String path, ArrayList<Person> listOfPersons){
+	public static List<Customer> parseCustomers(String path, ArrayList<Person> listOfPersons) {
 
-File pf = new File(path);
-	Scanner s;
-	try {
-		s = new Scanner(pf);
+		File pf = new File(path);
+		Scanner s;
+		try {
+			s = new Scanner(pf);
 
-	} catch(FileNotFoundException fnfe) {
-		throw new RuntimeException(fnfe);
-	}	
-
-	List<String> myArrayList = new ArrayList<String>();
-
-	while(s.hasNext()) {
-
-
-		myArrayList.add(s.nextLine());
-
-	}
-
-	s.close();
-
-
-	int numOfLines = Integer.parseInt(myArrayList.get(0)); 
-	System.out.println(numOfLines);
-
-
-	System.out.println(myArrayList);
-	List<Customer> coustomersList = new ArrayList<Customer>();
-
-
-
-	for(int i=1 ; i<myArrayList.size();i++) {
-		Customer c = null;
-		String tokens[] = (myArrayList.get(i)).split(";");
-		String customerCode= tokens[0];
-		String customerType =tokens[1];
-	
-
-		String customerName = tokens[2];
-		String customerContactCode = tokens[3];
-
-		String addressTokens[] = tokens[4].split(",");
-
-		String street = addressTokens[0];
-		String city = addressTokens[1];
-		String state = addressTokens[2];
-		String zip = addressTokens[3];
-		String country = addressTokens[4];
-
-		Address address = new Address(street, city, state, zip, country);
-		
-		
-		Person pers = null;
-		for (Person person:  listOfPersons) {
-			if (customerContactCode.equals(person.getPersonCode())) {
-				pers = person;
-			}
-				
-			
+		} catch (FileNotFoundException fnfe) {
+			throw new RuntimeException(fnfe);
 		}
-		
-		
-	
-			c=new Customer(customerCode, customerType, customerName, pers, address);
 
+		List<String> myArrayList = new ArrayList<String>();
 
+		while (s.hasNext()) {
 
-		coustomersList.add(c);
+			myArrayList.add(s.nextLine());
 
-	}
-	return coustomersList;
+		}
+
+		s.close();
+
+		int numOfLines = Integer.parseInt(myArrayList.get(0));
+		System.out.println(numOfLines);
+
+		System.out.println(myArrayList);
+		List<Customer> coustomersList = new ArrayList<Customer>();
+
+		for (int i = 1; i < myArrayList.size(); i++) {
+			Customer c = null;
+			String tokens[] = (myArrayList.get(i)).split(";");
+			String customerCode = tokens[0];
+			String customerType = tokens[1];
+
+			String customerName = tokens[2];
+			String customerContactCode = tokens[3];
+
+			String addressTokens[] = tokens[4].split(",");
+
+			String street = addressTokens[0];
+			String city = addressTokens[1];
+			String state = addressTokens[2];
+			String zip = addressTokens[3];
+			String country = addressTokens[4];
+
+			Address address = new Address(street, city, state, zip, country);
+
+			Person pers = null;
+			for (Person person : listOfPersons) {
+				if (customerContactCode.equals(person.getPersonCode())) {
+					pers = person;
+				}
+
+			}
+
+			c = new Customer(customerCode, customerType, customerName, pers, address);
+
+			coustomersList.add(c);
+
+		}
+		return coustomersList;
 	}
 
 //	Products Parser

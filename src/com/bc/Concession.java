@@ -1,3 +1,4 @@
+package com.bc;
 
 public class Concession extends Product{
 	

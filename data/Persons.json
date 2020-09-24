@@ -1,0 +1,295 @@
+{
+"persons":[
+  {
+    "code": "abcdef",
+    "firstName": " Wiktoria",
+    "lastName": "Medrano",
+    "address": {
+      "street": "1025 S Street st.",
+      "city": "Chichago",
+      "state": "IL",
+      "zip": "60613",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "therealwiki@gmail.com",
+        "wiktoria.m@yahoo.com"
+      ]
+    }
+  },
+  {
+    "code": "gihijk",
+    "firstName": " Fenton",
+    "lastName": "Hart",
+    "address": {
+      "street": "1 Wall Street",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10005-0012",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "fentony@windstream.net"
+      ]
+    }
+  },
+  {
+    "code": "lmnop",
+    "address": {
+      "street": "23450 Cabo San Lucas",
+      "city": " Los Cabos",
+      "state": " BCS",
+      "zip": "",
+      "country": " Mexico"
+    }
+  },
+  {
+    "code": "qrs",
+    "firstName": " Anthony",
+    "lastName": "Salazar",
+    "address": {
+      "street": "6700 Vine St",
+      "city": "Lincoln",
+      "state": "NE",
+      "zip": "68505",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "slitherysalazar@hotmail.com"
+      ]
+    }
+  },
+  {
+    "code": "tuv",
+    "firstName": " Kenan",
+    "lastName": "Spooner",
+    "address": {
+      "street": "123 N 1st Street",
+      "city": "Compton",
+      "state": "CA",
+      "zip": "90210",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "kspoons@emailservice.domain",
+        "thespoonman@soundgarden.com"
+      ]
+    }
+  },
+  {
+    "code": "wxyz",
+    "firstName": " Alba",
+    "lastName": "Vang",
+    "address": {
+      "street": "521 Adam Street",
+      "city": "Omaha",
+      "state": "NE",
+      "zip": "68471",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "av1834@hotmail.com"
+      ]
+    }
+  },
+  {
+    "code": "now",
+    "address": {
+      "street": "321 Lemon Street",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10012",
+      "country": "USA"
+    }
+  },
+  {
+    "code": "Iknow",
+    "firstName": " Isadora",
+    "lastName": "Hicks",
+    "address": {
+      "street": "142 Drive",
+      "city": " Shanghai",
+      "state": "",
+      "zip": "200012",
+      "country": "China"
+    },
+    "emails": {
+      "emailAddress": [
+        "ihicks@shu.edu.cn"
+      ]
+    }
+  },
+  {
+    "code": "my",
+    "firstName": " Petra",
+    "lastName": "Battle",
+    "address": {
+      "street": "1 Blue Jays Way",
+      "city": " Toronto",
+      "state": " ON",
+      "zip": " M5V 1J1",
+      "country": " Canada"
+    },
+    "emails": {
+      "emailAddress": [
+        "danextpm@canada.gov"
+      ]
+    }
+  },
+  {
+    "code": "abcs",
+    "address": {
+      "street": "1017 BlueJay Way",
+      "city": " London",
+      "state": " DA",
+      "zip": " 070708",
+      "country": " England"
+    }
+  },
+  {
+    "code": "abc2",
+    "firstName": " Wiktoria",
+    "lastName": "Medrano",
+    "address": {
+      "street": "1025 S Street st.",
+      "city": "Chichago",
+      "state": "IL",
+      "zip": "60613",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "therealwiki@gmail.com",
+        "wiktoria.m@yahoo.com"
+      ]
+    }
+  },
+  {
+    "code": "biz45",
+    "firstName": " Fenton",
+    "lastName": "Hart",
+    "address": {
+      "street": "1 Wall Street",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10005-0012",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "fentony@allo.com"
+      ]
+    }
+  },
+  {
+    "code": "dfsdf",
+    "address": {
+      "street": "23450 Cabo San Lucas",
+      "city": " Los Cabos",
+      "state": " BCS",
+      "zip": "",
+      "country": " Mexico"
+    }
+  },
+  {
+    "code": "dfgsdf",
+    "firstName": " Anthony",
+    "lastName": "Salazar",
+    "address": {
+      "street": "6700 Vine St",
+      "city": "Lincoln",
+      "state": "NE",
+      "zip": "68505",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "slitherysalazar@hotmail.com"
+      ]
+    }
+  },
+  {
+    "code": "lejnr4",
+    "firstName": " Kenan",
+    "lastName": "Spooner",
+    "address": {
+      "street": "123 N 1st Street",
+      "city": "Compton",
+      "state": "CA",
+      "zip": "90210",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "kspoons@emailservice.domain",
+        "thespoonman@apple.com"
+      ]
+    }
+  },
+  {
+    "code": "vbc",
+    "firstName": " Jordi",
+    "lastName": "Vang",
+    "address": {
+      "street": "521 Adam Street",
+      "city": "Lincoln",
+      "state": "NE",
+      "zip": "68471",
+      "country": "USA"
+    },
+    "emails": {
+      "emailAddress": [
+        "av1834@gmail.com"
+      ]
+    }
+  },
+  {
+    "code": "zdvker6u",
+    "address": {
+      "street": "321 Lemon Street",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10012",
+      "country": "USA"
+    }
+  },
+  {
+    "code": "SKVUZH",
+    "firstName": " Isabelle",
+    "lastName": "Hicks",
+    "address": {
+      "street": "142 Drive",
+      "city": " Liverpool",
+      "state": "",
+      "zip": "200012",
+      "country": "China"
+    },
+    "emails": {
+      "emailAddress": [
+        "ihicks@shu.edu.cn"
+      ]
+    }
+  },
+  {
+    "code": "123a",
+    "firstName": " Ahmad",
+    "lastName": "Battle",
+    "address": {
+      "street": "1 Blue Jays Way",
+      "city": " Toronto",
+      "state": " ON",
+      "zip": " M5V 1J1",
+      "country": " Canada"
+    },
+    "emails": {
+      "emailAddress": [
+        "danextpm@canada.gov"
+      ]
+    }
+  }
+]}

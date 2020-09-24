@@ -1,0 +1,159 @@
+{
+"assets":[
+  {
+    "dailyCost": 50.75,
+    "deposit": 34234.0,
+    "cleaningFee": 234234.39,
+    "code": "qwertyuiop",
+    "type": "R",
+    "label": "2007 Ford Crown Victoria"
+  },
+  {
+    "partsCost": 100.0,
+    "hourlyLaborCost": 75.0,
+    "code": "b4z1ng4",
+    "type": "F",
+    "label": "Bumper Replacement"
+  },
+  {
+    "unitCost": 4.75,
+    "code": "k04l4",
+    "type": "C",
+    "label": "12-oz Tea"
+  },
+  {
+    "costPerMile": 6.0,
+    "code": "sievub",
+    "type": "T",
+    "label": "Tow \u003c 10 Miles"
+  },
+  {
+    "dailyCost": 1000.0,
+    "deposit": 4.2342342E7,
+    "cleaningFee": 50.0,
+    "code": "sdfadfds",
+    "type": "R",
+    "label": "Tesla Cybertruck"
+  },
+  {
+    "partsCost": 800.0,
+    "hourlyLaborCost": 25.0,
+    "code": "sadfasd",
+    "type": "F",
+    "label": "Full Wheel Replacement"
+  },
+  {
+    "unitCost": 2342.0,
+    "code": "dfasdfagfd",
+    "type": "C",
+    "label": "Large \"Mom made\" Raisin bun"
+  },
+  {
+    "costPerMile": 4.0,
+    "code": "fgdhfh",
+    "type": "T",
+    "label": "Tow \u003e 10 miles"
+  },
+  {
+    "dailyCost": 50.75,
+    "deposit": 200.0,
+    "cleaningFee": 243234.39,
+    "code": "gfhg",
+    "type": "R",
+    "label": "2007 Ford Mustang"
+  },
+  {
+    "partsCost": 100.0,
+    "hourlyLaborCost": 75.0,
+    "code": "sdfsd",
+    "type": "F",
+    "label": "tailgate Replacement"
+  },
+  {
+    "unitCost": 4.75,
+    "code": "sfsdfsf",
+    "type": "C",
+    "label": "12-oz mint"
+  },
+  {
+    "costPerMile": 6.0,
+    "code": "rwerw",
+    "type": "T",
+    "label": "Tow \u003c 10 Miles"
+  },
+  {
+    "dailyCost": 1000.0,
+    "deposit": 5000.0,
+    "cleaningFee": 50.0,
+    "code": "vcbcvb",
+    "type": "R",
+    "label": "Tesla model s"
+  },
+  {
+    "partsCost": 800.0,
+    "hourlyLaborCost": 25.0,
+    "code": "fsdfs",
+    "type": "F",
+    "label": "Full Wheel Replacement"
+  },
+  {
+    "unitCost": 4234.0,
+    "code": "rwerw",
+    "type": "C",
+    "label": "Large \"Factory made\" Raisin Cookie"
+  },
+  {
+    "costPerMile": 4.0,
+    "code": "hfghdf",
+    "type": "T",
+    "label": "Tow \u003e 10 miles"
+  },
+  {
+    "dailyCost": 50.75,
+    "deposit": 200.0,
+    "cleaningFee": 42342.39,
+    "code": "sfsdf",
+    "type": "R",
+    "label": "2007 Ford Expedition"
+  },
+  {
+    "partsCost": 100.0,
+    "hourlyLaborCost": 75.0,
+    "code": "kjhkgkj",
+    "type": "F",
+    "label": "Flashlight Replacement"
+  },
+  {
+    "unitCost": 4.456456,
+    "code": "fghjgh",
+    "type": "C",
+    "label": "12-oz Mocha"
+  },
+  {
+    "costPerMile": 43.0,
+    "code": "dfgsd",
+    "type": "T",
+    "label": "Tow \u003c 10 Miles"
+  },
+  {
+    "dailyCost": 1000.0,
+    "deposit": 5000.0,
+    "cleaningFee": 555.0,
+    "code": "fdgdsfg",
+    "type": "R",
+    "label": "Tesla model 3"
+  },
+  {
+    "partsCost": 800.0,
+    "hourlyLaborCost": 32.0,
+    "code": "dsfgsdf",
+    "type": "F",
+    "label": "Full Wheel Replacement"
+  },
+  {
+    "unitCost": 50.0,
+    "code": "fgsdfgsd",
+    "type": "C",
+    "label": "Large \"Homemade\" Raisin Cake"
+  }
+]}

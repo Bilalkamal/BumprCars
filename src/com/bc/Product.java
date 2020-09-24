@@ -1,17 +1,12 @@
+package com.bc;
+
 
 public class Product {
 	
 	private String code;
 	private String type;
 	private String label;
-//	private Double dailyCost;
-//	private Double deposit;
-//	private Double cleaningFee;
-//	private Double partsCost;
-//	private Double hourlyLaborCost;
-//	private Double unitCost;
-//	private Double costPerMile;
-	
+
 	
 	
 //	Constructor Method

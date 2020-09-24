@@ -1,9 +1,16 @@
+package com.bc;
+
 import java.util.List;
 
 public class EmailAddress {
 
-
 	private List emailAddress;
+
+//	Constructor Method
+	public EmailAddress(List emailAddress) {
+		super();
+		this.emailAddress = emailAddress;
+	}
 
 	/**
 	 * @return the emailAddress
@@ -19,21 +26,4 @@ public class EmailAddress {
 		this.emailAddress = emailAddress;
 	}
 
-	public EmailAddress(List emailAddress) {
-		super();
-		this.emailAddress = emailAddress;
-	}
-
-	
-	
-//	Constructor Method
-	
-
-
-	
-	
-	
-
-	
-	
 }

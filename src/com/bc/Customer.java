@@ -1,13 +1,10 @@
+package com.bc;
 
 public class Customer {
 	private String customerCode;
 	private String customerType;
 	private String name;
 	private String firstName;
-	/**
-	 * @return the firstName
-	 */
-
 	private String lastName;
 	private Person customerContactCode;
 	private Address address;

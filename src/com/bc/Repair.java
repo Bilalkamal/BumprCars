@@ -1,9 +1,11 @@
+package com.bc;
 
-public class Repair  extends Product{
-	
+public class Repair extends Product {
+
 	private Double partsCost;
 	private Double hourlyLaborCost;
-	
+
+//	Constructor Method
 	public Repair(String productCode, String productType, String productLabel, Double partsCost,
 			Double hourlyLaborCost) {
 		super(productCode, productType, productLabel);
@@ -11,22 +13,19 @@ public class Repair  extends Product{
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
 
-	
+//	To String Method
 	public String toString() {
-		return this.getProductCode() + " " + this.getProductType() + " " + this.getProductLabel() + " " + 
-				this.getPartsCost() + " " + this.getHourlyLaborCost()+  "\n" ;
-		
-		
-		
+		return this.getProductCode() + " " + this.getProductType() + " " + this.getProductLabel() + " "
+				+ this.getPartsCost() + " " + this.getHourlyLaborCost() + "\n";
+
 	}
-	
+
 	/**
 	 * @return the partsCost
 	 */
 	public Double getPartsCost() {
 		return partsCost;
 	}
-
 
 	/**
 	 * @param partsCost the partsCost to set
@@ -35,7 +34,6 @@ public class Repair  extends Product{
 		this.partsCost = partsCost;
 	}
 
-
 	/**
 	 * @return the hourlyLaborCost
 	 */
@@ -43,16 +41,11 @@ public class Repair  extends Product{
 		return hourlyLaborCost;
 	}
 
-
 	/**
 	 * @param hourlyLaborCost the hourlyLaborCost to set
 	 */
 	public void setHourlyLaborCost(Double hourlyLaborCost) {
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
-
-
-
-	
 
 }
