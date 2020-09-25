@@ -3,18 +3,12 @@ package com.bc;
 public class Person {
 
 	private String code;
-//	private Name name;
 	private String firstName;
 	private String lastName;
 	private Address address;
 	private EmailAddress emails;
-	
-	
-	
-	
+
 //	Constructor Method
-	
-	
 
 	public Person(String code, String firstName, String lastName, Address address, EmailAddress emails) {
 		super();
@@ -24,7 +18,7 @@ public class Person {
 		this.address = address;
 		this.emails = emails;
 	}
-	
+
 	public Person(String code, Name name, Address address) {
 		super();
 		this.code = code;
@@ -34,9 +28,6 @@ public class Person {
 
 	}
 
-	
-	
-
 	public String getPersonCode() {
 		return code;
 	}
@@ -44,8 +35,6 @@ public class Person {
 	public void setPersonCode(String personCode) {
 		this.code = personCode;
 	}
-
-
 
 	/**
 	 * @return the firstName
@@ -90,8 +79,5 @@ public class Person {
 	public void setEmailAddress(EmailAddress emailAddress) {
 		this.emails = emailAddress;
 	}
-	
-	
-	 
 
 }

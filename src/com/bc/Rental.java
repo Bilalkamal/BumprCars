@@ -15,7 +15,7 @@ public class Rental extends Product {
 		this.deposit = deposit;
 		this.cleaningFee = cleaningFee;
 	}
-	
+
 //	To String method
 
 	public String toString() {
