@@ -1,159 +1,97 @@
 {
 "assets":[
   {
-    "dailyCost": 50.75,
-    "deposit": 34234.0,
-    "cleaningFee": 234234.39,
-    "code": "qwertyuiop",
+    "dailyCost": 64.55,
+    "deposit": 300.0,
+    "cleaningFee": 26.36,
+    "code": "gok548f",
     "type": "R",
-    "label": "2007 Ford Crown Victoria"
+    "label": "2004 INFINITI FX35"
   },
   {
-    "partsCost": 100.0,
-    "hourlyLaborCost": 75.0,
-    "code": "b4z1ng4",
+    "dailyCost": 44.15,
+    "deposit": 260.0,
+    "cleaningFee": 26.13,
+    "code": "vs46fdv",
+    "type": "R",
+    "label": "2010 FREIGHTLINER CASCADIA"
+  },
+  {
+    "dailyCost": 84.15,
+    "deposit": 252.0,
+    "cleaningFee": 56.27,
+    "code": "fbv54c",
+    "type": "R",
+    "label": "2007 CHEVROLET W5500 TILTMASTER"
+  },
+  {
+    "dailyCost": 90.25,
+    "deposit": 452.0,
+    "cleaningFee": 66.6,
+    "code": "hoh581",
+    "type": "R",
+    "label": "2014 LEXUS CT200H"
+  },
+  {
+    "dailyCost": 39.8,
+    "deposit": 290.0,
+    "cleaningFee": 25.0,
+    "code": "bvds14654",
+    "type": "R",
+    "label": "2009 HONDA CBF1000A"
+  },
+  {
+    "partsCost": 230.0,
+    "hourlyLaborCost": 60.0,
+    "code": "dsgv6541",
     "type": "F",
-    "label": "Bumper Replacement"
+    "label": "Brake Replacement"
   },
   {
-    "unitCost": 4.75,
-    "code": "k04l4",
+    "partsCost": 60.0,
+    "hourlyLaborCost": 45.0,
+    "code": "bisu14651",
+    "type": "F",
+    "label": "Front Bumper Replacement"
+  },
+  {
+    "partsCost": 99.0,
+    "hourlyLaborCost": 50.0,
+    "code": "fcdsvgf516",
+    "type": "F",
+    "label": "Seate Replacement"
+  },
+  {
+    "partsCost": 160.0,
+    "hourlyLaborCost": 40.0,
+    "code": "uhvca6542",
+    "type": "F",
+    "label": "Headlight Bulb Replacement"
+  },
+  {
+    "unitCost": 2.9,
+    "code": "bdssw741",
     "type": "C",
-    "label": "12-oz Tea"
+    "label": "phone case"
   },
   {
-    "costPerMile": 6.0,
-    "code": "sievub",
+    "unitCost": 5.1,
+    "code": "vdb1654",
+    "type": "C",
+    "label": "12 oz drink"
+  },
+  {
+    "unitCost": 15.0,
+    "code": "yg165",
+    "type": "C",
+    "label": "T-shirt"
+  },
+  null,
+  null,
+  {
+    "costPerMile": 5.0,
+    "code": "oikh4652",
     "type": "T",
-    "label": "Tow \u003c 10 Miles"
-  },
-  {
-    "dailyCost": 1000.0,
-    "deposit": 4.2342342E7,
-    "cleaningFee": 50.0,
-    "code": "sdfadfds",
-    "type": "R",
-    "label": "Tesla Cybertruck"
-  },
-  {
-    "partsCost": 800.0,
-    "hourlyLaborCost": 25.0,
-    "code": "sadfasd",
-    "type": "F",
-    "label": "Full Wheel Replacement"
-  },
-  {
-    "unitCost": 2342.0,
-    "code": "dfasdfagfd",
-    "type": "C",
-    "label": "Large \"Mom made\" Raisin bun"
-  },
-  {
-    "costPerMile": 4.0,
-    "code": "fgdhfh",
-    "type": "T",
-    "label": "Tow \u003e 10 miles"
-  },
-  {
-    "dailyCost": 50.75,
-    "deposit": 200.0,
-    "cleaningFee": 243234.39,
-    "code": "gfhg",
-    "type": "R",
-    "label": "2007 Ford Mustang"
-  },
-  {
-    "partsCost": 100.0,
-    "hourlyLaborCost": 75.0,
-    "code": "sdfsd",
-    "type": "F",
-    "label": "tailgate Replacement"
-  },
-  {
-    "unitCost": 4.75,
-    "code": "sfsdfsf",
-    "type": "C",
-    "label": "12-oz mint"
-  },
-  {
-    "costPerMile": 6.0,
-    "code": "rwerw",
-    "type": "T",
-    "label": "Tow \u003c 10 Miles"
-  },
-  {
-    "dailyCost": 1000.0,
-    "deposit": 5000.0,
-    "cleaningFee": 50.0,
-    "code": "vcbcvb",
-    "type": "R",
-    "label": "Tesla model s"
-  },
-  {
-    "partsCost": 800.0,
-    "hourlyLaborCost": 25.0,
-    "code": "fsdfs",
-    "type": "F",
-    "label": "Full Wheel Replacement"
-  },
-  {
-    "unitCost": 4234.0,
-    "code": "rwerw",
-    "type": "C",
-    "label": "Large \"Factory made\" Raisin Cookie"
-  },
-  {
-    "costPerMile": 4.0,
-    "code": "hfghdf",
-    "type": "T",
-    "label": "Tow \u003e 10 miles"
-  },
-  {
-    "dailyCost": 50.75,
-    "deposit": 200.0,
-    "cleaningFee": 42342.39,
-    "code": "sfsdf",
-    "type": "R",
-    "label": "2007 Ford Expedition"
-  },
-  {
-    "partsCost": 100.0,
-    "hourlyLaborCost": 75.0,
-    "code": "kjhkgkj",
-    "type": "F",
-    "label": "Flashlight Replacement"
-  },
-  {
-    "unitCost": 4.456456,
-    "code": "fghjgh",
-    "type": "C",
-    "label": "12-oz Mocha"
-  },
-  {
-    "costPerMile": 43.0,
-    "code": "dfgsd",
-    "type": "T",
-    "label": "Tow \u003c 10 Miles"
-  },
-  {
-    "dailyCost": 1000.0,
-    "deposit": 5000.0,
-    "cleaningFee": 555.0,
-    "code": "fdgdsfg",
-    "type": "R",
-    "label": "Tesla model 3"
-  },
-  {
-    "partsCost": 800.0,
-    "hourlyLaborCost": 32.0,
-    "code": "dsfgsdf",
-    "type": "F",
-    "label": "Full Wheel Replacement"
-  },
-  {
-    "unitCost": 50.0,
-    "code": "fgsdfgsd",
-    "type": "C",
-    "label": "Large \"Homemade\" Raisin Cake"
+    "label": "Tow \u003e 20 miles"
   }
 ]}
