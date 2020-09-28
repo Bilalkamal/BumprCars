@@ -69,12 +69,6 @@
     "label": "Headlight Bulb Replacement"
   },
   {
-    "unitCost": 2.9,
-    "code": "bdssw741",
-    "type": "C",
-    "label": "phone case"
-  },
-  {
     "unitCost": 5.1,
     "code": "vdb1654",
     "type": "C",
@@ -86,12 +80,28 @@
     "type": "C",
     "label": "T-shirt"
   },
-  null,
-  null,
   {
-    "costPerMile": 5.0,
+    "unitCost": 17.0,
+    "code": "hyguis456",
+    "type": "C",
+    "label": "car wash"
+  },
+  {
+    "costPerMile": 8.0,
     "code": "oikh4652",
     "type": "T",
     "label": "Tow \u003e 20 miles"
+  },
+  {
+    "costPerMile": 6.0,
+    "code": "yutdc5",
+    "type": "T",
+    "label": "Tow \u003c 20 miles"
+  },
+  {
+    "costPerMile": 14.0,
+    "code": "564hbxs",
+    "type": "T",
+    "label": "Tow \u003c 50 miles"
   }
 ]}
