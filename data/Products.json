@@ -103,5 +103,69 @@
     "code": "564hbxs",
     "type": "T",
     "label": "Tow \u003c 50 miles"
+  },
+  {
+    "costPerMile": 16.0,
+    "code": "45dghv",
+    "type": "T",
+    "label": "Tow \u003e 50 miles"
+  },
+  {
+    "dailyCost": 54.45,
+    "deposit": 200.0,
+    "cleaningFee": 36.2,
+    "code": "eo8k1318f",
+    "type": "R",
+    "label": "2002 CHEVROLET SONORA"
+  },
+  {
+    "dailyCost": 154.25,
+    "deposit": 300.0,
+    "cleaningFee": 16.2,
+    "code": "28njs8f",
+    "type": "R",
+    "label": "2005 BMW R1100S"
+  },
+  {
+    "dailyCost": 264.55,
+    "deposit": 350.0,
+    "cleaningFee": 86.36,
+    "code": "ks92ja",
+    "type": "R",
+    "label": "2004 ASTON MARTIN VANQUISH"
+  },
+  {
+    "partsCost": 60.0,
+    "hourlyLaborCost": 20.0,
+    "code": "8i5t3wf1",
+    "type": "F",
+    "label": "Mirror Replacement"
+  },
+  {
+    "partsCost": 140.0,
+    "hourlyLaborCost": 90.0,
+    "code": "9kcda3419",
+    "type": "F",
+    "label": "Wheel Replacement"
+  },
+  {
+    "unitCost": 20.0,
+    "code": "82hsn2",
+    "type": "C",
+    "label": "leather Bag"
+  },
+  {
+    "unitCost": 22.0,
+    "code": "83jdf",
+    "type": "C",
+    "label": "Kids Toy"
+  },
+  {
+    "dailyCost": 190.45,
+    "deposit": 352.0,
+    "cleaningFee": 86.6,
+    "code": "udbwi83",
+    "type": "R",
+    "label": "2013 SUBARU TRIBECA"
   }
 ]}

@@ -5,7 +5,7 @@
     "customerType": "B",
     "name": "Penelope\u0027s Cars",
     "address": {
-      "street": "Rúa do Paseo 80",
+      "street": "Rï¿½a do Paseo 80",
       "city": "Espartinas",
       "state": "Seville",
       "zip": "41807",
@@ -22,7 +22,7 @@
       "lastName": "Bird",
       "address": {
         "street": "Paraguay 61",
-        "city": "Algueña",
+        "city": "Algueï¿½a",
         "state": "Alicante",
         "zip": "03668",
         "country": "Spain"
@@ -38,7 +38,7 @@
       "city": "Guanajuato",
       "state": "IRAPUATO CENTRO",
       "zip": "36500",
-      "country": "México"
+      "country": "Mexico"
     }
   },
   {
@@ -79,7 +79,7 @@
       "firstName": " Ralph",
       "lastName": "Collier",
       "address": {
-        "street": "Ombù 9894",
+        "street": "Ombï¿½ 9894",
         "city": "Costa Azul",
         "state": "Canelones",
         "zip": "16202",
@@ -194,7 +194,7 @@
       }
     },
     "address": {
-      "street": "Dolná 49",
+      "street": "Dolnï¿½ 49",
       "city": "Kremnica",
       "state": "Kremnica",
       "zip": "96701",
@@ -275,7 +275,7 @@
     },
     "address": {
       "street": "Coronilla 7200",
-      "city": "Florencio Sánchez",
+      "city": "Florencio Sï¿½nchez",
       "state": "Canelones",
       "zip": "75204",
       "country": "Uruguay"
@@ -321,8 +321,8 @@
       "lastName": "Cash",
       "address": {
         "street": "Rua Piracicaba 570",
-        "city": "São José Dos Campos",
-        "state": "São Paulo",
+        "city": "Sï¿½o Josï¿½ Dos Campos",
+        "state": "Sï¿½o Paulo",
         "zip": "12210-240",
         "country": "Brazil"
       },
@@ -349,7 +349,7 @@
       "address": {
         "street": "Mooni 82",
         "city": "Veski",
-        "state": "Põlvamaa",
+        "state": "Pï¿½lvamaa",
         "zip": "63511",
         "country": "Estonia"
       }
@@ -389,6 +389,259 @@
       "state": "Lugo",
       "zip": "27377",
       "country": "Spain"
+    }
+  },
+  {
+    "customerCode": "ohos8343",
+    "customerType": "P",
+    "name": "Jane Meller",
+    "customerContactCode": {
+      "code": "TQ0L364",
+      "firstName": " Mannix",
+      "lastName": "Crawford",
+      "address": {
+        "street": "Banding Ln",
+        "city": " Madison",
+        "state": " WI",
+        "zip": " 53704",
+        "country": "USA"
+      },
+      "emails": {
+        "emailAddress": [
+          "ttompkiss5@bandcamp.com"
+        ]
+      }
+    },
+    "address": {
+      "street": "686 John St.",
+      "city": "Sheboygan",
+      "state": " WI",
+      "zip": " 53081",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "ubi3394",
+    "customerType": "B",
+    "name": "Kalley grand",
+    "customerContactCode": {
+      "code": "sl5c348",
+      "firstName": " Aquila",
+      "lastName": "Bird",
+      "address": {
+        "street": "Paraguay 61",
+        "city": "Algueï¿½a",
+        "state": "Alicante",
+        "zip": "03668",
+        "country": "Spain"
+      },
+      "emails": {
+        "emailAddress": [
+          "ctrangmar0@google.es"
+        ]
+      }
+    },
+    "address": {
+      "street": "genzalo",
+      "city": "gambi",
+      "state": "IRAPUATO CENTRO",
+      "zip": "36500",
+      "country": "Mexico"
+    }
+  },
+  {
+    "customerCode": "iubs838",
+    "customerType": "P",
+    "name": "Naser baz",
+    "customerContactCode": {
+      "code": "nw9O146",
+      "address": {
+        "street": "8512 Kingwood Dr.",
+        "city": " Lenoir",
+        "state": " NC",
+        "zip": " 28645",
+        "country": "USA"
+      }
+    },
+    "address": {
+      "street": "462 E 1st St",
+      "city": " Oswego",
+      "state": " NY",
+      "zip": "13126",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "uibc721e",
+    "customerType": "B",
+    "name": "Humers Fans",
+    "customerContactCode": {
+      "code": "aL5X245",
+      "firstName": " Marsden",
+      "lastName": "Hurst",
+      "address": {
+        "street": "Almo Alley",
+        "city": " Bridgeville",
+        "state": " PA",
+        "zip": " 15017",
+        "country": "USA"
+      },
+      "emails": {
+        "emailAddress": [
+          "deagling6@oakley.com"
+        ]
+      }
+    },
+    "address": {
+      "street": "152 Southington Ave",
+      "city": " Southington",
+      "state": " CT",
+      "zip": " 06489",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "nus723hs",
+    "customerType": "P",
+    "name": "Moser Jaku",
+    "customerContactCode": {
+      "code": "Ig1O188",
+      "address": {
+        "street": "9 Granby Way",
+        "city": " Plymouth",
+        "state": " England PL1",
+        "zip": " 4FT",
+        "country": " United Kingdom"
+      }
+    },
+    "address": {
+      "street": "12 Rockaway St",
+      "city": " Islip Terrace",
+      "state": " NY",
+      "zip": " 11752",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "b39nskd",
+    "customerType": "P",
+    "name": "Faner kamer",
+    "customerContactCode": {
+      "code": "sJ1P911",
+      "firstName": " Karen",
+      "lastName": "Mcdaniel",
+      "address": {
+        "street": "Grover Dr",
+        "city": " Park Rapids",
+        "state": " MN",
+        "zip": " 56470",
+        "country": "USA"
+      },
+      "emails": {
+        "emailAddress": [
+          "mlabet5@jiathis.com"
+        ]
+      }
+    },
+    "address": {
+      "street": "680 IL-72",
+      "city": " Park Ridge",
+      "state": " IL",
+      "zip": " 60068",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "3o3ndsdf",
+    "customerType": "B",
+    "name": "vans cars",
+    "customerContactCode": {
+      "code": "nw9O146",
+      "address": {
+        "street": "8512 Kingwood Dr.",
+        "city": " Lenoir",
+        "state": " NC",
+        "zip": " 28645",
+        "country": "USA"
+      }
+    },
+    "address": {
+      "street": "205 Clayton Dr",
+      "city": " Yorktown",
+      "state": " VA",
+      "zip": " 23693",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "iubi3281",
+    "customerType": "P",
+    "name": "Jacson kenl",
+    "customerContactCode": {
+      "code": "KG9w877",
+      "firstName": " Diana",
+      "lastName": "Bentley",
+      "address": {
+        "street": "1242 Albert St",
+        "city": "Germiston",
+        "state": "Gauteng",
+        "zip": "1422",
+        "country": "South Africa"
+      },
+      "emails": {
+        "emailAddress": [
+          "aredwing1@vimeo.com",
+          "slakemann@about.com"
+        ]
+      }
+    },
+    "address": {
+      "street": "885 E Wayne St",
+      "city": " Allentown",
+      "state": "PA",
+      "zip": "18103",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "ncon932n",
+    "customerType": "B",
+    "name": "Farwey haller",
+    "address": {
+      "street": "896 Cranston St",
+      "city": " Cranston",
+      "state": "RI",
+      "zip": "02920",
+      "country": "USA"
+    }
+  },
+  {
+    "customerCode": "knwx72",
+    "customerType": "P",
+    "name": "Vandam lee",
+    "customerContactCode": {
+      "code": "kw9B792",
+      "firstName": " Martin",
+      "lastName": "Morrison",
+      "address": {
+        "street": "8799 San Carlos Rd.",
+        "city": " Sheboygan",
+        "state": " WI",
+        "zip": " 53081",
+        "country": "USA"
+      },
+      "emails": {
+        "emailAddress": [
+          "hscaysbrookp@opera.com"
+        ]
+      }
+    },
+    "address": {
+      "street": "58 Madison Ave",
+      "city": " Ossining",
+      "state": " NY",
+      "zip": " 10562",
+      "country": "USA"
     }
   }
 ]}

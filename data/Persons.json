@@ -68,8 +68,8 @@
     "lastName": "Cash",
     "address": {
       "street": "Rua Piracicaba 570",
-      "city": "São José Dos Campos",
-      "state": "São Paulo",
+      "city": "Sï¿½o Josï¿½ Dos Campos",
+      "state": "Sï¿½o Paulo",
       "zip": "12210-240",
       "country": "Brazil"
     },
@@ -84,7 +84,7 @@
     "address": {
       "street": "Mooni 82",
       "city": "Veski",
-      "state": "Põlvamaa",
+      "state": "Pï¿½lvamaa",
       "zip": "63511",
       "country": "Estonia"
     }
@@ -319,7 +319,7 @@
     "firstName": " Ralph",
     "lastName": "Collier",
     "address": {
-      "street": "Ombù 9894",
+      "street": "Ombï¿½ 9894",
       "city": "Costa Azul",
       "state": "Canelones",
       "zip": "16202",
@@ -354,7 +354,7 @@
     "lastName": "Bird",
     "address": {
       "street": "Paraguay 61",
-      "city": "Algueña",
+      "city": "Algueï¿½a",
       "state": "Alicante",
       "zip": "03668",
       "country": "Spain"
