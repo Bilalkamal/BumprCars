@@ -34,9 +34,6 @@ public class ParserFunctions {
 		s.close();
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
-		
-
-		
 
 		List<Person> myPersonList = new ArrayList<Person>();
 
@@ -104,9 +101,7 @@ public class ParserFunctions {
 		s.close();
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
-		
 
-		
 		List<Customer> coustomersList = new ArrayList<Customer>();
 
 		for (int i = 1; i < myArrayList.size(); i++) {
@@ -212,6 +207,66 @@ public class ParserFunctions {
 		return myProductList;
 
 	}
-	
-	
+
+//	Invoice Parser
+	public static List<Invoice> parseInvoices(String path) {
+
+		File pf = new File(path);
+		Scanner s;
+		try {
+			s = new Scanner(pf);
+
+		} catch (FileNotFoundException fnfe) {
+			throw new RuntimeException(fnfe);
+		}
+
+		List<String> myArrayList = new ArrayList<String>();
+
+		while (s.hasNext()) {
+
+			myArrayList.add(s.nextLine());
+
+		}
+
+		s.close();
+
+		int numOfLines = Integer.parseInt(myArrayList.get(0));
+
+		List<Invoice> myInvoiceList = new ArrayList<Invoice>();
+
+		myArrayList.remove(0);
+		
+		for (int i = 0; i < numOfLines; i++) {
+			String str = myArrayList.get(i);
+
+			Invoice invoice = null;
+			String tokens[] = str.split(";");
+
+			String invoiceCode = tokens[0];
+
+			String ownerCode = tokens[1];
+
+			String customerCode = tokens[2];
+
+			String productsTokens[] = tokens[3].split(",");
+
+			List<String> products = new ArrayList<String>();
+
+
+			for (int j = 0; j < productsTokens.length; j++) {
+
+				String product = productsTokens[j];
+				products.add(product);
+
+			}
+
+			
+			invoice = new Invoice(invoiceCode,ownerCode,customerCode,products);
+			myInvoiceList.add(invoice);
+
+		}
+		return myInvoiceList;
+
+	}
+
 }
