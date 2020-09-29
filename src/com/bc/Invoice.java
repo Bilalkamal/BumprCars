@@ -81,5 +81,8 @@ public class Invoice {
 	public void setListOfProducts(List listOfProducts) {
 		this.listOfProducts = listOfProducts;
 	}
+	
+	
+	
 
 }

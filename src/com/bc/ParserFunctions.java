@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParserFunctions {
+	
+	
 
 //	Parser Functions
 
-//	Person Parser
-	public static List<Person> parsePersons(String path) {
-
+//	Read File Function 
+	public static List<String> readParseFile(String path) {
 		File pf = new File(path);
 		Scanner s;
 		try {
@@ -32,6 +33,16 @@ public class ParserFunctions {
 		}
 
 		s.close();
+
+		return myArrayList;
+
+	}
+
+//	Person Parser
+	public static List<Person> parsePersons() {
+		
+		
+		List<String> myArrayList = readParseFile("data/Persons.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
 
@@ -79,26 +90,9 @@ public class ParserFunctions {
 	}
 
 // Customer Parser
-	public static List<Customer> parseCustomers(String path, ArrayList<Person> listOfPersons) {
+	public static List<Customer> parseCustomers( ArrayList<Person> listOfPersons) {
 
-		File pf = new File(path);
-		Scanner s;
-		try {
-			s = new Scanner(pf);
-
-		} catch (FileNotFoundException fnfe) {
-			throw new RuntimeException(fnfe);
-		}
-
-		List<String> myArrayList = new ArrayList<String>();
-
-		while (s.hasNext()) {
-
-			myArrayList.add(s.nextLine());
-
-		}
-
-		s.close();
+		List<String> myArrayList = readParseFile("data/Customers.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
 
@@ -141,26 +135,9 @@ public class ParserFunctions {
 
 //	Products Parser
 
-	public static List<Product> parseProducts(String path) {
+	public static List<Product> parseProducts() {
 
-		File pf = new File(path);
-		Scanner s;
-		try {
-			s = new Scanner(pf);
-
-		} catch (FileNotFoundException fnfe) {
-			throw new RuntimeException(fnfe);
-		}
-
-		List<String> myArrayList = new ArrayList<String>();
-
-		while (s.hasNext()) {
-
-			myArrayList.add(s.nextLine());
-
-		}
-
-		s.close();
+		List<String> myArrayList = readParseFile("data/Products.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
 
@@ -209,33 +186,17 @@ public class ParserFunctions {
 	}
 
 //	Invoice Parser
-	public static List<Invoice> parseInvoices(String path) {
 
-		File pf = new File(path);
-		Scanner s;
-		try {
-			s = new Scanner(pf);
+	public static List<Invoice> parseInvoices() {
 
-		} catch (FileNotFoundException fnfe) {
-			throw new RuntimeException(fnfe);
-		}
-
-		List<String> myArrayList = new ArrayList<String>();
-
-		while (s.hasNext()) {
-
-			myArrayList.add(s.nextLine());
-
-		}
-
-		s.close();
+		List<String> myArrayList = readParseFile("data/Products.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
 
 		List<Invoice> myInvoiceList = new ArrayList<Invoice>();
 
 		myArrayList.remove(0);
-		
+
 		for (int i = 0; i < numOfLines; i++) {
 			String str = myArrayList.get(i);
 
@@ -252,7 +213,6 @@ public class ParserFunctions {
 
 			List<String> products = new ArrayList<String>();
 
-
 			for (int j = 0; j < productsTokens.length; j++) {
 
 				String product = productsTokens[j];
@@ -260,8 +220,7 @@ public class ParserFunctions {
 
 			}
 
-			
-			invoice = new Invoice(invoiceCode,ownerCode,customerCode,products);
+			invoice = new Invoice(invoiceCode, ownerCode, customerCode, products);
 			myInvoiceList.add(invoice);
 
 		}

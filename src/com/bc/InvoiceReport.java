@@ -2,7 +2,9 @@ package com.bc;
 
 import java.util.ArrayList;
 
-public class InvoiceReport extends ParserFunctions {
+import java.util.List;
+
+public class InvoiceReport {
 
 //	Done --> TO-DO: Create an Invoice Class - with the required specs 
 	
@@ -10,11 +12,24 @@ public class InvoiceReport extends ParserFunctions {
 //				This should be done on the parser functions class
 //	TO-DO: Report Functions for the Invoices 
 //	TO-DO: Calling the System Report from Data converter 
+	public static void main(String[] args) {
+	
+	ParserFunctions pf = new ParserFunctions();
+	ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
+	List<Product> lprod = ParserFunctions.parseProducts();
+	List<Customer> lp = ParserFunctions.parseCustomers(lpers);
+	List<Invoice> lInv = ParserFunctions.parseInvoices();	
 
 	
+	DisplayFunctions dp = new DisplayFunctions();
+	DisplayFunctions.summaryReport(lInv);
 	
 	
 	
+	
+	
+	
+	}
 	
 	
 }
