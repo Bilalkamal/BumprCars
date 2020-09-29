@@ -66,4 +66,14 @@ public class Rental extends Product {
 		this.cleaningFee = cleaningFee;
 	}
 
+	
+	public double getTotalCost(Integer daysRented) {
+		
+		
+		return (this.dailyCost * daysRented) - this.deposit + this.cleaningFee;
+		
+	}
+	
+	
+	
 }

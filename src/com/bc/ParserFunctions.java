@@ -34,7 +34,11 @@ public class ParserFunctions {
 
 		s.close();
 
+
 		return myArrayList;
+		
+		
+
 
 	}
 
@@ -189,7 +193,7 @@ public class ParserFunctions {
 
 	public static List<Invoice> parseInvoices() {
 
-		List<String> myArrayList = readParseFile("data/Products.dat");
+		List<String> myArrayList = readParseFile("data/Invoices.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
 
