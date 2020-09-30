@@ -10,7 +10,11 @@ public class DisplayFunctions {
 		
 		System.out.println("Code			Owner			Customer Account 		Subtotal		Discount		Fees		Taxes			Total");
 		
+		
 		for (Invoice s: lInv) {
+			
+			
+			
 			System.out.printf("%s %23s %28s  \n", s.getInvoiceCode(),s.getOwnerCode(),s.getCustomerCode());
 			
 			
