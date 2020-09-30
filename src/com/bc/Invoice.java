@@ -8,10 +8,8 @@ import java.util.List;
  * which is connected to the customer account, and the last element is the list of prducts, bought by that customer. 
 */
 
-
 public class Invoice {
-	
-	
+
 	private String invoiceCode;
 	private String ownerCode;
 	private String customerCode;
@@ -81,8 +79,15 @@ public class Invoice {
 	public void setListOfProducts(List listOfProducts) {
 		this.listOfProducts = listOfProducts;
 	}
-	
-	
-	
+
+	public Double getBusinessTax(Double subtotal) {
+
+		return subtotal * 0.0425;
+	}
+
+	public Double getPersonalTax(Double subtotal) {
+
+		return subtotal * 0.08;
+	}
 
 }
