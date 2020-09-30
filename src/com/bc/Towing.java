@@ -31,4 +31,11 @@ public class Towing extends Product {
 		this.costPerMile = costPerMile;
 	}
 
+	public double getMilesCost(Double milesTowed) {
+
+		
+		return (this.getCostPerMile() * milesTowed);
+		
+	}
+	
 }

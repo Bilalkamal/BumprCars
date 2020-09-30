@@ -191,7 +191,7 @@ public class ParserFunctions {
 
 //	Invoice Parser
 
-	public static List<Invoice> parseInvoices() {
+	public static List<Invoice> parseInvoices(List<Product> lprod) {
 
 		List<String> myArrayList = readParseFile("data/Invoices.dat");
 
@@ -213,7 +213,48 @@ public class ParserFunctions {
 
 			String customerCode = tokens[2];
 
+//			List of Products 
+			
 			String productsTokens[] = tokens[3].split(",");
+			
+			for(String pr: productsTokens) {
+				
+				String prTokens[] = pr.split(":");
+				
+				String productCode = prTokens[0];
+				
+				Product product = null;
+				
+				
+				
+				for (Product prodCode: lprod) {
+					
+					if (productCode.equals(prodCode.getProductCode())) {
+						
+						
+						
+						product = prodCode;
+						
+						if (product.getProductType() == "F") {
+							Product repObj = new Repair((Repair) product, Double.parseDouble(prTokens[1]));
+							
+						}else if (product.getProductType() == "R") {
+							
+						}else if (product.getProductType() == "C") {
+							
+						}else if (product.getProductType() == "T") {
+							
+						}
+						
+						
+						
+					}
+				}
+				
+				
+			}
+			
+			
 
 			List<String> products = new ArrayList<String>();
 
@@ -231,5 +272,8 @@ public class ParserFunctions {
 		return myInvoiceList;
 
 	}
+	
+	
+	
 
 }

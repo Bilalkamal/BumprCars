@@ -34,6 +34,13 @@ public class Concession extends Product{
 		this.unitCost = unitCost;
 	}
 
+	
+	public double getConcessionsCost(Integer quantity) {
+//		Products Code
+		
+		return (this.getUnitCost() * quantity);
+		
+	}
 
 	
 }

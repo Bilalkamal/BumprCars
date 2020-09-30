@@ -17,19 +17,19 @@ public class InvoiceReport {
 	ParserFunctions pf = new ParserFunctions();
 	ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
 	List<Product> lprod = ParserFunctions.parseProducts();
-	List<Customer> lp = ParserFunctions.parseCustomers(lpers);
+	List<Customer> lc = ParserFunctions.parseCustomers(lpers);
 	List<Invoice> lInv = ParserFunctions.parseInvoices();	
 
 	
 	DisplayFunctions dp = new DisplayFunctions();
-	DisplayFunctions.summaryReport(lInv);
-	
-	
-	
-	
+	DisplayFunctions.summaryReport(lInv,lc,lpers);
+
 	
 	
 	}
+	
+	
+	
 	
 	
 }
