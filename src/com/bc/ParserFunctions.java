@@ -52,7 +52,7 @@ public class ParserFunctions {
 
 		List<Person> myPersonList = new ArrayList<Person>();
 
-		for (int i = 1; i < numOfLines; i++) {
+		for (int i = 1; i < numOfLines + 1; i++) {
 			String str = myArrayList.get(i);
 
 			Person p = null;
@@ -71,11 +71,10 @@ public class ParserFunctions {
 			Address personAddress = new Address(street, city, state, zip, country);
 
 			String pName[] = tokens[1].split(",");
-			Name personName = new PersonName(pName[1], pName[0]);
 
 //			without email address
 			if (tokens.length == 3) {
-				p = new Person(personCode, personName, personAddress);
+				p = new Person(personCode, pName[1], pName[0], personAddress);
 			}
 //			With Email Address
 			else if (tokens.length == 4) {
@@ -248,6 +247,7 @@ public class ParserFunctions {
 								//Product repObj = new Concession((Concession) product,  Integer.parseInt(prTokens[1]));
 							}
 						}else if (product.getProductType() == "T") {
+							
 							
 						}
 						

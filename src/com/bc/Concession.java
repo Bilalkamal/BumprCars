@@ -5,7 +5,7 @@ package com.bc;
 public class Concession extends Product{
 	
 	private Double unitCost;
-	private Double cost;
+
 	private int quantity;
 	private String associatedRepair;
 	
@@ -16,10 +16,18 @@ public class Concession extends Product{
 	public Concession(Concession concessionObject, Integer quantity,String associatedRepair ) {
 		super(concessionObject.getProductCode(),concessionObject.getProductLabel(),concessionObject.getProductType());
 		
-		this.unitCost = unitCost;
+		this.unitCost = concessionObject.getUnitCost();
 		this.quantity = concessionObject.getQuantity();
 		this.associatedRepair = concessionObject.getAssociatedRepair();
-		this.cost = concessionObject.getcost(quantity);//check this
+
+	}
+	public Concession(Concession concessionObject, Integer quantity) {
+		super(concessionObject.getProductCode(),concessionObject.getProductLabel(),concessionObject.getProductType());
+		
+		this.unitCost = concessionObject.getUnitCost();
+		this.quantity = concessionObject.getQuantity();
+		this.associatedRepair = concessionObject.getAssociatedRepair();
+
 	}
 	
 	
@@ -59,7 +67,7 @@ public class Concession extends Product{
 	}
 
 	
-	public double getcost(Integer quantity) {
+	public double getConcessionCost() {
 //		Products Code
 		
 		return (this.getUnitCost() * quantity);

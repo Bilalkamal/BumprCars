@@ -6,7 +6,7 @@ public class Rental extends Product {
 	private Double deposit;
 	private Double cleaningFee;
 	private Integer daysRented;
-	private Double cost;
+	
 	
 //	Constructor Method
 	public Rental(String productCode, String productType, String productLabel, Double dailyCost, Double deposit,
@@ -21,11 +21,11 @@ public class Rental extends Product {
 	public Rental(Rental rentalObject, Integer daysRented) {
 		super(rentalObject.getProductCode(),rentalObject.getProductLabel(),rentalObject.getProductType());
 		
-		this.daysRented = daysRented;
+		this.daysRented = this.daysRented;
 		this.dailyCost = rentalObject.getDailyCost();
 		this.cleaningFee = rentalObject.getCleaningFee();
 		this.deposit = rentalObject.getDeposit();
-		this.cost = rentalObject.getRentCost();
+		
 	}
 	
 
@@ -45,19 +45,7 @@ public class Rental extends Product {
 		this.daysRented = daysRented;
 	}
 
-	/**
-	 * @return the cost
-	 */
-	public Double getCost() {
-		return cost;
-	}
 
-	/**
-	 * @param cost the cost to set
-	 */
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
 
 	public String toString() {
 		return this.getProductCode() + " " + this.getProductType() + " " + this.getProductLabel() + " "

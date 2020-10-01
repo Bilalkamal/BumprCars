@@ -19,7 +19,7 @@ public class Person {
 		this.emails = emails;
 	}
 
-	public Person(String code, Name name, Address address) {
+	public Person(String code, String firstName, String lastName, Address address) {
 		super();
 		this.code = code;
 		this.firstName = firstName;

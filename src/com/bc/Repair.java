@@ -5,7 +5,7 @@ public class Repair extends Product {
 	private Double partsCost;
 	private Double hourlyLaborCost;
 	private Double hoursWorked;
-	private Double cost;
+
 
 //	Constructor Method
 	public Repair(String productCode, String productType, String productLabel, Double partsCost,
@@ -22,7 +22,7 @@ public class Repair extends Product {
 		this.hoursWorked = hoursWorked;
 		this.partsCost = repairObject.getPartsCost();
 		this.hourlyLaborCost = repairObject.getHourlyLaborCost();
-		this.cost = repairObject.getHoursCost();
+		
 	}
 
 	
@@ -43,20 +43,6 @@ public class Repair extends Product {
 	}
 
 
-	/**
-	 * @return the cost
-	 */
-	public Double getCost() {
-		return cost;
-	}
-
-
-	/**
-	 * @param cost the cost to set
-	 */
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
 
 
 	//	To String Method
@@ -100,7 +86,7 @@ public class Repair extends Product {
 		return (this.getHourlyLaborCost() * this.hoursWorked);
 		
 	}
-	public double getTotalCost() {
+	public double getRepairCost() {
 		
 		
 		return (this.getHoursCost() + this.getPartsCost());
