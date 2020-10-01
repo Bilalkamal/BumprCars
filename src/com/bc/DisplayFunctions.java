@@ -10,18 +10,19 @@ public class DisplayFunctions {
 	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
 
+		System.out.println("Executive Summary Report: \n");
 		System.out.println(
 				"Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total");
 
 		System.out.println(
 				"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-		Double allSubtotals 	= 0.0;
-		Double allDiscounts 	= 0.0;
-		Double allFees		 	= 0.0;
-		Double allTaxes     	= 0.0;
-		Double allTotals	 	= 0.0;
-		
+		Double allSubtotals = 0.0;
+		Double allDiscounts = 0.0;
+		Double allFees = 0.0;
+		Double allTaxes = 0.0;
+		Double allTotals = 0.0;
+
 		for (Invoice s : lInv) {
 
 //			TO-DO: Convert these into functions and just call them here.
@@ -31,17 +32,15 @@ public class DisplayFunctions {
 			String ownerCode = s.getOwnerCode();
 
 			String ownerName = null;
-			
-			List<Double> subtotalResult =  calculateSubtotal(lprod, s.getListOfProducts());
-			Double itemSubtotal = Math.round(subtotalResult.get(0) * 100.0)/100.0;
-			Double itemDiscount = Math.round(subtotalResult.get(1) * 100.0)/100.0;
-			
-			
+
+			List<Double> subtotalResult = calculateSubtotal(lprod, s.getListOfProducts());
+			Double itemSubtotal = Math.round(subtotalResult.get(0) * 100.0) / 100.0;
+			Double itemDiscount = Math.round(subtotalResult.get(1) * 100.0) / 100.0;
+
 			Double taxes = null;
-			
-			
+
 			Double total = null;
-			
+
 			for (Person p : lpers) {
 				if (p.getPersonCode().equals(ownerCode)) {
 					ownerName = p.getFirstName() + " " + p.getLastName();
@@ -59,54 +58,61 @@ public class DisplayFunctions {
 					customerName = c.getName();
 					if (c.getCustomerType().equals("B")) {
 						businessFee = 75.50;
-						
-						taxes = (itemSubtotal - itemDiscount) * 0.0425; 
-						taxes = Math.round(taxes * 100.0)/100.0;
-						
-					}else if (c.getCustomerType().equals("P")) {
+
+						taxes = (itemSubtotal - itemDiscount) * 0.0425;
+						taxes = Math.round(taxes * 100.0) / 100.0;
+
+					} else if (c.getCustomerType().equals("P")) {
 						businessFee = 0.0;
-					
-						taxes = (itemSubtotal - itemDiscount) * 0.08; 
-						taxes = Math.round(taxes * 100.0)/100.0;
+
+						taxes = (itemSubtotal - itemDiscount) * 0.08;
+						taxes = Math.round(taxes * 100.0) / 100.0;
 					}
 				}
-				
-				
 
 			}
 
-			
 			total = itemSubtotal + itemDiscount + businessFee + taxes;
-			total = Math.round(total * 100.0)/100.0;
-			
-			
-			
-			 allSubtotals 	+= itemSubtotal;
-			 allDiscounts 	+= itemDiscount;
-			 allFees		+= businessFee;
-			 allTaxes     	+= taxes;
-			 allTotals	 	+= total;
-			
-			System.out.printf("%-22s %-32s %-31s %-23s %-22s %-23s  %-23s %-22s \n", s.getInvoiceCode(), ownerName, customerName,
-					"$  "  +itemSubtotal, "$  "  + itemDiscount,"$  "  + businessFee,"$  "  + taxes,"$  "  +total );
+			total = Math.round(total * 100.0) / 100.0;
 
-				
+			allSubtotals += itemSubtotal;
+			allDiscounts += itemDiscount;
+			allFees += businessFee;
+			allTaxes += taxes;
+			allTotals += total;
+
+			System.out.printf("%-22s %-32s %-31s %-23s %-22s %-23s  %-23s %-22s \n", s.getInvoiceCode(), ownerName,
+					customerName, "$  " + itemSubtotal, "$  " + itemDiscount, "$  " + businessFee, "$  " + taxes,
+					"$  " + total);
 
 		}
 		System.out.println(
 				"===================================================================================================================================================================================================================");
-			
-		
-		allSubtotals = Math.round(allSubtotals * 100.0)/100.0;
-		allDiscounts = Math.round(allDiscounts * 100.0)/100.0;
-		allFees = Math.round(allFees * 100.0)/100.0;
-		allTaxes = Math.round(allTaxes * 100.0)/100.0;
-		allTotals = Math.round(allTotals * 100.0)/100.0;
-	
-		System.out.printf("%-87s %-23s %-21s  %-24s %-23s %-22s \n", "TOTALS", "$  "  +allSubtotals, "$  "  +allDiscounts, "$  "  +allFees, "$  "  +allTaxes, "$  "  +allTotals );
+
+		allSubtotals = Math.round(allSubtotals * 100.0) / 100.0;
+		allDiscounts = Math.round(allDiscounts * 100.0) / 100.0;
+		allFees = Math.round(allFees * 100.0) / 100.0;
+		allTaxes = Math.round(allTaxes * 100.0) / 100.0;
+		allTotals = Math.round(allTotals * 100.0) / 100.0;
+
+		System.out.printf("%-87s %-23s %-21s  %-24s %-23s %-22s \n \n \n ", "TOTALS", "$  " + allSubtotals,
+				"$  " + allDiscounts, "$  " + allFees, "$  " + allTaxes, "$  " + allTotals);
 
 	}
 
+	
+//	Invoise repot function
+	public static void invoiceReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
+			List<Product> lprod) {
+		
+
+		System.out.println("Invoice Details: \n =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+" );
+		
+		
+	}
+	
+//	Subtotal and Discounts function
+	
 	public static List<Double> calculateSubtotal(List<Product> productList, List<String> boughtList) {
 
 //		0th element is the subtotal
@@ -116,12 +122,8 @@ public class DisplayFunctions {
 		Double concessionTotalDiscount = 0.0;
 		Double concessionDiscount = 0.0;
 
-		
 //		3rd element is the taxes 
-		
-		
-		
-		
+
 		List<Repair> lrep = new ArrayList<Repair>();
 
 		for (String item : boughtList) {
@@ -153,9 +155,9 @@ public class DisplayFunctions {
 							f.setHoursWorked(Double.parseDouble(itemTokens[1]));
 							itemCost = f.getRepairCost();
 							subTotal += itemCost;
-							
+
 							lrep.add(f);
-							
+
 						} else if (p.getProductType().equals("C")) {
 							Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]));
 							c.setQuantity(Integer.parseInt(itemTokens[1]));
@@ -170,18 +172,15 @@ public class DisplayFunctions {
 
 				for (Product p : productList) {
 					if (p.getProductCode().equals(itemTokens[0])) {
-						
-						
-						
+
 						Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]), itemTokens[2]);
 						c.setQuantity(Integer.parseInt(itemTokens[1]));
 						itemCost = c.getConcessionCost();
 						subTotal += itemCost;
-						
-						concessionDiscount = itemCost * - 0.1;
+
+						concessionDiscount = itemCost * -0.1;
 						concessionTotalDiscount += concessionDiscount;
-						
-						
+
 					}
 
 				}
@@ -189,12 +188,11 @@ public class DisplayFunctions {
 			}
 
 		}
-		
+
 		List<Double> finalResult = new ArrayList<Double>();
 		finalResult.add(subTotal);
 		finalResult.add(concessionTotalDiscount);
-		
-		
+
 		return finalResult;
 
 	}

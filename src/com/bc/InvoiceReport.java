@@ -23,6 +23,7 @@ public class InvoiceReport {
 	
 	DisplayFunctions dp = new DisplayFunctions();
 	DisplayFunctions.summaryReport(lInv,lc,lpers,lprod);
+	DisplayFunctions.invoiceReport(lInv,lc,lpers,lprod);
 
 	
 	
