@@ -7,19 +7,25 @@ import java.util.Map;
 
 public class DisplayFunctions {
 
+//	Create Writer Object
+
+	WriterFunction writer = new WriterFunction();
+
+	static String report = "";
+
 //Summary Report
 
-	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
+	public static String summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
-		
-		
-		
+
+		report += "Executive Summary Report: \n";
+		report += "Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total";
+
 		System.out.println("Executive Summary Report: \n");
 		System.out.println(
 				"Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total");
 
-		System.out.println(
-				"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println( "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
 		Double allSubtotals = 0.0;
 		Double allDiscounts = 0.0;
@@ -102,10 +108,11 @@ public class DisplayFunctions {
 		System.out.printf("%-87s %-23s %-21s  %-24s %-23s %-22s \n \n \n ", "TOTALS", "$  " + allSubtotals,
 				"$  " + allDiscounts, "$  " + allFees, "$  " + allTaxes, "$  " + allTotals);
 
+		return report;
 	}
 
 //	Invoice detailed report function
-	public static void invoiceReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
+	public static void detailedReport(List<Product> productList,List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
 
 		System.out.println(
@@ -183,7 +190,33 @@ public class DisplayFunctions {
 			System.out.println(
 					"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-			String productCode = null;
+			String productDescription = null;
+			
+			
+			List<String> boughtItems = inv.getListOfProducts();
+			
+			for (String item : boughtItems ) {
+				
+				
+				String itemTokens[] = item.split(":");
+
+				
+				if (itemTokens.length == 2) {
+
+					for (Product p : productList) {
+						if (p.getProductCode().equals(itemTokens[0])) {
+							productDescription = p.getProductLabel();
+							
+						}
+						
+						
+					}
+				}
+
+				System.out.printf( itemTokens[0] + "         " + productDescription);
+			}
+
+			
 
 //			TODO: Fix Spacing for Thanks
 			System.out.printf("%87s %33s", " \n \n THANK YOU FOR DOING BUSINESS WITH US!  \n \n \n \n", "\n");
@@ -194,6 +227,37 @@ public class DisplayFunctions {
 
 	}
 
+	
+//	Detailed Invoice Calculator
+	
+	public static List<Double> calculateDetailedInvoice (List<Product> productList, List<String> boughtList) {
+		
+		
+		
+		for (String item : boughtList) {
+			String productCode = null;
+			String itemTokens[] = item.split(":");
+
+			if (itemTokens.length == 2) {
+
+				for (Product p : productList) {
+
+					if (p.getProductCode().equals(itemTokens[0])) {
+						productCode = p.getProductCode();
+						
+						
+					}
+				}
+			}
+		}
+		
+		
+		return null;
+		
+		
+	}
+	
+	
 //	Sub-total and Discounts function
 	public static List<Double> calculateInvoiceSubtotal(List<Product> productList, List<String> boughtList) {
 
@@ -215,7 +279,7 @@ public class DisplayFunctions {
 //		we might needed it any time else so it would be better to have it here.
 		itemsInInvoice.put("Concession", 0);
 
-		List<Repair> lrep = new ArrayList<Repair>();
+		List<Repair> listofRepairs = new ArrayList<Repair>();
 
 		for (String item : boughtList) {
 
@@ -258,7 +322,7 @@ public class DisplayFunctions {
 							itemCost = f.getRepairCost();
 							subTotal += itemCost;
 
-							lrep.add(f);
+							listofRepairs.add(f);
 							itemsInInvoice.put("Repair", itemsInInvoice.get("Repair") + 1);
 
 						} else if (p.getProductType().equals("C")) {
