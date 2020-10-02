@@ -11,7 +11,9 @@ public class DisplayFunctions {
 
 	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
-
+		
+		
+		
 		System.out.println("Executive Summary Report: \n");
 		System.out.println(
 				"Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total");
@@ -122,17 +124,25 @@ public class DisplayFunctions {
 			for (Person p : lpers) {
 				if (p.getPersonCode().equals(ownerCode)) {
 					ownerName = p.getLastName() + ", " + p.getFirstName();
-					emails = p.getEmailAddress();
+					if (p.getEmailAddress() != null) {
+						emails = p.getEmailAddress();
+					} else {
+
+						List emptyList = new ArrayList<String>();
+						emptyList.add("");
+						emails = new EmailAddress(emptyList);
+					}
+
 					address = p.getAddress();
 
 				}
 
 			}
 
-//			TODO: Fix Invoice 6 issue with emails  
 //			TODO: Fix spacing Issues 
 
-			System.out.printf("%20s ", ownerName + "\n");
+			System.out.printf("%20s %20s ", ownerName + "\n",
+					(emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress()) + "\n");
 
 //			,   (emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress())
 
@@ -166,8 +176,7 @@ public class DisplayFunctions {
 
 //			Products Part
 			System.out.println("Products: \n");
-			
-			
+
 			System.out.println(
 					"Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total");
 
@@ -175,15 +184,11 @@ public class DisplayFunctions {
 					"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
 			String productCode = null;
-			
-			
-			
-			
-			
+
 //			TODO: Fix Spacing for Thanks
 			System.out.printf("%87s %33s", " \n \n THANK YOU FOR DOING BUSINESS WITH US!  \n \n \n \n", "\n");
-			System.out.println("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
-			
+			System.out.println(
+					"+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
 
 		}
 
@@ -198,6 +203,8 @@ public class DisplayFunctions {
 //		1st element is the concession discount 
 		Double concessionTotalDiscount = 0.0;
 		Double concessionDiscount = 0.0;
+		Double totalDiscount = 0.0;
+		Double towingDiscount = 0.0;
 
 		Map<String, Integer> itemsInInvoice = new HashMap<String, Integer>();
 
@@ -234,11 +241,14 @@ public class DisplayFunctions {
 							t.setMilesTowed(Double.parseDouble(itemTokens[1]));
 							itemCost = t.getTowingcost();
 							subTotal += itemCost;
+
 							itemsInInvoice.put("Towing", itemsInInvoice.get("Towing") + 1);
 
 							if ((itemsInInvoice.get("Towing") > 0) && (itemsInInvoice.get("Rental") > 0)
 									&& (itemsInInvoice.get("Repair") > 0)) {
-								subTotal -= itemCost;
+
+//								TODO: This should be a discount not directly subtracted 
+								towingDiscount += itemCost;
 
 							}
 
@@ -284,9 +294,10 @@ public class DisplayFunctions {
 
 		}
 
+		totalDiscount = concessionTotalDiscount + (towingDiscount * -1);
 		List<Double> finalResult = new ArrayList<Double>();
 		finalResult.add(subTotal);
-		finalResult.add(concessionTotalDiscount);
+		finalResult.add(totalDiscount);
 
 		return finalResult;
 
