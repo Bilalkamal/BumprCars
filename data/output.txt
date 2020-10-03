@@ -1,0 +1,127 @@
+Executive Summary Report:
+
+Code      Owner                         Customer Account               Subtotal    Discounts   Fees        Taxes       Total       
+--------------------------------------------------------------------------------------------------------------------------------
+INV001    Battle, Petra                 State of Nebraska             $   368.39  $   -63.00  $    75.50  $    12.98  $   393.87
+INV002    Spooner, Kenan                Fenton Industries             $   908.50  $     0.00  $     0.00  $    72.68  $   981.18
+INV003    Battle, Petra                 Juno Stephenson               $   120.00  $    -6.48  $     0.00  $     9.60  $   123.12
+INV004    Medrano, Wiktoria             Demolition Derby              $  9145.00  $     0.00  $    75.50  $   388.66  $  9609.16
+================================================================================================================================
+TOTALS                                                                $ 10541.89  $   -69.48  $   151.00  $   483.92  $ 11107.33
+
+
+
+Invoice Details:
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+Invoice INV001
+------------------------------------------
+Owner:
+	Battle, Petra
+	[danextpm@canada.gov]
+	1 Blue Jays Way
+	Toronto, ON Canada M5V 1J1
+Customer:
+	State of Nebraska (Business Account)
+	100 W Fake Street
+	Albaquerque, NM USA 80706
+Products:
+  Code        Description                                                            Subtotal     Discount     Taxes        Total        
+  ------------------------------------------------------------------------------------------------------------------------------------
+  qwertyuiop  2007 Ford Crown Victoria (4.00 days @ $50.75/day)                     $     28.39  $      0.00  $      1.21  $     29.60
+              (+ $25.39 cleaning fee, -$200.00 deposit refund)
+  b4z1ng4     Bumper Replacement (2.00 hours of labor @ $75.00/hour)                $    250.00  $      0.00  $     10.63  $    260.63
+              (+ $100.00 for parts)
+  ugis43      Tow > 10 miles (15.00 miles @ $4.00/mile)                             $     60.00  $    -60.00  $      0.00  $      0.00
+  kvnjgbf5    Large "Homemade" Raisin Cookie (3 units @ $10.00/unit)                $     30.00  $     -3.00  $      1.15  $     28.15
+======================================================================================================================================
+ITEM TOTALS:                                                                        $    368.39  $    -63.00  $     12.98  $    318.37
+BUSINESS ACCOUNT FEE:                                                                                                      $     75.50
+GRAND TOTAL:                                                                                                               $    393.87
+
+
+		THANK YOU FOR DOING BUSINESS WITH US!
+
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+Invoice INV002
+------------------------------------------
+Owner:
+	Spooner, Kenan
+	[kspoons@emailservice.domain, thespoonman@soundgarden.com]
+	123 N 1st Street
+	Compton, CA USA 90210
+Customer:
+	Fenton Industries (Personal Account)
+	1060 West Addison Street
+	Chicago, IL USA 60613
+Products:
+  Code        Description                                                            Subtotal     Discount     Taxes        Total        
+  ------------------------------------------------------------------------------------------------------------------------------------
+  t0m03       Full Wheel Replacement (1.00 hours of labor @ $25.00/hour)            $    825.00  $      0.00  $     66.00  $    891.00
+              (+ $800.00 for parts)
+  k04l4       12-oz Coffee (10 units @ $4.75/unit)                                  $     47.50  $      0.00  $      3.80  $     51.30
+  sievub      Tow < 10 Miles (6.00 miles @ $6.00/mile)                              $     36.00  $      0.00  $      2.88  $     38.88
+======================================================================================================================================
+ITEM TOTALS:                                                                        $    908.50  $      0.00  $     72.68  $    981.18
+GRAND TOTAL:                                                                                                               $    981.18
+
+
+		THANK YOU FOR DOING BUSINESS WITH US!
+
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+Invoice INV003
+------------------------------------------
+Owner:
+	Battle, Petra
+	[danextpm@canada.gov]
+	1 Blue Jays Way
+	Toronto, ON Canada M5V 1J1
+Customer:
+	Juno Stephenson (Personal Account)
+	123 N 1st Street
+	Compton, CA USA 90210
+Products:
+  Code        Description                                                            Subtotal     Discount     Taxes        Total        
+  ------------------------------------------------------------------------------------------------------------------------------------
+  kvnjgbf5    Large "Homemade" Raisin Cookie (12 units @ $10.00/unit)               $    120.00  $      0.00  $      9.60  $    129.60
+======================================================================================================================================
+ITEM TOTALS:                                                                        $    120.00  $      0.00  $      9.60  $    129.60
+LOYAL CUSTOMER DISCOUNT (5% OFF):                                                                                          $     -6.48
+GRAND TOTAL:                                                                                                               $    123.12
+
+
+		THANK YOU FOR DOING BUSINESS WITH US!
+
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+Invoice INV004
+------------------------------------------
+Owner:
+	Medrano, Wiktoria
+	[therealwiki@gmail.com, wiktoria.m@yahoo.com]
+	1025 S Street st.
+	Chichago, IL USA 60613
+Customer:
+	Demolition Derby (Business Account)
+	126-01 Roosevelt Ave
+	Flushing, NY USA 11368
+Products:
+  Code        Description                                                            Subtotal     Discount     Taxes        Total        
+  ------------------------------------------------------------------------------------------------------------------------------------
+  yuasi       Tesla Cybertruck (14.00 days @ $1000.00/day)                          $   9050.00  $      0.00  $    384.63  $   9434.63
+              (+ $50.00 cleaning fee, -$5000.00 deposit refund)
+  k04l4       12-oz Coffee (20 units @ $4.75/unit)                                  $     95.00  $      0.00  $      4.04  $     99.04
+======================================================================================================================================
+ITEM TOTALS:                                                                        $   9145.00  $      0.00  $    388.66  $   9533.66
+BUSINESS ACCOUNT FEE:                                                                                                      $     75.50
+GRAND TOTAL:                                                                                                               $   9609.16
+
+
+		THANK YOU FOR DOING BUSINESS WITH US!
+
+
+
