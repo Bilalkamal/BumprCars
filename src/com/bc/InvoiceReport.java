@@ -13,6 +13,8 @@ public class InvoiceReport {
 //	TO-DO: Report Functions for the Invoices 
 //	TO-DO: Calling the System Report from Data converter 
 	public static void main(String[] args) {
+		
+//Clearing the current ouput.txt		
 	
 	ParserFunctions pf = new ParserFunctions();
 	ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();

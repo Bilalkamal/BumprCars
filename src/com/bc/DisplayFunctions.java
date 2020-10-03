@@ -12,6 +12,8 @@ public class DisplayFunctions {
 	WriterFunction writer = new WriterFunction();
 
 	static String report = "";
+	
+	static Double loyaltyDiscount = 0.0;
 
 //Summary Report
 
@@ -32,6 +34,7 @@ public class DisplayFunctions {
 		Double allFees = 0.0;
 		Double allTaxes = 0.0;
 		Double allTotals = 0.0;
+		
 
 		for (Invoice s : lInv) {
 
@@ -61,6 +64,8 @@ public class DisplayFunctions {
 //			Check Customer Account 
 			String customerCode = s.getCustomerCode();
 
+			
+			EmailAddress emails = null;
 			String customerName = null;
 			Double businessFee = null;
 			for (Customer c : lc) {
@@ -73,15 +78,67 @@ public class DisplayFunctions {
 						taxes = Math.round(taxes * 100.0) / 100.0;
 
 					} else if (c.getCustomerType().equals("P")) {
+						
 						businessFee = 0.0;
 
 						taxes = (itemSubtotal - itemDiscount) * 0.08;
 						taxes = Math.round(taxes * 100.0) / 100.0;
+						
+						
+					
 					}
 				}
 
 			}
 
+			
+			for (Customer c : lc) {
+				if (c.getCustomerType().equals("P")) {
+					
+					if (c.getCustomerContactCode().getEmailAddress() != null) {
+						emails =c.getCustomerContactCode().getEmailAddress();
+					} else {
+
+						List emptyList = new ArrayList<String>();
+						emptyList.add("");
+						emails = new EmailAddress(emptyList);
+					}
+					
+					
+					if (emails.getEmailAddress().size() >= 2) {
+						
+						
+						
+						loyaltyDiscount =  Math.round((itemSubtotal *-0.05) * 100.0) / 100.0;  
+						itemDiscount += itemSubtotal *-0.05;
+						
+						
+						
+						
+						total = itemSubtotal + itemDiscount + businessFee + taxes;
+						loyaltyDiscount = total *-0.05;
+						
+						itemDiscount += loyaltyDiscount;
+						itemDiscount= Math.round(itemDiscount * 100.0) / 100.0;
+						total += loyaltyDiscount;
+						total = Math.round(total * 100.0) / 100.0;
+						
+	
+						
+					}else {
+						total = itemSubtotal + itemDiscount + businessFee + taxes;
+						total = Math.round(total * 100.0) / 100.0;
+					}
+					
+					
+					
+				}else {
+					total = itemSubtotal + itemDiscount + businessFee + taxes;
+					total = Math.round(total * 100.0) / 100.0;
+				}
+			}
+			
+			
 			total = itemSubtotal + itemDiscount + businessFee + taxes;
 			total = Math.round(total * 100.0) / 100.0;
 
@@ -151,7 +208,7 @@ public class DisplayFunctions {
 			System.out.printf("%20s %20s ", ownerName + "\n",
 					(emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress()) + "\n");
 
-//			,   (emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress())
+
 
 			System.out.println(address.getStreet() + "\n" + address.getCity() + "," + address.getState()
 					+ address.getZip() + " " + address.getCountry() + " \n");
@@ -213,7 +270,7 @@ public class DisplayFunctions {
 					}
 				}
 
-				System.out.printf( itemTokens[0] + "         " + productDescription);
+				System.out.printf( itemTokens[0] + "      " + productDescription);
 			}
 
 			
