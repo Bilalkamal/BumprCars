@@ -10,13 +10,8 @@ public class DisplayFunctions {
 
 	static WriterFunction writer = new WriterFunction();
 
-	static String report = "";
 	
 	
-
-
-	
-
 //Summary Report
 
 	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
@@ -27,10 +22,10 @@ public class DisplayFunctions {
 		
 		writer.write("Executive Summary Report: \n");
 		writer.write(
-				"Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total \n");
+				"Code      Owner                  Customer Account      Subtotal      Discount        Fees        Taxes           Total \n");
 
 		writer.write(
-				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n ");
+				"-----------------------------------------------------------------------------------------------------------------------------------\n");
 
 		Double allSubtotals = 0.0;
 		Double allDiscounts = 0.0;
@@ -149,13 +144,13 @@ public class DisplayFunctions {
 			allTaxes += taxes;
 			allTotals += total;
 
-			writer.write(String.format("%-22s %-32s %-31s %-23s %-22s %-23s  %-23s %-22s \n", s.getInvoiceCode(), ownerName,
+			writer.write(String.format("%-9s %-22s %-21s %-13s %-15s %-10s  %-13s %-22s \n", s.getInvoiceCode(), ownerName,
 					customerName, "$  " + itemSubtotal, "$  " + itemDiscount, "$  " + businessFee, "$  " + taxes,
 					"$  " + total));
 
 		}
 		writer.write(
-				"\n=================================================================================================================================================================================================================== \n");
+				"\n===================================================================================================================================\n");
 
 		allSubtotals = Math.round(allSubtotals * 100.0) / 100.0;
 		allDiscounts = Math.round(allDiscounts * 100.0) / 100.0;
@@ -163,8 +158,9 @@ public class DisplayFunctions {
 		allTaxes = Math.round(allTaxes * 100.0) / 100.0;
 		allTotals = Math.round(allTotals * 100.0) / 100.0;
 
-		writer.write(String.format("%-87s %-23s %-21s  %-24s %-23s %-22s \n \n \n ", "TOTALS", "$  " + allSubtotals,
+		writer.write(String.format("%-54s %-13s %-14s  %-11s %-13s %-5s \n \n \n ", "TOTALS", "$  " + allSubtotals,
 				"$  " + allDiscounts, "$  " + allFees, "$  " + allTaxes, "$  " + allTotals));
+		
 
 	}
 
@@ -176,11 +172,11 @@ public class DisplayFunctions {
 			List<Product> lprod) {
 		
 		writer.write(
-				"Invoice Details: \n =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
+				"Invoice Details: \n+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
 
 		for (Invoice inv : lInv) {
 
-			writer.write("Invoice " + inv.getInvoiceCode() + "\n--------------------------------------");
+			writer.write("Invoice " + inv.getInvoiceCode() + "\n--------------------------------------\n");
 			writer.write("Owner: \n");
 
 			String ownerCode = inv.getOwnerCode();
@@ -208,16 +204,16 @@ public class DisplayFunctions {
 
 //			TODO: Fix spacing Issues 
 
-			writer.write(String.format("%20s %20s ", ownerName + "\n",
-					(emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress()) + "\n"));
+			writer.write(String.format("%22s %20s ", ownerName + "\n",
+					(emails.getEmailAddress().isEmpty() ? "[]" : "      " +emails.getEmailAddress()) + "\n"));
 
 //			,   (emails.getEmailAddress().isEmpty() ? "[]" : emails.getEmailAddress())
 
-			writer.write(address.getStreet() + "\n" + address.getCity() + "," + address.getState()
+			writer.write("      " +address.getStreet() + "\n" + "      " +address.getCity() + "," + address.getState()
 					+ address.getZip() + " " + address.getCountry() + " \n");
 
 //			Customer data
-			writer.write("Customer:");
+			writer.write("Customer:\n");
 			String customerCode = inv.getCustomerCode();
 
 			String customerName = null;
@@ -237,18 +233,18 @@ public class DisplayFunctions {
 
 			}
 
-			writer.write(String.format("%3s %s ", customerName, "\n"));
-			writer.write(address.getStreet() + "\n" + address.getCity() + "," + address.getState()
+			writer.write(String.format("%25s %20s ", customerName, "\n"));
+			writer.write("       " +address.getStreet() + "\n        " + address.getCity() + "  " + address.getState()+ "  "
 					+ address.getZip() + " " + address.getCountry() + " \n");
 
 //			Products Part
 			writer.write("Products: \n");
 
 			writer.write(
-					"Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total");
+					"Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total\n");
 
 			writer.write(
-					"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+					"-----------------------------------------------------------------------------------------------------------------------------------------");
 
 			String productCode = null;
 
