@@ -1,0 +1,171 @@
+{
+"assets":[
+  {
+    "dailyCost": 64.55,
+    "deposit": 300.0,
+    "cleaningFee": 26.36,
+    "code": "gok548f",
+    "type": "R",
+    "label": "2004 INFINITI FX35"
+  },
+  {
+    "dailyCost": 44.15,
+    "deposit": 260.0,
+    "cleaningFee": 26.13,
+    "code": "vs46fdv",
+    "type": "R",
+    "label": "2010 FREIGHTLINER CASCADIA"
+  },
+  {
+    "dailyCost": 84.15,
+    "deposit": 252.0,
+    "cleaningFee": 56.27,
+    "code": "fbv54c",
+    "type": "R",
+    "label": "2007 CHEVROLET W5500 TILTMASTER"
+  },
+  {
+    "dailyCost": 90.25,
+    "deposit": 452.0,
+    "cleaningFee": 66.6,
+    "code": "hoh581",
+    "type": "R",
+    "label": "2014 LEXUS CT200H"
+  },
+  {
+    "dailyCost": 39.8,
+    "deposit": 290.0,
+    "cleaningFee": 25.0,
+    "code": "bvds14654",
+    "type": "R",
+    "label": "2009 HONDA CBF1000A"
+  },
+  {
+    "partsCost": 230.0,
+    "hourlyLaborCost": 60.0,
+    "code": "dsgv6541",
+    "type": "F",
+    "label": "Brake Replacement"
+  },
+  {
+    "partsCost": 60.0,
+    "hourlyLaborCost": 45.0,
+    "code": "bisu14651",
+    "type": "F",
+    "label": "Front Bumper Replacement"
+  },
+  {
+    "partsCost": 99.0,
+    "hourlyLaborCost": 50.0,
+    "code": "fcdsvgf516",
+    "type": "F",
+    "label": "Seate Replacement"
+  },
+  {
+    "partsCost": 160.0,
+    "hourlyLaborCost": 40.0,
+    "code": "uhvca6542",
+    "type": "F",
+    "label": "Headlight Bulb Replacement"
+  },
+  {
+    "unitCost": 5.1,
+    "code": "vdb1654",
+    "type": "C",
+    "label": "12 oz drink"
+  },
+  {
+    "unitCost": 15.0,
+    "code": "yg165",
+    "type": "C",
+    "label": "T-shirt"
+  },
+  {
+    "unitCost": 17.0,
+    "code": "hyguis456",
+    "type": "C",
+    "label": "car wash"
+  },
+  {
+    "costPerMile": 8.0,
+    "code": "oikh4652",
+    "type": "T",
+    "label": "Tow \u003e 20 miles"
+  },
+  {
+    "costPerMile": 6.0,
+    "code": "yutdc5",
+    "type": "T",
+    "label": "Tow \u003c 20 miles"
+  },
+  {
+    "costPerMile": 14.0,
+    "code": "564hbxs",
+    "type": "T",
+    "label": "Tow \u003c 50 miles"
+  },
+  {
+    "costPerMile": 16.0,
+    "code": "45dghv",
+    "type": "T",
+    "label": "Tow \u003e 50 miles"
+  },
+  {
+    "dailyCost": 54.45,
+    "deposit": 200.0,
+    "cleaningFee": 36.2,
+    "code": "eo8k1318f",
+    "type": "R",
+    "label": "2002 CHEVROLET SONORA"
+  },
+  {
+    "dailyCost": 154.25,
+    "deposit": 300.0,
+    "cleaningFee": 16.2,
+    "code": "28njs8f",
+    "type": "R",
+    "label": "2005 BMW R1100S"
+  },
+  {
+    "dailyCost": 264.55,
+    "deposit": 350.0,
+    "cleaningFee": 86.36,
+    "code": "ks92ja",
+    "type": "R",
+    "label": "2004 ASTON MARTIN VANQUISH"
+  },
+  {
+    "partsCost": 60.0,
+    "hourlyLaborCost": 20.0,
+    "code": "8i5t3wf1",
+    "type": "F",
+    "label": "Mirror Replacement"
+  },
+  {
+    "partsCost": 140.0,
+    "hourlyLaborCost": 90.0,
+    "code": "9kcda3419",
+    "type": "F",
+    "label": "Wheel Replacement"
+  },
+  {
+    "unitCost": 20.0,
+    "code": "82hsn2",
+    "type": "C",
+    "label": "leather Bag"
+  },
+  {
+    "unitCost": 22.0,
+    "code": "83jdf",
+    "type": "C",
+    "label": "Kids Toy"
+  },
+  {
+    "dailyCost": 190.45,
+    "deposit": 352.0,
+    "cleaningFee": 86.6,
+    "code": "udbwi83",
+    "type": "R",
+    "label": "2013 SUBARU TRIBECA"
+  }
+]}
