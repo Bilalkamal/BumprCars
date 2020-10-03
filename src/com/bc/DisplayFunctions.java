@@ -12,7 +12,7 @@ public class DisplayFunctions {
 
 	static String report = "";
 	
-	static Double loyaltyDiscount = 0.0;
+	
 
 
 	
@@ -20,9 +20,10 @@ public class DisplayFunctions {
 //Summary Report
 
 	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
+			
 			List<Product> lprod) throws IOException {
 		
-		
+		Double loyaltyDiscount = 0.0;
 		
 		writer.write("Executive Summary Report: \n");
 		writer.write(
@@ -140,9 +141,7 @@ public class DisplayFunctions {
 				}
 			}
 			
-			
-			total = itemSubtotal + itemDiscount + businessFee + taxes;
-			total = Math.round(total * 100.0) / 100.0;
+		
 
 			allSubtotals += itemSubtotal;
 			allDiscounts += itemDiscount;
@@ -175,7 +174,7 @@ public class DisplayFunctions {
 	
 	public static void calculateDetailedInvoice(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
-
+		
 		writer.write(
 				"Invoice Details: \n =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
 
@@ -258,6 +257,9 @@ public class DisplayFunctions {
 			writer.write(
 					"+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
 
+			
+			
+			
 		}
 
 	}
