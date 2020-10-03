@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InvoiceReport {
 
-//	Done --> TO-DO: Create an Invoice Class - with the required specs 
+//	Done --> TO-DO: Create an Invoice Class - with the required Specifications
 	
 //	Done --> TO-DO: Parser function for Invoices.dat
 //				This should be done on the parser functions class
@@ -22,10 +22,12 @@ public class InvoiceReport {
 
 	
 	DisplayFunctions dp = new DisplayFunctions();
-	DisplayFunctions.summaryReport(lInv,lc,lpers,lprod);
-	DisplayFunctions.invoiceReport(lInv,lc,lpers,lprod);
+	String summaryReport = DisplayFunctions.summaryReport(lInv,lc,lpers,lprod);
+	DisplayFunctions.detailedReport(lprod,lInv,lc,lpers,lprod);
 
+	WriterFunction writer = new WriterFunction();
 	
+	WriterFunction.write(summaryReport);
 	
 	}
 	
