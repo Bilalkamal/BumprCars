@@ -2,6 +2,7 @@ package com.bc;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -154,10 +155,23 @@ public class DisplayFunctions {
 	public static void calculateDetailedInvoice(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
 
+		Double allSubtotals =0.0;
+		
+		Double allDiscounts =0.0;
+		Double allTaxes =0.0;
+		Double allTotals =0.0;
+		
+		HashMap<String, Integer> towingDiscountMap = new HashMap<String, Integer>();
+		towingDiscountMap.put("Towing", 0);
+		towingDiscountMap.put("Rental", 0);
+		towingDiscountMap.put("Repair", 0);
 		writer.write(
 				"Invoice Details: \n+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
-
+		Boolean businessAccountCheck = null;
+		Double businessTaxRate = 0.0425;
+		Double personalTaxRate = 0.08;
 		for (Invoice inv : lInv) {
+			Double businessAccountFee = 75.5;
 
 			writer.write("Invoice " + inv.getInvoiceCode() + "\n--------------------------------------\n");
 			writer.write("Owner: \n");
@@ -167,11 +181,19 @@ public class DisplayFunctions {
 			EmailAddress emails = null;
 			Address address = null;
 
+			Boolean loyaltyDiscountCheck;
+
 			for (Person p : lpers) {
 				if (p.getPersonCode().equals(ownerCode)) {
 					ownerName = p.getLastName() + ", " + p.getFirstName();
 					if (p.getEmailAddress() != null) {
 						emails = p.getEmailAddress();
+						if (emails.getEmailAddress().size() > 1) {
+							loyaltyDiscountCheck = true;
+
+						} else {
+							loyaltyDiscountCheck = false;
+						}
 					} else {
 
 						List emptyList = new ArrayList<String>();
@@ -204,10 +226,12 @@ public class DisplayFunctions {
 			for (Customer c : lc) {
 				if (c.getCustomerCode().equals(customerCode)) {
 
-					if (c.getCustomerType() == "B") {
+					if (c.getCustomerType().equals("B") ) {
 						customerName = c.getName();
+						businessAccountCheck = true;
 					} else {
 						customerName = c.getName();
+						businessAccountCheck = false;
 					}
 
 					address = c.getAddress();
@@ -224,7 +248,7 @@ public class DisplayFunctions {
 			writer.write("Products: \n");
 
 			writer.write(
-					"Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total\n");
+					"Code			       Dicription				                                           		Subtotal		Discount			Taxes			Total\n");
 
 			writer.write(
 					"-----------------------------------------------------------------------------------------------------------------------------------------");
@@ -237,6 +261,25 @@ public class DisplayFunctions {
 			Double productQuantity = 0.0;
 			Double productRate = 0.0;
 			Double productSubtotal = 0.0;
+			Double itemDiscount = 0.0;
+			Double towingDiscount = 0.0;
+			Double concessionDiscount = 0.0;
+			Double loyaltyDiscount = 0.0;
+
+			Double milesTowed = 0.0;
+			Double cleaningFee = 0.0;
+			Double deposit = 0.0;
+			Double mileRate = 0.0;
+			Double subtotalAfterDiscount = 0.0;
+
+			Double hourlyLaborCost = 0.0;
+			Double partsCost = 0.0;
+
+			Integer concessionUnits = 0;
+
+			Double itemTax = 0.0;
+			
+			Double itemTotal = 0.0;
 
 			for (String item : boughtList) {
 
@@ -248,51 +291,121 @@ public class DisplayFunctions {
 						productCode = p.getProductCode();
 						productDescription = p.getProductLabel();
 
+//						Repairs
 						if (p.getProductType().equals("F")) {
 							productInfo = "hours of labor";
 							Repair f = new Repair((Repair) p, Double.parseDouble(itemTokens[1]));
 							f.setHoursWorked(Double.parseDouble(itemTokens[1]));
+
 							productRate = f.getHourlyLaborCost();
 							productSubtotal = f.getRepairCost();
+							towingDiscountMap.put("Repair", towingDiscountMap.get("Repair") + 1);
 
-							System.out.println(productSubtotal);
+							partsCost = f.getPartsCost();
 
-						} else if (p.getProductType().equals("R")) {
+							subtotalAfterDiscount = productSubtotal;
+
+							if (businessAccountCheck == true) {
+								itemTax = subtotalAfterDiscount * businessTaxRate;
+							} else if (businessAccountCheck == false) {
+								itemTax = subtotalAfterDiscount * personalTaxRate;
+							}
+
+						}
+//						Rent 
+						else if (p.getProductType().equals("R")) {
 							productInfo = "days";
 							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
 							r.setDaysRented(Integer.parseInt(itemTokens[1]));
 							productRate = r.getDailyCost();
 							productSubtotal = r.getRentCost();
+							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
 
-							System.out.println(productSubtotal);
+							cleaningFee = r.getCleaningFee();
+							deposit = r.getDeposit();
 
-						} else if (p.getProductType().equals("T")) {
+							subtotalAfterDiscount = productSubtotal;
+							if (businessAccountCheck == true) {
+								itemTax = subtotalAfterDiscount * businessTaxRate;
+							} else {
+								itemTax = subtotalAfterDiscount * personalTaxRate;
+							}
+
+						}
+
+//						Towing
+						else if (p.getProductType().equals("T")) {
 							productInfo = "miles";
 							Towing t = new Towing((Towing) p, Double.parseDouble(itemTokens[1]));
 							t.setMilesTowed(Double.parseDouble(itemTokens[1]));
-							Double milesTowed = t.getMilesTowed();
+							milesTowed = t.getMilesTowed();
+							towingDiscountMap.put("Towing", towingDiscountMap.get("Towing") + 1);
 
+//							TODO: Remove this - Repeated with mileRate
 							productRate = t.getCostPerMile();
 							productSubtotal = t.getTowingcost();
+							subtotalAfterDiscount = productSubtotal;
+							if ((towingDiscountMap.get("Rental") > 0) && ((towingDiscountMap.get("Repair") > 0))
+									&& (towingDiscountMap.get("Towing") > 0)) {
+								towingDiscount -= productSubtotal;
+								itemTax = 0.0;
+								itemDiscount = towingDiscount;
+								subtotalAfterDiscount = 0.0;
 
-							System.out.println(productSubtotal);
-						} else if (p.getProductType().equals("C")) {
+							} else {
+								if (businessAccountCheck == true) {
+									itemTax = subtotalAfterDiscount * businessTaxRate;
+								} else {
+									itemTax = subtotalAfterDiscount * personalTaxRate;
+								}
+							}
+							mileRate = t.getCostPerMile();
+
+						}
+//						Concessions
+						else if (p.getProductType().equals("C")) {
 							productInfo = "units";
 							Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]));
 							c.setQuantity(Integer.parseInt(itemTokens[1]));
 							productRate = c.getUnitCost();
-
 							productSubtotal = c.getConcessionCost();
 
-							System.out.println(productSubtotal);
+							if (itemTokens.length == 3) {
+								concessionDiscount += productSubtotal * -0.1;
+								itemDiscount = concessionDiscount;
 
+							}
+							
+							
+							subtotalAfterDiscount = productSubtotal + itemDiscount;
+							if (businessAccountCheck == true) {
+								itemTax = subtotalAfterDiscount * businessTaxRate;
+							} else {
+								itemTax = subtotalAfterDiscount * personalTaxRate;
+							}
+							concessionUnits = c.getQuantity();
+							
+							
+							
 						}
 
 					}
-
+					
 				}
-
+				
+				
+				itemTax = Math.round(itemTax * 100.0) / 100.0;
+				itemTotal = (productSubtotal + itemDiscount) + itemTax;
+				writer.write(String.format("%-1s %-15s %-25s %-1s %-1s %-1s  %-1s %s  %15s %5s %5s %-5s  %-5s %-5s %1s", "\n",
+						productCode, productDescription, "(" + productQuantity, productInfo, "@", productRate + ")",
+						" ", "$", productSubtotal, "$", itemDiscount, itemTax, itemTotal, "\n"));
+				
+				
 			}
+			writer.write("======================================================================================================================================== \n");
+			writer.write("ITEM TOTALS: ");
+
+//			TODO: Calculate Loyalty discount on the whole receipt after taxes  
 
 //			TODO: Fix Spacing for Thanks
 			writer.write(String.format("%87s %33s", " \n \n THANK YOU FOR DOING BUSINESS WITH US!  \n \n \n \n", "\n"));
@@ -361,14 +474,13 @@ public class DisplayFunctions {
 				}
 
 			} else {
-				
+
 				for (Product p : productList) {
 					if (p.getProductCode().equals(itemTokens[0])) {
 
 						Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]), itemTokens[2]);
 						c.setQuantity(Integer.parseInt(itemTokens[1]));
-						
-						
+
 						itemCost = c.getConcessionCost();
 						subTotal += itemCost;
 
