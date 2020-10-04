@@ -155,16 +155,14 @@ public class DisplayFunctions {
 	public static void calculateDetailedInvoice(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 			List<Product> lprod) {
 
-		Double allSubtotals =0.0;
-		
-		Double allDiscounts =0.0;
-		Double allTaxes =0.0;
-		Double allTotals =0.0;
-		
-		HashMap<String, Integer> towingDiscountMap = new HashMap<String, Integer>();
-		towingDiscountMap.put("Towing", 0);
-		towingDiscountMap.put("Rental", 0);
-		towingDiscountMap.put("Repair", 0);
+		Double grandTotal = 0.0;
+
+		Double allSubtotals = 0.0;
+
+		Double allDiscounts = 0.0;
+		Double allTaxes = 0.0;
+		Double allTotals = 0.0;
+
 		writer.write(
 				"Invoice Details: \n+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
 		Boolean businessAccountCheck = null;
@@ -181,7 +179,7 @@ public class DisplayFunctions {
 			EmailAddress emails = null;
 			Address address = null;
 
-			Boolean loyaltyDiscountCheck;
+			Boolean loyaltyDiscountCheck = null;
 
 			for (Person p : lpers) {
 				if (p.getPersonCode().equals(ownerCode)) {
@@ -226,7 +224,7 @@ public class DisplayFunctions {
 			for (Customer c : lc) {
 				if (c.getCustomerCode().equals(customerCode)) {
 
-					if (c.getCustomerType().equals("B") ) {
+					if (c.getCustomerType().equals("B")) {
 						customerName = c.getName();
 						businessAccountCheck = true;
 					} else {
@@ -276,12 +274,27 @@ public class DisplayFunctions {
 			Double partsCost = 0.0;
 
 			Integer concessionUnits = 0;
+			
 
 			Double itemTax = 0.0;
-			
+
 			Double itemTotal = 0.0;
 
+			Boolean rentCheck = false;
+			
+			allSubtotals = 0.0;
+
+			allDiscounts = 0.0;
+			allTaxes = 0.0;
+			allTotals = 0.0;
+
+			HashMap<String, Integer> towingDiscountMap = new HashMap<String, Integer>();
+			towingDiscountMap.put("Towing", 0);
+			towingDiscountMap.put("Rental", 0);
+			towingDiscountMap.put("Repair", 0);
+
 			for (String item : boughtList) {
+				String extraInfo = "";
 
 				String itemTokens[] = item.split(":");
 				productQuantity = Double.parseDouble(itemTokens[1]);
@@ -302,7 +315,7 @@ public class DisplayFunctions {
 							towingDiscountMap.put("Repair", towingDiscountMap.get("Repair") + 1);
 
 							partsCost = f.getPartsCost();
-
+							extraInfo = "\n                 (+ " + partsCost+ " for parts)";
 							subtotalAfterDiscount = productSubtotal;
 
 							if (businessAccountCheck == true) {
@@ -314,6 +327,7 @@ public class DisplayFunctions {
 						}
 //						Rent 
 						else if (p.getProductType().equals("R")) {
+							rentCheck = true;
 							productInfo = "days";
 							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
 							r.setDaysRented(Integer.parseInt(itemTokens[1]));
@@ -324,6 +338,7 @@ public class DisplayFunctions {
 							cleaningFee = r.getCleaningFee();
 							deposit = r.getDeposit();
 
+							extraInfo = "\n                 (+ " + cleaningFee+ " cleaning fee, -"+ deposit+ " deposit refund)";
 							subtotalAfterDiscount = productSubtotal;
 							if (businessAccountCheck == true) {
 								itemTax = subtotalAfterDiscount * businessTaxRate;
@@ -340,7 +355,7 @@ public class DisplayFunctions {
 							t.setMilesTowed(Double.parseDouble(itemTokens[1]));
 							milesTowed = t.getMilesTowed();
 							towingDiscountMap.put("Towing", towingDiscountMap.get("Towing") + 1);
-
+							extraInfo = "";
 //							TODO: Remove this - Repeated with mileRate
 							productRate = t.getCostPerMile();
 							productSubtotal = t.getTowingcost();
@@ -369,14 +384,13 @@ public class DisplayFunctions {
 							c.setQuantity(Integer.parseInt(itemTokens[1]));
 							productRate = c.getUnitCost();
 							productSubtotal = c.getConcessionCost();
-
+							extraInfo = "";
 							if (itemTokens.length == 3) {
 								concessionDiscount += productSubtotal * -0.1;
 								itemDiscount = concessionDiscount;
 
 							}
-							
-							
+
 							subtotalAfterDiscount = productSubtotal + itemDiscount;
 							if (businessAccountCheck == true) {
 								itemTax = subtotalAfterDiscount * businessTaxRate;
@@ -384,28 +398,60 @@ public class DisplayFunctions {
 								itemTax = subtotalAfterDiscount * personalTaxRate;
 							}
 							concessionUnits = c.getQuantity();
-							
-							
-							
+
 						}
 
 					}
-					
-				}
-				
-				
-				itemTax = Math.round(itemTax * 100.0) / 100.0;
-				itemTotal = (productSubtotal + itemDiscount) + itemTax;
-				writer.write(String.format("%-1s %-15s %-25s %-1s %-1s %-1s  %-1s %s  %15s %5s %5s %-5s  %-5s %-5s %1s", "\n",
-						productCode, productDescription, "(" + productQuantity, productInfo, "@", productRate + ")",
-						" ", "$", productSubtotal, "$", itemDiscount, itemTax, itemTotal, "\n"));
-				
-				
-			}
-			writer.write("======================================================================================================================================== \n");
-			writer.write("ITEM TOTALS: ");
 
-//			TODO: Calculate Loyalty discount on the whole receipt after taxes  
+				}
+
+				itemTax = Math.round(itemTax * 100.0) / 100.0;
+
+				itemTotal = (productSubtotal + itemDiscount) + itemTax;
+
+				allSubtotals += productSubtotal;
+				allDiscounts += itemDiscount;
+				allTaxes += itemTax;
+				allTotals += itemTotal;
+
+				writer.write(String.format("%-1s %-15s %-25s %-1s %-1s %-1s  %-1s %s  %15s %5s %5s %-5s  %-5s %-5s %3s",
+						"\n", productCode, productDescription, "(" + productQuantity, productInfo, "@",
+						productRate + ")", " ", "$", productSubtotal, "$", itemDiscount, itemTax, itemTotal, extraInfo));
+				
+				
+
+			}
+
+			writer.write(
+					"======================================================================================================================================== \n");
+
+//			TODO: right formatting
+			
+
+			allSubtotals = Math.round(allSubtotals * 100.0) / 100.0;
+			allDiscounts = Math.round(allDiscounts * 100.0) / 100.0;
+			allTaxes = Math.round(allTaxes * 100.0) / 100.0;
+			allTotals = Math.round(allTotals * 100.0) / 100.0;
+
+			writer.write(String.format("%-1s %30s %3s %3s %3s ", "ITEM TOTALS: ", allSubtotals, allDiscounts, allTaxes,
+					allTotals + "\n"));
+
+			if (businessAccountCheck == true) {
+				writer.write(String.format("%-1s %3s", "BUSINESS ACCOUNT FEE: ", businessAccountFee + "\n"));
+				grandTotal = allTotals + businessAccountFee;
+				grandTotal = Math.round(grandTotal * 100.0) / 100.0;
+			} else if ((loyaltyDiscountCheck == true) && (businessAccountCheck != true)) {
+
+				loyaltyDiscount = allTotals * -0.05;
+				grandTotal = allTotals + loyaltyDiscount;
+				grandTotal = Math.round(grandTotal * 100.0) / 100.0;
+				writer.write(String.format("%-1s %30s", "LOYAL CUSTOMER DISCOUNT (5% OFF):  ", loyaltyDiscount + "\n"));
+
+			} else {
+				grandTotal = allTotals;
+			}
+
+			writer.write(String.format("%-1s %30s", "GRAND TOTAL:  ", grandTotal));
 
 //			TODO: Fix Spacing for Thanks
 			writer.write(String.format("%87s %33s", " \n \n THANK YOU FOR DOING BUSINESS WITH US!  \n \n \n \n", "\n"));
