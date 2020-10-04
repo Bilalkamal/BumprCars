@@ -1,27 +1,31 @@
 Executive Summary Report: 
-Code			Owner				Customer Account 		Subtotal		Discount		Fees			Taxes			Total 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
- INV001                 Battle, Petra                    State of Nebraska               $  308.39               $  -37.35              $  75.5                  $  13.23                $  359.77              
-INV002                 Spooner, Kenan                   Fenton Industries               $  908.5                $  -92.21              $  0.0                   $  72.68                $  888.97              
-INV003                 Battle, Petra                    Juno Stephenson                 $  120.0                $  -12.18              $  0.0                   $  9.6                  $  117.42              
-INV004                 Medrano, Wiktoria                Demolition Derby                $  9145.0               $  -914.85             $  75.5                  $  388.66               $  8694.31             
+Code      Owner                  Customer Account      Subtotal      Discount        Fees        Taxes           Total 
+-----------------------------------------------------------------------------------------------------------------------------------
+INV001    Battle, Petra          State of Nebraska     $  368.39     $  -43.33       $  75.5     $  15.78      $  416.34              
+INV002    Spooner, Kenan         Fenton Industries     $  908.5      $  -92.21       $  0.0      $  72.68      $  888.97              
+INV003    Battle, Petra          Juno Stephenson       $  120.0      $  -12.18       $  0.0      $  9.6        $  117.42              
+INV004    Medrano, Wiktoria      Demolition Derby      $  9145.0     $  -914.85      $  75.5     $  388.66     $  8694.31             
 
-=================================================================================================================================================================================================================== 
-TOTALS                                                                                  $  10481.89             $  -1056.59            $  151.0                 $  484.17               $  10060.47            
+===================================================================================================================================
+TOTALS                                                 $  10541.89   $  -1062.57     $  151.0    $  486.72     $  10117.04 
  
  
  Invoice Details: 
- =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+Invoice INV001
---------------------------------------Owner: 
-     Battle,  Petra
- [danextpm@canada.gov]
- 1 Blue Jays Way
- Toronto, ON M5V 1J1  Canada 
-Customer:State of Nebraska 
- 100 W Fake Street
-Albaquerque,NM80706 USA 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV001
+--------------------------------------
+Owner: 
+       Battle,  Petra
+       [danextpm@canada.gov]
+       1 Blue Jays Way
+       Toronto, ON M5V 1J1  Canada 
+Customer:
+        State of Nebraska                    
+        100 W Fake Street
+        Albaquerque  NM  80706 USA 
 Products: 
-Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                     
+Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
+-----------------------------------------------------------------------------------------------------------------------------------------                                     
  
  THANK YOU FOR DOING BUSINESS WITH US!  
  
@@ -29,16 +33,19 @@ Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
  
                                  
 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=Invoice INV002
---------------------------------------Owner: 
-    Spooner,  Kenan
- [kspoons@emailservice.domain, thespoonman@soundgarden.com]
- 123 N 1st Street
-Compton,CA90210 USA 
-Customer:Fenton Industries 
- 1060 West Addison Street
-Chicago,IL60613 USA 
+--------------------------------------
+Owner: 
+      Spooner,  Kenan
+       [kspoons@emailservice.domain, thespoonman@soundgarden.com]
+       123 N 1st Street
+      Compton,CA90210 USA 
+Customer:
+        Fenton Industries                    
+        1060 West Addison Street
+        Chicago  IL  60613 USA 
 Products: 
-Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                     
+Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
+-----------------------------------------------------------------------------------------------------------------------------------------                                     
  
  THANK YOU FOR DOING BUSINESS WITH US!  
  
@@ -46,16 +53,19 @@ Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
  
                                  
 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=Invoice INV003
---------------------------------------Owner: 
-     Battle,  Petra
- [danextpm@canada.gov]
- 1 Blue Jays Way
- Toronto, ON M5V 1J1  Canada 
-Customer:Juno Stephenson 
- 123 N 1st Street
-Compton,CA90210 USA 
+--------------------------------------
+Owner: 
+       Battle,  Petra
+       [danextpm@canada.gov]
+       1 Blue Jays Way
+       Toronto, ON M5V 1J1  Canada 
+Customer:
+          Juno Stephenson                    
+        123 N 1st Street
+        Compton  CA  90210 USA 
 Products: 
-Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                     
+Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
+-----------------------------------------------------------------------------------------------------------------------------------------                                     
  
  THANK YOU FOR DOING BUSINESS WITH US!  
  
@@ -63,16 +73,19 @@ Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
  
                                  
 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=Invoice INV004
---------------------------------------Owner: 
- Medrano,  Wiktoria
- [therealwiki@gmail.com, wiktoria.m@yahoo.com]
- 1025 S Street st.
-Chichago,IL60613 USA 
-Customer:Demolition Derby 
- 126-01 Roosevelt Ave
- Flushing, NY11368 USA 
+--------------------------------------
+Owner: 
+   Medrano,  Wiktoria
+       [therealwiki@gmail.com, wiktoria.m@yahoo.com]
+       1025 S Street st.
+      Chichago,IL60613 USA 
+Customer:
+         Demolition Derby                    
+        126-01 Roosevelt Ave
+         Flushing   NY  11368 USA 
 Products: 
-Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                     
+Code			Dicription				                 		Subtotal		Discount		Fees			Taxes			Total
+-----------------------------------------------------------------------------------------------------------------------------------------                                     
  
  THANK YOU FOR DOING BUSINESS WITH US!  
  

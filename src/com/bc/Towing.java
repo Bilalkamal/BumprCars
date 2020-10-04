@@ -27,7 +27,6 @@ public class Towing extends Product {
 				+ this.getCostPerMile() + "\n";
 
 	}
-	
 	/**
 	 * @return the milesTowed
 	 */
