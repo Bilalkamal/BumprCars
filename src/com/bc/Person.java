@@ -1,3 +1,7 @@
+/*
+ * This class is the blueprint and container of all related information of type person
+ */
+
 package com.bc;
 
 public class Person {

@@ -1,3 +1,8 @@
+/*
+ * Concession class is an object of type product include details of Concession product
+ */
+
+
 package com.bc;
 
 

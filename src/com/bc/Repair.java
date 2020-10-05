@@ -1,3 +1,8 @@
+/*
+ * Repair class is representation of product type repair contains related all details 
+ */
+
+
 package com.bc;
 
 public class Repair extends Product {

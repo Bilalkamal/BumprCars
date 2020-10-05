@@ -1,6 +1,11 @@
+/*
+ * This class provide person name as first and last names
+ */
+
+
 package com.bc;
 
-public class PersonName extends Name {
+public class PersonName  {
 
 	String firstName;
 	String lastName;

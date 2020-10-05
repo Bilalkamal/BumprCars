@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParserFunctions {
-	
-	
 
 //	Parser Functions
 
@@ -34,18 +32,13 @@ public class ParserFunctions {
 
 		s.close();
 
-
 		return myArrayList;
-		
-		
-
 
 	}
 
 //	Person Parser
 	public static List<Person> parsePersons() {
-		
-		
+
 		List<String> myArrayList = readParseFile("data/Persons.dat");
 
 		int numOfLines = Integer.parseInt(myArrayList.get(0));
@@ -93,7 +86,7 @@ public class ParserFunctions {
 	}
 
 // Customer Parser
-	public static List<Customer> parseCustomers( ArrayList<Person> listOfPersons) {
+	public static List<Customer> parseCustomers(ArrayList<Person> listOfPersons) {
 
 		List<String> myArrayList = readParseFile("data/Customers.dat");
 
@@ -213,53 +206,45 @@ public class ParserFunctions {
 			String customerCode = tokens[2];
 
 //			List of Products 
-			
+
 			String productsTokens[] = tokens[3].split(",");
-			
-			for(String pr: productsTokens) {
-				
+
+			for (String pr : productsTokens) {
+
 				String prTokens[] = pr.split(":");
-				
+
 				String productCode = prTokens[0];
-				
+
 				Product product = null;
-				
-				
-				
-				for (Product prodCode: lprod) {
-					
+
+				for (Product prodCode : lprod) {
+
 					if (productCode.equals(prodCode.getProductCode())) {
-						
-						
-						
+
 						product = prodCode;
-						
+
 						if (product.getProductType() == "F") {
 							Product repObj = new Repair((Repair) product, Double.parseDouble(prTokens[1]));
-							
-						}else if (product.getProductType() == "R") {
-							Product rentObj = new Rental((Rental) product,  Integer.parseInt(prTokens[1]));
-						}else if (product.getProductType() == "C") {
+
+						} else if (product.getProductType() == "R") {
+							Product rentObj = new Rental((Rental) product, Integer.parseInt(prTokens[1]));
+						} else if (product.getProductType() == "C") {
 							// To hand
-							if(prTokens.length==3) {
-								Product concessionObj = new Concession((Concession) product,  Integer.parseInt(prTokens[1]),prTokens[2]);
-							}else {
-								//Product repObj = new Concession((Concession) product,  Integer.parseInt(prTokens[1]));
+							if (prTokens.length == 3) {
+								Product concessionObj = new Concession((Concession) product,
+										Integer.parseInt(prTokens[1]), prTokens[2]);
+							} else {
+								// Product repObj = new Concession((Concession) product,
+								// Integer.parseInt(prTokens[1]));
 							}
-						}else if (product.getProductType() == "T") {
-							
-							
+						} else if (product.getProductType() == "T") {
+
 						}
-						
-						
-						
+
 					}
 				}
-				
-				
+
 			}
-			
-			
 
 			List<String> products = new ArrayList<String>();
 
@@ -277,8 +262,5 @@ public class ParserFunctions {
 		return myInvoiceList;
 
 	}
-	
-	
-	
 
 }
