@@ -1,3 +1,7 @@
+/*
+ * This class is the blueprint and container of all related information of type person
+ */
+
 package com.bc;
 
 public class Person {
@@ -19,7 +23,7 @@ public class Person {
 		this.emails = emails;
 	}
 
-	public Person(String code, Name name, Address address) {
+	public Person(String code, String firstName, String lastName, Address address) {
 		super();
 		this.code = code;
 		this.firstName = firstName;

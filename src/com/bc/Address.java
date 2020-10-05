@@ -20,8 +20,18 @@ public class Address {
 		this.country = country;
 
 	}
+	
+	
 
 	// getters and setters
+
+	@Override
+	public String toString() {
+		return "Address [street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip + ", country="
+				+ country + "]";
+	}
+
+
 
 	public String getStreet() {
 		return street;

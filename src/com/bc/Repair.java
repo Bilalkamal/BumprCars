@@ -1,9 +1,16 @@
+/*
+ * Repair class is representation of product type repair contains related all details 
+ */
+
+
 package com.bc;
 
 public class Repair extends Product {
 
 	private Double partsCost;
 	private Double hourlyLaborCost;
+	private Double hoursWorked;
+
 
 //	Constructor Method
 	public Repair(String productCode, String productType, String productLabel, Double partsCost,
@@ -12,8 +19,38 @@ public class Repair extends Product {
 		this.partsCost = partsCost;
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
+	
+	
+	public Repair(Repair repairObject, Double hoursWorked) {
+		super(repairObject.getProductCode(),repairObject.getProductLabel(),repairObject.getProductType());
+		
+		this.hoursWorked = hoursWorked;
+		this.partsCost = repairObject.getPartsCost();
+		this.hourlyLaborCost = repairObject.getHourlyLaborCost();
+		
+	}
 
-//	To String Method
+	
+
+/**
+	 * @return the hoursWorked
+	 */
+	public Double getHoursWorked() {
+		return hoursWorked;
+	}
+
+
+	/**
+	 * @param hoursWorked the hoursWorked to set
+	 */
+	public void setHoursWorked(Double hoursWorked) {
+		this.hoursWorked = hoursWorked;
+	}
+
+
+
+
+	//	To String Method
 	public String toString() {
 		return this.getProductCode() + " " + this.getProductType() + " " + this.getProductLabel() + " "
 				+ this.getPartsCost() + " " + this.getHourlyLaborCost() + "\n";
@@ -46,6 +83,19 @@ public class Repair extends Product {
 	 */
 	public void setHourlyLaborCost(Double hourlyLaborCost) {
 		this.hourlyLaborCost = hourlyLaborCost;
+	}
+	
+	public double getHoursCost() {
+		
+		
+		return (this.getHourlyLaborCost() * this.hoursWorked);
+		
+	}
+	public double getRepairCost() {
+		
+		
+		return (this.getHoursCost() + this.getPartsCost());
+		
 	}
 
 }

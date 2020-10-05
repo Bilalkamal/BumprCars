@@ -1,0 +1,225 @@
+Executive Summary Report: 
+Code      Owner                  Customer Account      Subtotal      Discount        Fees        Taxes           Total 
+-----------------------------------------------------------------------------------------------------------------------------------
+INV001    Ferguson, Hayley       Penelope's Cars       $  384.4      $  -60.0        $  75.5     $  13.79      $  413.69              
+INV002    Wade, Florence         Jen Homes             $  165.3      $  -1.53        $  75.5     $  6.96       $  246.23              
+INV003    Montoya, Cally         Deleon Maggie         $  -24.4      $  0.0          $  0.0      $  -1.95      $  -26.35              
+INV004    Lopez, Rae             City Garage           $  321.0      $  0.0          $  75.5     $  13.64      $  410.14              
+INV005    Cash, Kermit           Roy Devin             $  179.0      $  -12.492      $  0.0      $  13.84      $  177.35              
+INV006    Bradley, Keaton        Conley Alika          $  -144.54    $  0.0          $  0.0      $  -11.56     $  -156.1              
+INV007    Manning, Arsenio       Dearm Cars            $  240.0      $  0.0          $  75.5     $  10.2       $  325.7               
+
+===================================================================================================================================
+TOTALS                                                 $  1120.76    $  -74.02       $  302.0    $  44.92      $  1390.66 
+ 
+ 
+ Invoice Details: 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+
+Invoice INV001
+--------------------------------------
+Owner: 
+    Ferguson,  Hayley
+       [kstidstona@home.pl]
+       Randy Rd
+       Society Hill, SC 29540 USA 
+Customer:
+          Penelope's Cars                    
+        R�a do Paseo 80
+        Espartinas  Seville  41807 Spain 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+bvds14654   2009 HONDA CBF1000A (3.0  days@ 39.8)           [ (Subtotal=$-145.6) (Discount=$0.0) (Taxes=$-6.19) (Total=$-151.79)]
+  
+dsgv6541    Brake Replacement (4.0  hours of labor@ 60.0)           [ (Subtotal=$470.0) (Discount=$0.0) (Taxes=$19.98) (Total=$489.98)]
+  
+yutdc5      Tow < 20 miles (10.0 miles@ 6.0)            [ (Subtotal=$60.0) (Discount=$-60.0) (Taxes=$0.0) (Total=$0.0)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $384.4      Discounts: $-60.0      Taxes: $13.79          Total: $338.19         
+BUSINESS ACCOUNT FEE:                                                                                                   $ 75.5
+GRAND TOTAL:                                                                                                            $ 413.69                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV002
+--------------------------------------
+Owner: 
+      Wade,  Florence
+       [hyakutine@hc360.com]
+       17 North Penn Dr.
+       Culpeper, VA 22701 USA 
+Customer:
+                Jen Homes                    
+        416 St Jean Baptiste St
+        Desbiens  Quebec  G0W 1N0 Canada 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+bisu14651   Front Bumper Replacement (2.0  hours of labor@ 45.0)           [ (Subtotal=$150.0) (Discount=$0.0) (Taxes=$6.38) (Total=$156.38)]
+  
+vdb1654     12 oz drink (3.0  units@ 5.1)            [ (Subtotal=$15.3) (Discount=$-1.53) (Taxes=$0.59) (Total=$14.36)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $165.3      Discounts: $-1.53      Taxes: $6.97           Total: $170.74         
+BUSINESS ACCOUNT FEE:                                                                                                   $ 75.5
+GRAND TOTAL:                                                                                                            $ 246.24                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV003
+--------------------------------------
+Owner: 
+      Montoya,  Cally
+       [djeavonsh@harvard.edu]
+       702 Oval St.
+       Battle Ground, WA 98604 USA 
+Customer:
+            Deleon Maggie                    
+        Ctra. de Siles 28
+        Cospeito  Lugo  27377 Spain 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+hoh581      2014 LEXUS CT200H (4.0  days@ 90.25)          [ (Subtotal=$-24.4) (Discount=$0.0) (Taxes=$-1.95) (Total=$-26.35)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $-24.4      Discounts: $0.0        Taxes: $-1.95          Total: $-26.35         GRAND TOTAL:                                                                                                            $ -26.35                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV004
+--------------------------------------
+Owner: 
+          Lopez,  Rae
+       [rjimenez1@chicagotribune.com]
+       Calle 12 Sur la veleta
+        Tulum, Quintana Roo77760 Mexico 
+Customer:
+              City Garage                    
+        4720 Bolman Court
+        Fillmore  CA  93015 USA 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+bisu14651   Front Bumper Replacement (3.0  hours of labor@ 45.0)           [ (Subtotal=$195.0) (Discount=$0.0) (Taxes=$8.29) (Total=$203.29)]
+  
+yutdc5      Tow < 20 miles (21.0 miles@ 6.0)            [ (Subtotal=$126.0) (Discount=$0.0) (Taxes=$5.36) (Total=$131.36)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $321.0      Discounts: $0.0        Taxes: $13.65          Total: $334.65         
+BUSINESS ACCOUNT FEE:                                                                                                   $ 75.5
+GRAND TOTAL:                                                                                                            $ 410.15                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV005
+--------------------------------------
+Owner: 
+        Cash,  Kermit
+       [rayrtond@netscape.com]
+       Rua Piracicaba 570
+      S�o Jos� Dos Campos,S�o Paulo12210-240 Brazil 
+Customer:
+                Roy Devin                    
+        3503 Gorby Lane
+        Jackson  Mississippi  39201 USA 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+fcdsvgf516  Seate Replacement (1.0  hours of labor@ 50.0)           [ (Subtotal=$149.0) (Discount=$0.0) (Taxes=$11.92) (Total=$160.92)]
+  
+yg165       T-shirt    (2.0  units@ 15.0)           [ (Subtotal=$30.0) (Discount=$-3.0) (Taxes=$2.16) (Total=$29.16)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $179.0      Discounts: $-3.0       Taxes: $14.08          Total: $190.08         GRAND TOTAL:                                                                                                            $ 190.08                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV006
+--------------------------------------
+Owner: 
+     Bradley,  Keaton
+                  []
+       3889 Big Mountain Rd
+       Whitefish, MT 59937 Canada 
+Customer:
+             Conley Alika                    
+        Coronilla 7200
+        Florencio S�nchez  Canelones  75204 Uruguay 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+gok548f     2004 INFINITI FX35 (2.0  days@ 64.55)          [ (Subtotal=$-144.54) (Discount=$0.0) (Taxes=$-11.56) (Total=$-156.1)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $-144.54    Discounts: $0.0        Taxes: $-11.56         Total: $-156.1         GRAND TOTAL:                                                                                                            $ -156.1                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+Invoice INV007
+--------------------------------------
+Owner: 
+    Manning,  Arsenio
+                  []
+       8512 Kingwood Dr.
+       Lenoir, NC 28645 USA 
+Customer:
+               Dearm Cars                    
+        Randy Rd
+         Society Hill   SC   29540 USA 
+Products: 
+Code			       Dicription			                	                                       		Details 
+----------------------------------------------------------------------------------------------------------------------------------------- 
+uhvca6542   Headlight Bulb Replacement (2.0  hours of labor@ 40.0)           [ (Subtotal=$240.0) (Discount=$0.0) (Taxes=$10.2) (Total=$250.2)]
+  
+======================================================================================================================================== 
+ITEM TOTALS:                                       Subtotals: $240.0      Discounts: $0.0        Taxes: $10.2           Total: $250.2          
+BUSINESS ACCOUNT FEE:                                                                                                   $ 75.5
+GRAND TOTAL:                                                                                                            $ 325.7                                 
+ 
+ 
+ 
+ THANK YOU FOR DOING BUSINESS WITH US!  
+ 
+ 
+ 
+                                 
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
