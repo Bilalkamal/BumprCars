@@ -7,6 +7,7 @@
 package com.bc;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -19,8 +20,11 @@ public class InvoiceReport {
 
 // writer object that writes to the output file. It clears it first, before adding any data. 
 		WriterFunction writer = new WriterFunction();
+		
 		writer.clear();
 
+		
+		
 		ParserFunctions pf = new ParserFunctions();
 		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
 		List<Product> lprod = ParserFunctions.parseProducts();

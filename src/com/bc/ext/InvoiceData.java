@@ -1,0 +1,352 @@
+package com.bc.ext;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.bc.Address;
+/* DO NOT change or remove the import statements beneath this.
+* They are required for the webgrader to run this phase of the project.
+* These lines may be giving you an error; this is fine. 
+* These are webgrader code imports, you do not need to have these packages.
+*/
+import com.bc.Concession;
+import com.bc.Invoice;
+import com.bc.Customer;
+import com.bc.Towing;
+import com.bc.Person;
+import com.bc.Product;
+import com.bc.Rental;
+import com.bc.Repair;
+
+/**
+ * This is a collection of utility methods that define a general API for
+ * interacting with the database supporting this application. 16 methods in
+ * total, add more if required. Do not change any method signatures or the
+ * package name.
+ * 
+ * Adapted from Dr. Hasan's original version of this file
+ * 
+ * @author Chloe
+ *
+ */
+
+public class InvoiceData {
+
+	public static Connection createConnection() {
+		String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/bhamada?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String user = "bhamada";
+		String password = "0XkBzH6Q";
+
+		try {
+			Class.forName(DRIVER_CLASS).newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Connection conn = null;
+
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+
+		return conn;
+	}
+
+	/**
+	 * 1. Method that removes every person record from the database
+	 */
+	public static void removeAllPersons() {
+		/* TODO */
+
+		Connection conn = createConnection();
+
+	}
+
+	/**
+	 * 2. Method to add a person record to the database with the provided data.
+	 * 
+	 * @param personCode
+	 * @param firstName
+	 * @param lastName
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param country
+	 */
+	public static void addPerson(String personCode, String firstName, String lastName, String street, String city,
+			String state, String zip, String country) {
+		/* TODO */
+
+//		Create connection
+		Connection conn = createConnection();
+
+		Address address = new Address(street, city, state, zip, country);
+//		create query to add a person 
+		String query = "insert into Person (personCode, firstName, " + "lastName, address) values (?,?,?,);";
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, personCode);
+			ps.setString(2, firstName);
+			ps.setString(2, lastName);
+			ps.setString(4, address.toString());
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the prepared statement.
+		try {
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 3. Adds an email record corresponding person record corresponding to the
+	 * provided <code>personCode</code>
+	 * 
+	 * @param personCode
+	 * @param email
+	 */
+	public static void addEmail(String personCode, String email) {
+		/* TODO */
+//		Create connection
+		Connection conn = createConnection();
+
+		String query = "insert into Email (emailAddress, personId) values (?,(select personId from Person  where personCode = ? ));";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, personCode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the prepared statement.
+		try {
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 4. Method that removes every customer record from the database
+	 */
+	public static void removeAllCusomters() {
+		/* TODO */
+	}
+
+	/**
+	 * 5. Method to add a customer record to the database with the provided data
+	 * 
+	 * @param customerCode
+	 * @param customerType
+	 * @param primaryContactPersonCode
+	 * @param name
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param country
+	 */
+	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
+			String name, String street, String city, String state, String zip, String country) {
+		/* TODO */
+//		Create connection
+		Connection conn = createConnection();
+
+		Address address = new Address(street, city, state, zip, country);
+//		create query to add a person 
+		String query = "insert into Customer (customerCode,customerType,customerName,customerAddress,customerContactCode"
+				+ "personId )" + " values (?,?,?,?,(select personCode from Person where personCode = ?)"
+				+ ",(select personId from Person where personCode = ? ));";
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setString(1, customerCode);
+			ps.setString(2, customerType);
+			ps.setString(3, name);
+			ps.setString(4, address.toString());
+			ps.setString(5, primaryContactPersonCode);
+			ps.setString(6, primaryContactPersonCode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the prepared statement.
+		try {
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 6. Removes all product records from the database
+	 */
+	public static void removeAllProducts() {
+		/* TODO */
+	}
+
+	/**
+	 * 7. Adds a concession record to the database with the provided data.
+	 * 
+	 * @param productCode
+	 * @param productLabel
+	 * @param unitCost
+	 */
+	public static void addConcessionToInvoice(String productCode, String productLabel, double unitCost) {
+		/* TODO */
+	}
+
+	/**
+	 * 8. Adds a repair record to the database with the provided data.
+	 * 
+	 * @param productCode
+	 * @param proudctLabel
+	 * @param partsCost
+	 * @param laborRate
+	 */
+	public static void addRepair(String productCode, String productLabel, double partsCost, double laborRate) {
+		/* TODO */
+	}
+
+	/**
+	 * 9. Adds a towing record to the database with the provided data.
+	 * 
+	 * @param productCode
+	 * @param productLabel
+	 * @param costPerMile
+	 */
+	public static void addTowing(String productCode, String productLabel, double costPerMile) {
+		/* TODO */
+	}
+
+	/**
+	 * 10. Adds a rental record to the database with the provided data.
+	 * 
+	 * @param productCode
+	 * @param productLabel
+	 * @param dailyCost
+	 * @param deposit
+	 * @param cleaningFee
+	 */
+	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit,
+			double cleaningFee) {
+		/* TODO */
+	}
+
+	/**
+	 * 11. Removes all invoice records from the database
+	 */
+	public static void removeAllInvoices() {
+		/* TODO */
+	}
+
+	/**
+	 * 12. Adds an invoice record to the database with the given data.
+	 * 
+	 * @param invoiceCode
+	 * @param ownerCode
+	 * @param customertCode
+	 */
+	public static void addInvoice(String invoiceCode, String ownerCode, String customerCode) {
+		/* TODO */
+	}
+
+	/**
+	 * 13. Adds a particular Towing (corresponding to <code>productCode</code> to an
+	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
+	 * number of miles towed
+	 * 
+	 * @param invoiceCode
+	 * @param productCode
+	 * @param milesTowed
+	 */
+	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {
+		/* TODO */
+	}
+
+	/**
+	 * 14. Adds a particular Repair (corresponding to <code>productCode</code> to an
+	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
+	 * number of hours worked
+	 * 
+	 * @param invoiceCode
+	 * @param productCode
+	 * @param hoursWorked
+	 */
+	public static void addRepairToInvoice(String invoiceCode, String productCode, double hoursWorked) {
+		/* TODO */
+	}
+
+	/**
+	 * 15. Adds a particular Concession (corresponding to <code>productCode</code>
+	 * to an invoice corresponding to the provided <code>invoiceCode</code> with the
+	 * given number of quantity. NOTE: repairCode may be null
+	 * 
+	 * @param invoiceCode
+	 * @param productCode
+	 * @param quantity
+	 * @param repairCode
+	 */
+	public static void addConcession(String invoiceCode, String productCode, int quantity, String repairCode) {
+		/* TODO */
+	}
+
+	/**
+	 * 16. Adds a particular Rental (corresponding to <code>productCode</code> to an
+	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
+	 * number of days rented.
+	 * 
+	 * @param invoiceCode
+	 * @param productCode
+	 * @param daysRented
+	 */
+	public static void addRentalToInvoice(String invoiceCode, String productCode, double daysRented) {
+		/* TODO */
+
+	}
+
+}
