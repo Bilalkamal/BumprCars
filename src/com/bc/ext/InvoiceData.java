@@ -58,7 +58,9 @@ public class InvoiceData {
 		Connection conn = null;
 
 		try {
+
 			conn = DriverManager.getConnection(url, user, password);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
@@ -74,6 +76,47 @@ public class InvoiceData {
 		/* TODO */
 
 		Connection conn = createConnection();
+//		The Queries to delete the Invoices
+		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
+		String queryDeleteProductInvoice = "delete from ProductInvoice;";
+		String queryDeleteInvoice = "delete from Invoice;";
+		String queryDeleteCustomer = "delete from Customer;";
+		String queryDeleteEmail = "delete from Email;";
+		String queryDeletePerson = "delete from Person;";
+		String queryEnableSafeMode = "SET SQL_SAFE_UPDATES=1;";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(queryDisableSafeMode);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteProductInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteCustomer);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteEmail);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeletePerson);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryEnableSafeMode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the PS and Connection
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -89,6 +132,7 @@ public class InvoiceData {
 	 * @param zip
 	 * @param country
 	 */
+
 	public static void addPerson(String personCode, String firstName, String lastName, String street, String city,
 			String state, String zip, String country) {
 		/* TODO */
@@ -98,7 +142,7 @@ public class InvoiceData {
 
 		Address address = new Address(street, city, state, zip, country);
 //		create query to add a person 
-		String query = "insert into Person (personCode, firstName, " + "lastName, address) values (?,?,?,);";
+		String query = "insert into Person (personCode, firstName, " + "lastName, address) values (?,?,?);";
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
 
@@ -118,6 +162,7 @@ public class InvoiceData {
 //		Close the prepared statement.
 		try {
 			ps.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,6 +201,7 @@ public class InvoiceData {
 //		Close the prepared statement.
 		try {
 			ps.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,6 +214,44 @@ public class InvoiceData {
 	 */
 	public static void removeAllCusomters() {
 		/* TODO */
+
+		Connection conn = createConnection();
+//		The Queries to delete the Invoices
+		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
+		String queryDeleteProductInvoice = "delete from ProductInvoice;";
+		String queryDeleteInvoice = "delete from Invoice;";
+		String queryDeleteCustomer = "delete from Customer;";
+		String queryEnableSafeMode = "SET SQL_SAFE_UPDATES=1;";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(queryDisableSafeMode);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteProductInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteCustomer);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryEnableSafeMode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the PS and Connection
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -227,6 +311,39 @@ public class InvoiceData {
 	 */
 	public static void removeAllProducts() {
 		/* TODO */
+		Connection conn = createConnection();
+//		The Queries to delete the Invoices
+		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
+		String queryDeleteProductInvoice = "delete from ProductInvoice;";
+		String queryDeleteProduct = "delete from Product;";
+		String queryEnableSafeMode = "SET SQL_SAFE_UPDATES=1;";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(queryDisableSafeMode);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteProductInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteProduct);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryEnableSafeMode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the PS and Connection
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -238,6 +355,10 @@ public class InvoiceData {
 	 */
 	public static void addConcessionToInvoice(String productCode, String productLabel, double unitCost) {
 		/* TODO */
+
+//		Create connection
+		Connection conn = createConnection();
+
 	}
 
 	/**
@@ -250,6 +371,39 @@ public class InvoiceData {
 	 */
 	public static void addRepair(String productCode, String productLabel, double partsCost, double laborRate) {
 		/* TODO */
+//		Create Connection
+		Connection conn = createConnection();
+//		 "R"
+		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+				+ "partsCost,hourlyLaborCost) values (?,?,?,?,?)";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+
+		try {
+			ps = conn.prepareStatement(queryAddRental);
+			ps.setString(1, productCode);
+			ps.setString(2, "F");
+			ps.setString(2, productLabel);
+			ps.setDouble(4, partsCost);
+			ps.setDouble(5, laborRate);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Close the prepared statement.
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
 	}
 
 	/**
@@ -261,6 +415,37 @@ public class InvoiceData {
 	 */
 	public static void addTowing(String productCode, String productLabel, double costPerMile) {
 		/* TODO */
+//		Create Connection
+		Connection conn = createConnection();
+//		 "R"
+		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+				+ "costPerMile) values (?,?,?,?)";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+
+		try {
+			ps = conn.prepareStatement(queryAddRental);
+			ps.setString(1, productCode);
+			ps.setString(2, "T");
+			ps.setString(2, productLabel);
+			ps.setDouble(4, costPerMile);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Close the prepared statement.
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -275,6 +460,38 @@ public class InvoiceData {
 	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit,
 			double cleaningFee) {
 		/* TODO */
+//		Create Connection
+		Connection conn = createConnection();
+//		 "R"
+		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+				+ "dailyCost,deposit) values (?,?,?,?,?)";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+
+		try {
+			ps = conn.prepareStatement(queryAddRental);
+			ps.setString(1, productCode);
+			ps.setString(2, "R");
+			ps.setString(2, productLabel);
+			ps.setDouble(4, dailyCost);
+			ps.setDouble(5, deposit);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Close the prepared statement.
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -282,6 +499,40 @@ public class InvoiceData {
 	 */
 	public static void removeAllInvoices() {
 		/* TODO */
+		Connection conn = createConnection();
+//		The Queries to delete the Invoices
+		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
+		String queryDeleteProductInvoice = "delete from ProductInvoice;";
+		String queryDeleteInvoice = "delete from Invoice;";
+		String queryEnableSafeMode = "SET SQL_SAFE_UPDATES=1;";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(queryDisableSafeMode);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteProductInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryDeleteInvoice);
+			ps.executeUpdate();
+			ps = conn.prepareStatement(queryEnableSafeMode);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		Close the PS and Connection
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -333,8 +584,39 @@ public class InvoiceData {
 	 */
 	public static void addConcession(String invoiceCode, String productCode, int quantity, String repairCode) {
 		/* TODO */
-	}
 
+//		Create Connection
+		Connection conn = createConnection();
+//		 "R"
+		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+				+ "quantity,repairCode) values (?,?,?,?,?)";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+
+		try {
+			ps = conn.prepareStatement(queryAddRental);
+			ps.setString(1, productCode);
+			ps.setString(2, "C");
+			ps.setDouble(3, quantity);
+			ps.setString(4, repairCode);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Close the prepared statement.
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+	}
+	}
 	/**
 	 * 16. Adds a particular Rental (corresponding to <code>productCode</code> to an
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
