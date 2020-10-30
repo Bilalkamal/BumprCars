@@ -392,15 +392,39 @@ public class InvoiceData {
 	 * @param productLabel
 	 * @param unitCost
 	 */
-	public static void addConcessionToInvoice(String productCode, String productLabel, double unitCost) {
+	public static void addConcession(String productCode, String productLabel, double unitCost) {
 		/* TODO */
-
-//		Create connection
+//		Create Connection
 		Connection conn = createConnection();
+//		 "R"
+		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+				+ "unitCost) values (?,?,?,?)";
+
+//		Prepared Statement for executing the query.
+		PreparedStatement ps = null;
+
+
+		try {
+			ps = conn.prepareStatement(queryAddRental);
+			ps.setString(1, productCode);
+			ps.setString(2, "C");
+			ps.setString(3,productLabel );
+			ps.setDouble(4, unitCost);
+			
+			ps.executeUpdate();
 		
-		
-		
-		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Close the prepared statement.
+		try {
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -723,31 +747,32 @@ public class InvoiceData {
 	 * @param quantity
 	 * @param repairCode
 	 */
-	public static void addConcession(String invoiceCode, String productCode, int quantity, String repairCode) {
+	public static void  addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
 		/* TODO */
+Connection conn = createConnection();
+		
+		String queryConcessionToInvoice = "insert into ProductInvoice (invoiceId,productId,quantity,repairCode)"
+				+ " values ((select invoiceId from Invoice  where invoiceCode = ? ),"
+				+ " (select productId from Product where productCode = ?), ?, ?";
 
-//		Create Connection
-		Connection conn = createConnection();
-//		 "R"
-		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
-				+ "quantity,repairCode) values (?,?,?,?,?)";
-
+		
+		
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
-
-
+		
 		try {
-			ps = conn.prepareStatement(queryAddRental);
-			ps.setString(1, productCode);
-			ps.setString(2, "C");
+			ps = conn.prepareStatement(queryConcessionToInvoice);
+			ps.setString(1, invoiceCode);
+			ps.setString(2, productCode);
 			ps.setDouble(3, quantity);
 			ps.setString(4, repairCode);
 			ps.executeUpdate();
-		
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 //		Close the prepared statement.
 		try {
 			ps.close();
@@ -755,9 +780,13 @@ public class InvoiceData {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
 		
 	}
-	}
+
+
+	
 	/**
 	 * 16. Adds a particular Rental (corresponding to <code>productCode</code> to an
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
