@@ -8,9 +8,12 @@ package com.bc;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
+
+import com.bc.ext.InvoiceData;
 
 public class InvoiceReport {
 
@@ -40,6 +43,13 @@ public class InvoiceReport {
 			e.printStackTrace();
 		}
 		DisplayFunctions.calculateDetailedInvoice(lInv, lc, lpers, lprod);
+		
+		try {
+			InvoiceData.conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
