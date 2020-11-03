@@ -11,19 +11,32 @@ public class EmailAddress {
 		super();
 		this.emailAddress = emailAddress;
 	}
+	public EmailAddress() {
+		super();
+	}
 
 	/**
 	 * @return the emailAddress
 	 */
-	public List getEmailAddress() {
+	public List<String> getEmailAddress() {
 		return emailAddress;
 	}
 
 	/**
 	 * @param emailAddress the emailAddress to set
 	 */
-	public void setEmailAddress(List emailAddress) {
+	public void setEmailAddresses(List<String> emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+	
+	public void addEmailAddress(String email) {
+		this.emailAddress.add(email);
+		
+	}
+	
+	public Integer getLength() {
+		return this.emailAddress.size();
+		
 	}
 
 }

@@ -562,6 +562,9 @@ public class InvoiceData {
 	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit,
 			double cleaningFee) {
 
+		
+		
+		
 		int productId = getProductId(productCode);
 
 		if (productId != 0) {

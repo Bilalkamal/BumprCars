@@ -33,6 +33,10 @@ public class InvoiceReport {
 		List<Product> lprod = ParserFunctions.parseProducts();
 		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
 		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
+		
+//		New Display function 
+		NewDisplayFunctions ndf = new NewDisplayFunctions();
+		ndf.displayDetailedInvoice(lInv,lc, lpers,lprod);
 
 //	create a display functions object.
 		DisplayFunctions dp = new DisplayFunctions();
@@ -44,12 +48,12 @@ public class InvoiceReport {
 		}
 		DisplayFunctions.calculateDetailedInvoice(lInv, lc, lpers, lprod);
 		
-		try {
-			InvoiceData.conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			InvoiceData.conn.close();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 

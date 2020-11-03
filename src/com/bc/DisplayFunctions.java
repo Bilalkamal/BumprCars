@@ -21,6 +21,9 @@ public class DisplayFunctions {
 //	6. The Fees 7. The Taxes 8. The Total for the Invoice 9. The totals of all theses as a final line
 	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
 
+			
+			
+			
 			List<Product> lprod) throws IOException {
 		Double loyaltyDiscount = 0.0;
 
@@ -39,7 +42,8 @@ public class DisplayFunctions {
 
 		for (Invoice s : lInv) {
 
-//Check Owner code
+
+			//Check Owner code
 
 			String ownerCode = s.getOwnerCode();
 
@@ -312,8 +316,8 @@ public class DisplayFunctions {
 						else if (p.getProductType().equals("R")) {
 							rentCheck = true;
 							productInfo = "days";
-							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
-							r.setDaysRented(Integer.parseInt(itemTokens[1]));
+							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
+							r.setDaysRented(Double.parseDouble(itemTokens[1]));
 							productRate = r.getDailyCost();
 							productSubtotal = r.getRentCost();
 							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
@@ -486,8 +490,8 @@ public class DisplayFunctions {
 
 						if (p.getProductType().equals("R")) {
 							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
-							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
-							r.setDaysRented(Integer.parseInt(itemTokens[1]));
+							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
+							r.setDaysRented(Double.parseDouble(itemTokens[1]));
 							itemCost = r.getRentCost();
 
 							subTotal += itemCost;
