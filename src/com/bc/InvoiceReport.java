@@ -22,42 +22,18 @@ public class InvoiceReport {
 	public static void main(String[] args) {
 		JDBCReader jr = new JDBCReader();
 		jr.createConnection();
-		
-//		List<Address> listOfAddresses=jr.loadAllAddresses();
-//		System.out.println(jr.loadAllPersons());
-		
-		System.out.println(jr.loadAllInvoices());
 
-// writer object that writes to the output file. It clears it first, before adding any data. 
-//		WriterFunction writer = new WriterFunction();
-//		
-//		writer.clear();
-
+// 		ParserFunctions pf = new ParserFunctions();
+// 		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
+// 		List<Product> lprod = ParserFunctions.parseProducts();
+// 		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
+// 		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
+	
 		
-		
-//		ParserFunctions pf = new ParserFunctions();
-//		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
-//		List<Product> lprod = ParserFunctions.parseProducts();
-//		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
-//		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
 
-//	create a display functions object.
-//		DisplayFunctions dp = new DisplayFunctions();
-//		try {
-//			DisplayFunctions.summaryReport(lInv, lc, lpers, lprod);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		DisplayFunctions.calculateDetailedInvoice(lInv, lc, lpers, lprod);
-		
-//		try {
-//			InvoiceData.conn.close();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+//		New Display function 
+		NewDisplayFunctions ndf = new NewDisplayFunctions();
+		ndf.displayDetailedInvoice(lInv,lc, lpers,lprod);
 
-	}
 
 }

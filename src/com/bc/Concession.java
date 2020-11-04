@@ -16,9 +16,8 @@ public class Concession extends Product {
 		this.unitCost = unitCost;
 	}
 
-	public Concession(Concession concessionObject, Double quantity, String associatedRepair) {
-		super(concessionObject.getProductCode(), concessionObject.getProductLabel(), concessionObject.getProductType());
-
+	public Concession(Concession concessionObject, Double quantity,String associatedRepair ) {
+		super(concessionObject.getProductCode(),concessionObject.getProductLabel(),concessionObject.getProductType());
 		this.unitCost = concessionObject.getUnitCost();
 		this.quantity = concessionObject.getQuantity();
 		this.associatedRepair = concessionObject.getAssociatedRepair();
@@ -27,13 +26,15 @@ public class Concession extends Product {
 
 	public Concession(Concession concessionObject, Double quantity) {
 		super(concessionObject.getProductCode(), concessionObject.getProductLabel(), concessionObject.getProductType());
-
 		this.unitCost = concessionObject.getUnitCost();
 		this.quantity = concessionObject.getQuantity();
 		this.associatedRepair = concessionObject.getAssociatedRepair();
 
 	}
 
+
+	
+	
 	public Double getQuantity() {
 		return quantity;
 	}

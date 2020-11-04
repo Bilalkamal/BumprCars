@@ -34,13 +34,11 @@ import com.bc.Repair;
  *
  */
 
-
-
 public class InvoiceData {
 	public static Connection conn = null;
 
 	public static Connection createConnection() {
-		
+
 		String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
 		String url = "jdbc:mysql://cse.unl.edu/bhamada?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String user = "bhamada";
@@ -76,8 +74,7 @@ public class InvoiceData {
 			e1.printStackTrace();
 		}
 		return conn;
-		
-		
+
 	}
 
 	/**
@@ -123,7 +120,7 @@ public class InvoiceData {
 //		Close the PS and Connection
 		try {
 			ps.close();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,65 +143,64 @@ public class InvoiceData {
 
 	public static void addPerson(String personCode, String firstName, String lastName, String street, String city,
 			String state, String zip, String country) {
-		/* TODO */
+		int personId = getPersonId(personCode);
 
-//		Create connection
-		Connection conn = createConnection();
+		if (personId != 0) {
+			return;
+		} else {
 
-		
-		String queryInsertAddress = "insert into Address (street, city, state, zip,country) values (?,?,?,?,?);";
-//		create query to add a person 
-		String queryInsertPerson = "insert into Person (personCode, firstName,  lastName, addressId) values (?,?,?,(select addressId from Address where street = ?"
-				+ " and city = ? and state = ? and zip = ? and country = ?));";
-//		Prepared Statement for executing the query.
-		PreparedStatement psAddress = null;
-		PreparedStatement psPerson = null;
-		
+//			Create connection
+			Connection conn = createConnection();
 
-		try {
-			psAddress = conn.prepareStatement(queryInsertAddress);
-			psAddress.setString(1, street);
-			psAddress.setString(2, city);
-			psAddress.setString(3, state);
-			psAddress.setString(4, zip);
-			psAddress.setString(5, country);
-			psAddress.executeUpdate();
-			
-			
+			String queryInsertAddress = "insert into Address (street, city, state, zip,country) values (?,?,?,?,?);";
+//			create query to add a person 
+			String queryInsertPerson = "insert into Person (personCode, firstName,  lastName, addressId) "
+					+ "values (?,?,?,(select addressId from Address where street = ?"
+					+ " and city = ? and state = ? and zip = ? and country = ?));";
+//			Prepared Statement for executing the query.
+			PreparedStatement psAddress = null;
+			PreparedStatement psPerson = null;
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			psPerson = conn.prepareStatement(queryInsertPerson);
-			psPerson.setString(1, personCode);
-			psPerson.setString(2, firstName);
-			psPerson.setString(3, lastName);
-			psPerson.setString(4, street);
-			psPerson.setString(5, city);
-			psPerson.setString(6, state);
-			psPerson.setString(7, zip);
-			psPerson.setString(8, country);
-			psPerson.executeUpdate();
-			
-			
+			try {
+				psAddress = conn.prepareStatement(queryInsertAddress);
+				psAddress.setString(1, street);
+				psAddress.setString(2, city);
+				psAddress.setString(3, state);
+				psAddress.setString(4, zip);
+				psAddress.setString(5, country);
+				psAddress.executeUpdate();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
+			try {
+				psPerson = conn.prepareStatement(queryInsertPerson);
+				psPerson.setString(1, personCode);
+				psPerson.setString(2, firstName);
+				psPerson.setString(3, lastName);
+				psPerson.setString(4, street);
+				psPerson.setString(5, city);
+				psPerson.setString(6, state);
+				psPerson.setString(7, zip);
+				psPerson.setString(8, country);
+				psPerson.executeUpdate();
 
-//		Close the prepared statement.
-		try {
-			psPerson.close();
-			psAddress.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+//			Close the prepared statement.
+			try {
+				psPerson.close();
+				psAddress.close();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -217,33 +213,41 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
-		/* TODO */
-//		Create connection
-		Connection conn = createConnection();
 
-		String query = "insert into Email (emailAddress, personId) values (?,(select personId from Person  where personCode = ? ));";
+		int personId = getPersonId(personCode);
 
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		if (personId == 0) {
+			System.err.println("Something is wrong, could not find personId for person code '" + personCode + "'.");
+			throw new RuntimeException();
+		} else {
 
-		try {
-			ps = conn.prepareStatement(query);
-			ps.setString(1, email);
-			ps.setString(2, personCode);
-			ps.executeUpdate();
+//			Create connection
+			Connection conn = createConnection();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			String query = "insert into Email (emailAddress, personId) values (?,(select personId from Person  where personCode = ? ));";
 
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(query);
+				ps.setString(1, email);
+				ps.setString(2, personCode);
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+//			Close the prepared statement.
+			try {
+				ps.close();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -252,7 +256,6 @@ public class InvoiceData {
 	 * 4. Method that removes every customer record from the database
 	 */
 	public static void removeAllCusomters() {
-		/* TODO */
 
 		Connection conn = createConnection();
 //		The Queries to delete the Invoices
@@ -278,16 +281,14 @@ public class InvoiceData {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 //		Close the PS and Connection
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -308,39 +309,64 @@ public class InvoiceData {
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
 			String name, String street, String city, String state, String zip, String country) {
-		/* TODO */
-//		Create connection
-		Connection conn = createConnection();
+		int customerId = getCustomerId(customerCode);
 
-		Address address = new Address(street, city, state, zip, country);
-//		create query to add a person 
-		String query = "insert into Customer (customerCode,customerType,customerName,customerAddress,customerContactCode"
-				+ "personId )" + " values (?,?,?,?,(select personCode from Person where personCode = ?)"
-				+ ",(select personId from Person where personCode = ? ));";
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		if (customerId != 0) {
+			return;
+		} else {
 
-		try {
-			ps = conn.prepareStatement(query);
-			ps.setString(1, customerCode);
-			ps.setString(2, customerType);
-			ps.setString(3, name);
-			ps.setString(4, address.toString());
-			ps.setString(5, primaryContactPersonCode);
-			ps.setString(6, primaryContactPersonCode);
-			ps.executeUpdate();
+//			Create connection
+			Connection conn = createConnection();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			String queryInsertAddress = "insert into Address (street, city, state, zip,country) values (?,?,?,?,?);";
 
-//		Close the prepared statement.
-		try {
-			ps.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			create query to add a person 
+			String queryInsertCustomer = "insert into Customer (customerCode,customerType,customerName,customerContactCode"
+					+ "personId ,customerAddress)"
+					+ " values (?,?,?,(select personCode from Person where personCode = ?)"
+					+ ",(select personId from Person where personCode = ? ),(select addressId from Address where street = ? "
+					+ "+ \" and city = ? and state = ? and zip = ? and country = ?));";
+//			Prepared Statement for executing the query.
+			PreparedStatement psAddress = null;
+			PreparedStatement psCustomer = null;
+
+			try {
+				psAddress = conn.prepareStatement(queryInsertAddress);
+				psAddress.setString(1, street);
+				psAddress.setString(2, city);
+				psAddress.setString(3, state);
+				psAddress.setString(4, zip);
+				psAddress.setString(5, country);
+				psAddress.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				psCustomer = conn.prepareStatement(queryInsertCustomer);
+				psCustomer.setString(1, customerCode);
+				psCustomer.setString(2, customerType);
+				psCustomer.setString(3, name);
+				psCustomer.setString(4, primaryContactPersonCode);
+				psCustomer.setString(5, primaryContactPersonCode);
+
+				psCustomer.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+//			Close the prepared statement.
+			try {
+				psCustomer.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 	}
@@ -349,7 +375,6 @@ public class InvoiceData {
 	 * 6. Removes all product records from the database
 	 */
 	public static void removeAllProducts() {
-		/* TODO */
 		Connection conn = createConnection();
 //		The Queries to delete the Invoices
 		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
@@ -371,16 +396,14 @@ public class InvoiceData {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 //		Close the PS and Connection
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -393,37 +416,41 @@ public class InvoiceData {
 	 * @param unitCost
 	 */
 	public static void addConcession(String productCode, String productLabel, double unitCost) {
-		/* TODO */
-//		Create Connection
-		Connection conn = createConnection();
-//		 "R"
-		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
-				+ "unitCost) values (?,?,?,?)";
+		int productId = getProductId(productCode);
 
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		if (productId != 0) {
+			return;
+		} else {
 
+//			Create Connection
+			Connection conn = createConnection();
+//			 "R"
+			String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+					+ "unitCost) values (?,?,?,?)";
 
-		try {
-			ps = conn.prepareStatement(queryAddRental);
-			ps.setString(1, productCode);
-			ps.setString(2, "C");
-			ps.setString(3,productLabel );
-			ps.setDouble(4, unitCost);
-			
-			ps.executeUpdate();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(queryAddRental);
+				ps.setString(1, productCode);
+				ps.setString(2, "C");
+				ps.setString(3, productLabel);
+				ps.setDouble(4, unitCost);
+
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+//			Close the prepared statement.
+			try {
+				ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 	}
@@ -437,40 +464,43 @@ public class InvoiceData {
 	 * @param laborRate
 	 */
 	public static void addRepair(String productCode, String productLabel, double partsCost, double laborRate) {
-		/* TODO */
-//		Create Connection
-		Connection conn = createConnection();
-//		 "R"
-		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
-				+ "partsCost,hourlyLaborCost) values (?,?,?,?,?)";
+		int productId = getProductId(productCode);
 
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		if (productId != 0) {
+			return;
+		} else {
 
+//			Create Connection
+			Connection conn = createConnection();
+//			 "R"
+			String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+					+ "partsCost,hourlyLaborCost) values (?,?,?,?,?)";
 
-		try {
-			ps = conn.prepareStatement(queryAddRental);
-			ps.setString(1, productCode);
-			ps.setString(2, "F");
-			ps.setString(2, productLabel);
-			ps.setDouble(4, partsCost);
-			ps.setDouble(5, laborRate);
-			ps.executeUpdate();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(queryAddRental);
+				ps.setString(1, productCode);
+				ps.setString(2, "F");
+				ps.setString(2, productLabel);
+				ps.setDouble(4, partsCost);
+				ps.setDouble(5, laborRate);
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//			Close the prepared statement.
+			try {
+				ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	
 	}
 
 	/**
@@ -481,38 +511,43 @@ public class InvoiceData {
 	 * @param costPerMile
 	 */
 	public static void addTowing(String productCode, String productLabel, double costPerMile) {
-		/* TODO */
-//		Create Connection
-		Connection conn = createConnection();
-//		 "R"
-		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
-				+ "costPerMile) values (?,?,?,?)";
 
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		int productId = getProductId(productCode);
 
+		if (productId != 0) {
+			return;
+		} else {
+//			Create Connection
+			Connection conn = createConnection();
+//			 "R"
+			String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+					+ "costPerMile) values (?,?,?,?)";
 
-		try {
-			ps = conn.prepareStatement(queryAddRental);
-			ps.setString(1, productCode);
-			ps.setString(2, "T");
-			ps.setString(2, productLabel);
-			ps.setDouble(4, costPerMile);
-			ps.executeUpdate();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(queryAddRental);
+				ps.setString(1, productCode);
+				ps.setString(2, "T");
+				ps.setString(2, productLabel);
+				ps.setDouble(4, costPerMile);
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+//			Close the prepared statement.
+			try {
+				ps.close();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
 		}
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 	}
 
 	/**
@@ -526,46 +561,47 @@ public class InvoiceData {
 	 */
 	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit,
 			double cleaningFee) {
-		/* TODO */
-//		Create Connection
-		Connection conn = createConnection();
-//		 "R"
-		String queryAddRental = "insert into Product (productCode,productType,productLabel,"
-				+ "dailyCost,deposit) values (?,?,?,?,?)";
 
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
+		int productId = getProductId(productCode);
 
+		if (productId != 0) {
+			return;
+		} else {
+//			Create Connection
+			Connection conn = createConnection();
+//			 "R"
+			String queryAddRental = "insert into Product (productCode,productType,productLabel,"
+					+ "dailyCost,deposit) values (?,?,?,?,?)";
 
-		try {
-			ps = conn.prepareStatement(queryAddRental);
-			ps.setString(1, productCode);
-			ps.setString(2, "R");
-			ps.setString(2, productLabel);
-			ps.setDouble(4, dailyCost);
-			ps.setDouble(5, deposit);
-			ps.executeUpdate();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(queryAddRental);
+				ps.setString(1, productCode);
+				ps.setString(2, "R");
+				ps.setString(2, productLabel);
+				ps.setDouble(4, dailyCost);
+				ps.setDouble(5, deposit);
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+//			Close the prepared statement.
+			try {
+				ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 
 	/**
 	 * 11. Removes all invoice records from the database
 	 */
 	public static void removeAllInvoices() {
-		/* TODO */
 		Connection conn = createConnection();
 //		The Queries to delete the Invoices
 		String queryDisableSafeMode = "SET SQL_SAFE_UPDATES=0;";
@@ -587,16 +623,16 @@ public class InvoiceData {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 //		Close the PS and Connection
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
@@ -610,37 +646,40 @@ public class InvoiceData {
 	 * @param customertCode
 	 */
 	public static void addInvoice(String invoiceCode, String ownerCode, String customerCode) {
-		/* TODO */
-		Connection conn = createConnection();
-		
-		String queryAddInvoice = "insert into Invoice (personId,customerId,invoiceCode) values("
-				+ "(select personId from Person  where personCode = ? ),(select customerId from Customer  where customerCode = ? ), ?)";
-		
-//		Prepared Statement for executing the query.
-		PreparedStatement ps = null;
-		
-		try {
-			ps = conn.prepareStatement(queryAddInvoice);
-			ps.setString(1, ownerCode);
-			ps.setString(2, customerCode);
-			ps.setString(3, invoiceCode);
-			ps.executeUpdate();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int invoiceId = getInvoiceId(invoiceCode);
+
+		if (invoiceId != 0) {
+			return;
+		} else {
+			Connection conn = createConnection();
+
+			String queryAddInvoice = "insert into Invoice (personId,customerId,invoiceCode) values("
+					+ "(select personId from Person  where personCode = ? ),(select customerId from Customer  where customerCode = ? ), ?)";
+
+//			Prepared Statement for executing the query.
+			PreparedStatement ps = null;
+
+			try {
+				ps = conn.prepareStatement(queryAddInvoice);
+				ps.setString(1, ownerCode);
+				ps.setString(2, customerCode);
+				ps.setString(3, invoiceCode);
+				ps.executeUpdate();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+//			Close the prepared statement.
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
-//		Close the prepared statement.
-		try {
-			ps.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+
 	}
 
 	/**
@@ -653,19 +692,21 @@ public class InvoiceData {
 	 * @param milesTowed
 	 */
 	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {
-		/* TODO */
-		
-	Connection conn = createConnection();
-		
+		int productID = getProductId(productCode);
+		if (productID == 0) {
+			System.err.println("Something is wrong, could not find productID for product code '" + productCode + "'.");
+			throw new RuntimeException();
+		}
+
+		Connection conn = createConnection();
+
 		String queryAddTowingToInvoice = "insert into ProductInvoice (invoiceId,productId,milesTowed)"
 				+ " values ((select invoiceId from Invoice  where invoiceCode = ? ),"
 				+ " (select productId from Product where productCode = ?), ?";
 
-		
-		
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
-		
+
 		try {
 			ps = conn.prepareStatement(queryAddTowingToInvoice);
 			ps.setString(1, invoiceCode);
@@ -674,21 +715,19 @@ public class InvoiceData {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 //		Close the prepared statement.
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
 	/**
@@ -701,19 +740,21 @@ public class InvoiceData {
 	 * @param hoursWorked
 	 */
 	public static void addRepairToInvoice(String invoiceCode, String productCode, double hoursWorked) {
-		/* TODO */
-		
-	Connection conn = createConnection();
-		
+		int productID = getProductId(productCode);
+		if (productID == 0) {
+			System.err.println("Something is wrong, could not find productID for product code '" + productCode + "'.");
+			throw new RuntimeException();
+		}
+
+		Connection conn = createConnection();
+
 		String queryAddRepairToInvoice = "insert into ProductInvoice (invoiceId,productId,hoursWorked)"
 				+ " values ((select invoiceId from Invoice  where invoiceCode = ? ),"
 				+ " (select productId from Product where productCode = ?), ?";
 
-		
-		
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
-		
+
 		try {
 			ps = conn.prepareStatement(queryAddRepairToInvoice);
 			ps.setString(1, invoiceCode);
@@ -722,19 +763,19 @@ public class InvoiceData {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 //		Close the prepared statement.
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	/**
@@ -747,19 +788,21 @@ public class InvoiceData {
 	 * @param quantity
 	 * @param repairCode
 	 */
-	public static void  addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
-		/* TODO */
-Connection conn = createConnection();
-		
+	public static void addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
+		int productID = getProductId(productCode);
+		if (productID == 0) {
+			System.err.println("Something is wrong, could not find productID for product code '" + productCode + "'.");
+			throw new RuntimeException();
+		}
+		Connection conn = createConnection();
+
 		String queryConcessionToInvoice = "insert into ProductInvoice (invoiceId,productId,quantity,repairCode)"
 				+ " values ((select invoiceId from Invoice  where invoiceCode = ? ),"
 				+ " (select productId from Product where productCode = ?), ?, ?";
 
-		
-		
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
-		
+
 		try {
 			ps = conn.prepareStatement(queryConcessionToInvoice);
 			ps.setString(1, invoiceCode);
@@ -769,24 +812,21 @@ Connection conn = createConnection();
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 //		Close the prepared statement.
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
-
-	
 	/**
 	 * 16. Adds a particular Rental (corresponding to <code>productCode</code> to an
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
@@ -797,18 +837,20 @@ Connection conn = createConnection();
 	 * @param daysRented
 	 */
 	public static void addRentalToInvoice(String invoiceCode, String productCode, double daysRented) {
-		/* TODO */
+		int productID = getProductId(productCode);
+		if (productID == 0) {
+			System.err.println("Something is wrong, could not find productID for product code '" + productCode + "'.");
+			throw new RuntimeException();
+		}
 		Connection conn = createConnection();
-		
+
 		String queryAddRentalToInvoice = "insert into ProductInvoice (invoiceId,productId,daysRented)"
 				+ " values ((select invoiceId from Invoice  where invoiceCode = ? ),"
 				+ " (select productId from Product where productCode = ?), ?";
 
-		
-		
 //		Prepared Statement for executing the query.
 		PreparedStatement ps = null;
-		
+
 		try {
 			ps = conn.prepareStatement(queryAddRentalToInvoice);
 			ps.setString(1, invoiceCode);
@@ -817,20 +859,165 @@ Connection conn = createConnection();
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 //		Close the prepared statement.
 		try {
 			ps.close();
-			conn.close();
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
-		
+
+	}
+
+	public static Integer getPersonId(String personCode) {
+		Connection conn = createConnection();
+
+		String queryGetPersonId = "select personId from Person where personCode = ? ";
+		PreparedStatement preparedStatementGetPersonId = null;
+		ResultSet resultSetGetPersonID = null;
+		Integer personId = null;
+
+		try {
+			preparedStatementGetPersonId = conn.prepareStatement(queryGetPersonId);
+			preparedStatementGetPersonId.setString(1, personCode);
+			resultSetGetPersonID = preparedStatementGetPersonId.executeQuery();
+
+			while (resultSetGetPersonID.next()) {
+				personId = resultSetGetPersonID.getInt("personId");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			preparedStatementGetPersonId.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		if (personId != null) {
+			return personId;
+		} else {
+			return 0;
+		}
+
+	}
+
+	public static Integer getCustomerId(String customerCode) {
+		Connection conn = createConnection();
+
+		String queryGetCustomerId = "select customerId from Customer where customerId = ? ";
+		PreparedStatement preparedStatementGetCustomerId = null;
+		ResultSet resultSetGetCustomerID = null;
+		Integer customerId = null;
+
+		try {
+			preparedStatementGetCustomerId = conn.prepareStatement(queryGetCustomerId);
+			preparedStatementGetCustomerId.setString(1, customerCode);
+			resultSetGetCustomerID = preparedStatementGetCustomerId.executeQuery();
+
+			while (resultSetGetCustomerID.next()) {
+				customerId = resultSetGetCustomerID.getInt("customerId");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			preparedStatementGetCustomerId.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		if (customerId != null) {
+			return customerId;
+		} else {
+			return 0;
+		}
+
+	}
+
+	public static Integer getInvoiceId(String invoiceCode) {
+		Connection conn = createConnection();
+
+		String queryGetInvoiceId = "select invoiceId from Invoice where invoiceId = ? ";
+		PreparedStatement preparedStatementGetInvoiceId = null;
+		ResultSet resultSetGetInvoiceID = null;
+		Integer invoiceId = null;
+
+		try {
+			preparedStatementGetInvoiceId = conn.prepareStatement(queryGetInvoiceId);
+			preparedStatementGetInvoiceId.setString(1, invoiceCode);
+			resultSetGetInvoiceID = preparedStatementGetInvoiceId.executeQuery();
+
+			while (resultSetGetInvoiceID.next()) {
+				invoiceId = resultSetGetInvoiceID.getInt("invoiceId");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			preparedStatementGetInvoiceId.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		if (invoiceId != null) {
+			return invoiceId;
+		} else {
+			return 0;
+		}
+
+	}
+
+	public static Integer getProductId(String productCode) {
+		Connection conn = createConnection();
+
+		String queryGetProductId = "select productId from Product where productId = ? ";
+		PreparedStatement preparedStatementGetProductId = null;
+		ResultSet resultSetGetProductID = null;
+		Integer productId = null;
+
+		try {
+			preparedStatementGetProductId = conn.prepareStatement(queryGetProductId);
+			preparedStatementGetProductId.setString(1, productCode);
+			resultSetGetProductID = preparedStatementGetProductId.executeQuery();
+
+			while (resultSetGetProductID.next()) {
+				productId = resultSetGetProductID.getInt("productId");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			preparedStatementGetProductId.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		if (productId != null) {
+			return productId;
+		} else {
+			return 0;
+		}
+
 	}
 
 }
