@@ -23,15 +23,6 @@ public class InvoiceReport {
 		JDBCReader jr = new JDBCReader();
 		jr.createConnection();
 
-// 		ParserFunctions pf = new ParserFunctions();
-// 		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
-// 		List<Product> lprod = ParserFunctions.parseProducts();
-// 		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
-// 		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
-	
-		
-
-		
 		ParserFunctions pf = new ParserFunctions();
 		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
 		List<Product> lprod = ParserFunctions.parseProducts();
@@ -45,16 +36,6 @@ public class InvoiceReport {
 		ndf.displayDetailedInvoice(lInv,lc, lpers,lprod);
 
 
-//	create a display functions object.
-		DisplayFunctions dp = new DisplayFunctions();
-		try {
-			DisplayFunctions.summaryReport(lInv, lc, lpers, lprod);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		DisplayFunctions.calculateDetailedInvoice(lInv, lc, lpers, lprod);
-		
 
 	}
 
