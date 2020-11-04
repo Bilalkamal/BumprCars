@@ -261,7 +261,7 @@ public class DisplayFunctions {
 
 			Double partsCost = 0.0;
 
-			Integer concessionUnits = 0;
+			Double concessionUnits = 0.0;
 
 			Double itemTax = 0.0;
 
@@ -372,8 +372,8 @@ public class DisplayFunctions {
 //						Concessions
 						else if (p.getProductType().equals("C")) {
 							productInfo = "units";
-							Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]));
-							c.setQuantity(Integer.parseInt(itemTokens[1]));
+							Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]));
+							c.setQuantity(Double.parseDouble(itemTokens[1]));
 							productRate = c.getUnitCost();
 							productSubtotal = c.getConcessionCost();
 							extraInfo = "";
@@ -521,8 +521,8 @@ public class DisplayFunctions {
 							lrep.add(f);
 
 						} else if (p.getProductType().equals("C")) {
-							Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]));
-							c.setQuantity(Integer.parseInt(itemTokens[1]));
+							Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]));
+							c.setQuantity(Double.parseDouble(itemTokens[1]));
 							itemCost = c.getConcessionCost();
 							subTotal += itemCost;
 						}
@@ -535,8 +535,8 @@ public class DisplayFunctions {
 				for (Product p : productList) {
 					if (p.getProductCode().equals(itemTokens[0])) {
 
-						Concession c = new Concession((Concession) p, Integer.parseInt(itemTokens[1]), itemTokens[2]);
-						c.setQuantity(Integer.parseInt(itemTokens[1]));
+						Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]), itemTokens[2]);
+						c.setQuantity(Double.parseDouble(itemTokens[1]));
 
 						itemCost = c.getConcessionCost();
 						subTotal += itemCost;

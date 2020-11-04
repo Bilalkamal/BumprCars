@@ -13,7 +13,7 @@ public class Invoice {
 	private String invoiceCode;
 	private String ownerCode;
 	private String customerCode;
-	private List listOfProducts;
+	private List  listOfProducts;
 
 //	Constructor
 	public Invoice(String invoiceCode, String ownerCode, String customerCode, List listOfProducts) {
@@ -23,6 +23,7 @@ public class Invoice {
 		this.customerCode = customerCode;
 		this.listOfProducts = listOfProducts;
 	}
+	
 
 	/**
 	 * @return the invoiceCode

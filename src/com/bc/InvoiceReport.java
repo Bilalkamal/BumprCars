@@ -34,6 +34,10 @@ public class InvoiceReport {
 		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
 		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
 		
+		
+		for (Invoice i: lInv) {
+			System.out.println(i.getListOfProducts());
+		}
 //		New Display function 
 		NewDisplayFunctions ndf = new NewDisplayFunctions();
 		ndf.displayDetailedInvoice(lInv,lc, lpers,lprod);
