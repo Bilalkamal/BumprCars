@@ -14,6 +14,12 @@ public class Person {
 
 //	Constructor Method
 
+	@Override
+	public String toString() {
+		return "Person [code=" + code + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", emails=" + emails + "]";
+	}
+
 	public Person(String code, String firstName, String lastName, Address address, EmailAddress emails) {
 		super();
 		this.code = code;
