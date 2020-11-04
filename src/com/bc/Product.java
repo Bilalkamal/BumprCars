@@ -2,6 +2,11 @@ package com.bc;
 
 public class Product {
 
+	@Override
+	public String toString() {
+		return "Product [code=" + code + ", type=" + type + ", label=" + label + "]";
+	}
+
 	private String code;
 	private String type;
 	private String label;
