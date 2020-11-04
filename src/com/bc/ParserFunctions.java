@@ -232,7 +232,7 @@ public class ParserFunctions {
 							// To hand
 							if (prTokens.length == 3) {
 								Product concessionObj = new Concession((Concession) product,
-										Integer.parseInt(prTokens[1]), prTokens[2]);
+										Double.parseDouble(prTokens[1]), prTokens[2]);
 							} else {
 								// Product repObj = new Concession((Concession) product,
 								// Integer.parseInt(prTokens[1]));
