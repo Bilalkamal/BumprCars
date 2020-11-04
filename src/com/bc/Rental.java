@@ -5,7 +5,7 @@ public class Rental extends Product {
 	private Double dailyCost;
 	private Double deposit;
 	private Double cleaningFee;
-	private Integer daysRented;
+	private Double daysRented;
 	
 	
 //	Constructor Method
@@ -18,7 +18,7 @@ public class Rental extends Product {
 		this.cleaningFee = cleaningFee;
 	}
 	
-	public Rental(Rental rentalObject, Integer daysRented) {
+	public Rental(Rental rentalObject, Double daysRented) {
 		super(rentalObject.getProductCode(),rentalObject.getProductLabel(),rentalObject.getProductType());
 		
 		this.daysRented = this.daysRented;
@@ -34,14 +34,14 @@ public class Rental extends Product {
 	/**
 	 * @return the daysRented
 	 */
-	public Integer getDaysRented() {
+	public Double getDaysRented() {
 		return daysRented;
 	}
 
 	/**
 	 * @param daysRented the daysRented to set
 	 */
-	public void setDaysRented(Integer daysRented) {
+	public void setDaysRented(Double daysRented) {
 		this.daysRented = daysRented;
 	}
 

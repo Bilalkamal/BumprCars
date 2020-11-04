@@ -312,8 +312,8 @@ public class DisplayFunctions {
 						else if (p.getProductType().equals("R")) {
 							rentCheck = true;
 							productInfo = "days";
-							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
-							r.setDaysRented(Integer.parseInt(itemTokens[1]));
+							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
+							r.setDaysRented(Double.parseDouble(itemTokens[1]));
 							productRate = r.getDailyCost();
 							productSubtotal = r.getRentCost();
 							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
@@ -486,8 +486,8 @@ public class DisplayFunctions {
 
 						if (p.getProductType().equals("R")) {
 							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
-							Rental r = new Rental((Rental) p, Integer.parseInt(itemTokens[1]));
-							r.setDaysRented(Integer.parseInt(itemTokens[1]));
+							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
+							r.setDaysRented(Double.parseDouble(itemTokens[1]));
 							itemCost = r.getRentCost();
 
 							subTotal += itemCost;

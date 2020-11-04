@@ -24,6 +24,12 @@ public class Invoice {
 		this.listOfProducts = listOfProducts;
 	}
 
+	@Override
+	public String toString() {
+		return "Invoice [invoiceCode=" + invoiceCode + ", ownerCode=" + ownerCode + ", customerCode=" + customerCode
+				+ ", listOfProducts=" + listOfProducts + "]";
+	}
+
 	/**
 	 * @return the invoiceCode
 	 */

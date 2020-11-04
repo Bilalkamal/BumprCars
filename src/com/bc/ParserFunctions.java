@@ -227,7 +227,7 @@ public class ParserFunctions {
 							Product repObj = new Repair((Repair) product, Double.parseDouble(prTokens[1]));
 
 						} else if (product.getProductType() == "R") {
-							Product rentObj = new Rental((Rental) product, Integer.parseInt(prTokens[1]));
+							Product rentObj = new Rental((Rental) product, Double.parseDouble(prTokens[1]));
 						} else if (product.getProductType() == "C") {
 							// To hand
 							if (prTokens.length == 3) {

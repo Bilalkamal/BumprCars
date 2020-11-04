@@ -50,6 +50,12 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerCode=" + customerCode + ", customerType=" + customerType + ", name=" + name
+				+ ", customerContactCode=" + customerContactCode + ", address=" + address + "]";
+	}
 	
 
 	
