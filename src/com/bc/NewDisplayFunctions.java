@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+
 public class NewDisplayFunctions {
 
+	InvoiceCalculator iCalculator = new InvoiceCalculator();
+	
 	
 	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
-
+		
 //		Display header 
 		System.out.println("Invoice Details:");
 
