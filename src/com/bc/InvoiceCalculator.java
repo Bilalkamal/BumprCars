@@ -4,14 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class InvoiceCalculator {
 
-	/**
-	 * This Function will calculate the subtotal for an invoice
-	 * 
-	 * @param invoice
-	 * @return Subtotal
-	 */
+	
+	
+/**
+ * This will get an Invoice and send back the subtotal of all products
+ */
+	Verifier v = new Verifier();
 	public Double calculateInvoiceSubtotal(Invoice invoice) {
 
 		List<Product> productList = invoice.getListOfProducts();
@@ -158,6 +159,14 @@ public class InvoiceCalculator {
 		Boolean isBusiness = null;
 		Double itemTaxDouble = 0.0;
 //		TODO: Verify customer Type 
+		Customer customer = v.verifyCustomer(invoice.getCustomerCode());
+		
+		if(customer.getCustomerType().equals("B")) {
+			isBusiness = true;
+		}else {
+			isBusiness = false;
+		}
+		
 		if (isBusiness) {
 			for (Product p : productsList) {
 				itemTaxDouble = calculateProductBusinessTax(p, invoice);
@@ -173,6 +182,27 @@ public class InvoiceCalculator {
 		return totalTaxesForInvoice;
 	}
 
+	
+	
+	public Double calculateLoLoyaltyDiscount(Invoice invoice) {
+		List<Product> products= v.listOfProducts;
+		List<Customer> customers= v.listOfCustomers;
+		Customer c = v.verifyCustomer(invoice.getCustomerCode());
+		Person person = v.verifyPerson(invoice.getOwnerCode());
+		if (c.getCustomerType().equals("P")) {
+			 if (person.getEmailAddress().getLength() >1) {
+				//calaculate the discount & return it 
+				 
+				 
+			}
+				
+			}
+			return 0.0;
+		}
+		
+		
+		
+	
 	
 	/**
 	 * This will calculate the business tax, which is 4.25%, for a product.

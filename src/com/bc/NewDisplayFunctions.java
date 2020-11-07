@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public class NewDisplayFunctions {
+
 	InvoiceCalculator iCalculator = new InvoiceCalculator();
 	
 	
@@ -18,11 +19,13 @@ public class NewDisplayFunctions {
 		System.out.println("Invoice Details:");
 
 		for (Invoice inv : lInv) {
-			String str = "+=".repeat(40);
+			String str = "+=".repeat(57);
 			System.out.println(str);
 //			Print Invoice Number 
 
-			System.out.print(inv.getInvoiceCode() + "\n");
+			System.out.print("Invoice "+inv.getInvoiceCode() + "\n");
+			System.out.println("--".repeat(20));
+			
 //			Print Owner Details
 			String ownerCode = inv.getOwnerCode();
 			String customerCode = inv.getCustomerCode();
@@ -31,6 +34,9 @@ public class NewDisplayFunctions {
 			Customer verifiedCustomer = verifyCustomer(customerCode, lc);
 
 			displayDetailedInvoiceHeader(verifiedCustomer, verifiedPerson);
+//			Print the Products 
+			printInvoiceInfo(inv);
+
  
 			
 		}
@@ -81,17 +87,17 @@ public class NewDisplayFunctions {
 //	A function that is given a person and prints his/her info (Name, EmailAddress, and Address)
 	private void printPersonInfo(Person p) {
 		System.out.print("Owner: \n");
-		System.out.printf("%10s, %s \n", p.getLastName(), p.getFirstName());
+		System.out.printf(" ".repeat(10)+"%s, %s \n", p.getLastName(), p.getFirstName());
 		if (p.getEmailAddress() != null) {
-			System.out.printf("%10s \n", p.getEmailAddress().getEmailAddress());
+			System.out.printf(" ".repeat(10)+"%s \n", p.getEmailAddress().getEmailAddress());
 		} else {
 
-			System.out.printf("%10s \n", "[]");
+			System.out.printf(" ".repeat(10)+"%s \n", "[]");
 		}
 		Address personAddress = p.getAddress();
 
-		System.out.printf("%10s \n", personAddress.getStreet());
-		System.out.printf("%10s, %s %s %s \n", personAddress.getCity(), personAddress.getState(),
+		System.out.printf(" ".repeat(10)+"%s \n", personAddress.getStreet());
+		System.out.printf(" ".repeat(9)+"%s, %s %s %s \n", personAddress.getCity(), personAddress.getState(),
 				personAddress.getCountry(), personAddress.getZip());
 
 	}
@@ -103,17 +109,43 @@ public class NewDisplayFunctions {
 
 		Boolean businessAccount = c.getCustomerType().equals("B");
 		if (businessAccount) {
-			System.out.printf("%10s %s \n", c.getName(), "(Business Account)");
+			System.out.printf(" ".repeat(10)+"%s %s \n", c.getName(), "(Business Account)");
 		} else {
-			System.out.printf("%10s \n", c.getName());
+			System.out.printf(" ".repeat(10)+"%s %s \n", c.getName(),"(Personal Account)");
 		}
 
 		Address customerAddress = c.getAddress();
 
-		System.out.printf("%10s \n", customerAddress.getStreet());
-		System.out.printf("%10s, %s %s %s \n", customerAddress.getCity(), customerAddress.getState(),
+		System.out.printf(" ".repeat(10)+"%s \n", customerAddress.getStreet());
+		System.out.printf(" ".repeat(10)+"%s, %s %s %s \n", customerAddress.getCity(), customerAddress.getState(),
 				customerAddress.getCountry(), customerAddress.getZip());
 
 	}
+	
+	private void printInvoiceInfo(Invoice I) {
+		List<Product> productList = I.getListOfProducts();
+		System.out.print("Products: \n");
+		System.out.println("code"+" ".repeat(15)+"Description"+" ".repeat(30)+
+				"Subtotal"+" ".repeat(10)+"Discount"+" ".repeat(10)+"Taxes"+" ".repeat(10)+"Total");
+		System.out.println("---".repeat(38));
+		for (Product p : productList) {
+			String productType = null;
+			
+			System.out.println(p.getProductCode()+p.getProductType());
+//			
+		}
+
+		
+		
+		
+		
+		
+
+//		System.out.printf(" ".repeat(10)+"%s \n", customerAddress.getStreet());
+//		System.out.printf(" ".repeat(10)+"%s, %s %s %s \n", customerAddress.getCity(), customerAddress.getState(),
+//				customerAddress.getCountry(), customerAddress.getZip());
+
+	}
+
 
 }

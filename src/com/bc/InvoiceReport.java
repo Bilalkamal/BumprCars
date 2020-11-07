@@ -22,14 +22,20 @@ public class InvoiceReport {
 	public static void main(String[] args) throws IOException {
 		JDBCReader jr = new JDBCReader();
 		jr.createConnection();
-		
+
 		List<Product> listOfProducts = jr.loadAllProducts();
 		List<Person> listOfPersons = jr.loadAllPersons();
 		List<Customer> listOfCustomers = jr.loadAllCustomer();
 		List<Invoice> listOfInvoices = jr.loadAllInvoices();
 		
-		DisplayFunctions dFunctions = new DisplayFunctions();
-		dFunctions.summaryReport(listOfInvoices, listOfCustomers, listOfPersons, listOfProducts);
+
+
+//		New Display function 
+		NewDisplayFunctions ndf = new NewDisplayFunctions();
+		ndf.displayDetailedInvoice(listOfInvoices,listOfCustomers, listOfPersons,listOfProducts);
+
+
+		
 	}
 
 
