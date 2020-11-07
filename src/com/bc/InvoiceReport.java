@@ -23,17 +23,16 @@ public class InvoiceReport {
 		JDBCReader jr = new JDBCReader();
 		jr.createConnection();
 
-		ParserFunctions pf = new ParserFunctions();
-		ArrayList<Person> lpers = (ArrayList<Person>) ParserFunctions.parsePersons();
-		List<Product> lprod = ParserFunctions.parseProducts();
-		List<Customer> lc = ParserFunctions.parseCustomers(lpers);
-		List<Invoice> lInv = ParserFunctions.parseInvoices(lprod);
+		List<Product> listOfProducts = jr.loadAllProducts();
+		List<Person> listOfPersons = jr.loadAllPersons();
+		List<Customer> listOfCustomers = jr.loadAllCustomer();
+		List<Invoice> listOfInvoices = jr.loadAllInvoices();
 		
 
 
 //		New Display function 
 		NewDisplayFunctions ndf = new NewDisplayFunctions();
-		ndf.displayDetailedInvoice(lInv,lc, lpers,lprod);
+		ndf.displayDetailedInvoice(listOfInvoices,listOfCustomers, listOfPersons,listOfProducts);
 
 
 
