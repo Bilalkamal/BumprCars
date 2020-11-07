@@ -19,9 +19,18 @@ public class Rental extends Product {
 	}
 	
 	public Rental(Rental rentalObject, Double daysRented) {
-		super(rentalObject.getProductCode(),rentalObject.getProductLabel(),rentalObject.getProductType());
+		super(rentalObject.getProductCode(),rentalObject.getProductType(),rentalObject.getProductLabel());
 		
-		this.daysRented = this.daysRented;
+		this.daysRented = daysRented;
+		this.dailyCost = rentalObject.getDailyCost();
+		this.cleaningFee = rentalObject.getCleaningFee();
+		this.deposit = rentalObject.getDeposit();
+		
+	}
+	public Rental(Rental rentalObject) {
+		super(rentalObject.getProductCode(),rentalObject.getProductType(),rentalObject.getProductLabel());
+		
+		this.daysRented = rentalObject.daysRented;
 		this.dailyCost = rentalObject.getDailyCost();
 		this.cleaningFee = rentalObject.getCleaningFee();
 		this.deposit = rentalObject.getDeposit();
@@ -97,8 +106,6 @@ public class Rental extends Product {
 
 	
 	public double getRentCost() {
-		
-		
 		return (this.dailyCost * this.daysRented) - this.deposit + this.cleaningFee;
 		
 	}

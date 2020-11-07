@@ -19,11 +19,7 @@ public class DisplayFunctions {
 //Summary Report - This function views the summary report for all invoices
 //	It Includes: 1. The Invoice Code 2. The Owner 3. The Customer Account associated with the Invoice 4. The Subtotal for the whole invoice 5. The Discounts 
 //	6. The Fees 7. The Taxes 8. The Total for the Invoice 9. The totals of all theses as a final line
-	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
-
-			
-			
-			
+	public static void summaryReport(List<Invoice> lInv, List<Customer> lc, List<Person> lpers,
 			List<Product> lprod) throws IOException {
 		Double loyaltyDiscount = 0.0;
 
@@ -31,7 +27,7 @@ public class DisplayFunctions {
 		WriterFunction.write(
 				"Code      Owner                  Customer Account      Subtotal      Discount        Fees        Taxes           Total \n");
 
-		WriterFunction.write(
+		System.out.println(
 				"-----------------------------------------------------------------------------------------------------------------------------------\n");
 
 		Double allSubtotals = 0.0;
@@ -41,7 +37,7 @@ public class DisplayFunctions {
 		Double allTotals = 0.0;
 
 		for (Invoice s : lInv) {
-
+			
 
 			//Check Owner code
 
@@ -460,7 +456,7 @@ public class DisplayFunctions {
 
 // This function is used by the summary report to calculate the numbers needed for each invoice. 
 
-	public static List<Double> calculateSubtotal(List<Product> productList, List<String> boughtList) {// 0th element is
+	public static List<Double> calculateSubtotal(List<Product> productList, List<Product> boughtList) {// 0th element is
 																										// the subtotal
 		Double subTotal = 0.0;
 		Double itemCost = 0.0;
@@ -478,88 +474,81 @@ public class DisplayFunctions {
 
 		List<Repair> lrep = new ArrayList<Repair>();
 
-		for (String item : boughtList) {
-
-			String itemTokens[] = item.split(":");
-
-			if (itemTokens.length == 2) {
-
-				for (Product p : productList) {
-
-					if (p.getProductCode().equals(itemTokens[0])) {
-
-						if (p.getProductType().equals("R")) {
-							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
-							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
-							r.setDaysRented(Double.parseDouble(itemTokens[1]));
-							itemCost = r.getRentCost();
-
-							subTotal += itemCost;
-
-						} else if (p.getProductType().equals("T")) {
-							towingDiscountMap.put("Towing", towingDiscountMap.get("Towing") + 1);
-
-							Towing t = new Towing((Towing) p, Double.parseDouble(itemTokens[1]));
-							t.setMilesTowed(Double.parseDouble(itemTokens[1]));
-							itemCost = t.getTowingcost();
-							subTotal += itemCost;
-
-							if ((towingDiscountMap.get("Rental") > 0) && ((towingDiscountMap.get("Repair") > 0))
-									&& (towingDiscountMap.get("Towing") > 0)) {
-								towingDiscount -= itemCost;
-
-							}
-
-						} else if (p.getProductType().equals("F")) {
-							towingDiscountMap.put("Repair", towingDiscountMap.get("Repair") + 1);
-
-							Repair f = new Repair((Repair) p, Double.parseDouble(itemTokens[1]));
-							f.setHoursWorked(Double.parseDouble(itemTokens[1]));
-							itemCost = f.getRepairCost();
-							subTotal += itemCost;
-
-							lrep.add(f);
-
-						} else if (p.getProductType().equals("C")) {
-							Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]));
-							c.setQuantity(Double.parseDouble(itemTokens[1]));
-							itemCost = c.getConcessionCost();
-							subTotal += itemCost;
-						}
-
-					}
-				}
-
-			} else {
-
-				for (Product p : productList) {
-					if (p.getProductCode().equals(itemTokens[0])) {
-
-						Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]), itemTokens[2]);
-						c.setQuantity(Double.parseDouble(itemTokens[1]));
-
-						itemCost = c.getConcessionCost();
-						subTotal += itemCost;
-
-						concessionDiscount = itemCost * -0.1;
-						concessionTotalDiscount += concessionDiscount;
-
-					}
-
-				}
-
+		for (Product pr : boughtList) {
+			
+			
+			if (pr.getProductType().equals("R")) {
+				Rental rental = new Rental((Rental) pr);
+				System.out.println(rental.getRentCost());
 			}
+			
+
+			
+
+//				for (Product p : productList) {
+//
+//					if (p.getProductCode().equals(pr.getProductCode())) {
+//
+//						if (p.getProductType().equals("R")) {
+//							towingDiscountMap.put("Rental", towingDiscountMap.get("Rental") + 1);
+//							Rental r = new Rental((Rental) p, Double.parseDouble(itemTokens[1]));
+//							r.setDaysRented(Double.parseDouble();
+//							itemCost = r.getRentCost();
+//
+//							subTotal += itemCost;
+//
+//						} else if (p.getProductType().equals("T")) {
+//							towingDiscountMap.put("Towing", towingDiscountMap.get("Towing") + 1);
+//
+//							Towing t = new Towing((Towing) p, Double.parseDouble(itemTokens[1]));
+//							t.setMilesTowed(Double.parseDouble(itemTokens[1]));
+//							itemCost = t.getTowingcost();
+//							subTotal += itemCost;
+//
+//							if ((towingDiscountMap.get("Rental") > 0) && ((towingDiscountMap.get("Repair") > 0))
+//									&& (towingDiscountMap.get("Towing") > 0)) {
+//								towingDiscount -= itemCost;
+//
+//							}
+//
+//						} else if (p.getProductType().equals("F")) {
+//							towingDiscountMap.put("Repair", towingDiscountMap.get("Repair") + 1);
+//
+//							Repair f = new Repair((Repair) p, Double.parseDouble(itemTokens[1]));
+//							f.setHoursWorked(Double.parseDouble(itemTokens[1]));
+//							itemCost = f.getRepairCost();
+//							subTotal += itemCost;
+//
+//							lrep.add(f);
+//
+//						} else if (p.getProductType().equals("C")) {
+//							Concession c = new Concession((Concession) p, Double.parseDouble(itemTokens[1]));
+//							c.setQuantity(Double.parseDouble(itemTokens[1]));
+//							itemCost = c.getConcessionCost();
+//							subTotal += itemCost;
+//						}
+//
+//					}
+//			
+
+			
+
+			
+
+//			}
 
 		}
 
-		Double towingAndConcessionDiscount = concessionTotalDiscount + towingDiscount;
-		Double subtotalAfterDiscount = subTotal + towingAndConcessionDiscount;
-		List<Double> finalResult = new ArrayList<Double>();
-		finalResult.add(subTotal);
-
-		finalResult.add(towingAndConcessionDiscount);
-		finalResult.add(subtotalAfterDiscount);
-		return finalResult;
+//		Double towingAndConcessionDiscount = concessionTotalDiscount + towingDiscount;
+//		Double subtotalAfterDiscount = subTotal + towingAndConcessionDiscount;
+//		List<Double> finalResult = new ArrayList<Double>();
+//		finalResult.add(subTotal);
+//
+//		finalResult.add(towingAndConcessionDiscount);
+//		finalResult.add(subtotalAfterDiscount);
+		List<Double >finalResults = new ArrayList<Double>();
+		return finalResults;
+		
 	}
 //
 }

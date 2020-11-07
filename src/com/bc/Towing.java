@@ -21,9 +21,15 @@ public class Towing extends Product {
 		this.costPerMile = costPerMile;
 	}
 	public Towing (Towing towingObject, Double milesTowed) {
-		super(towingObject.getProductCode(),towingObject.getProductLabel(),towingObject.getProductType());
+		super(towingObject.getProductCode(),towingObject.getProductType(),towingObject.getProductLabel());
 		this.costPerMile = towingObject.getCostPerMile();
-		this.milesTowed = this.milesTowed;
+		this.milesTowed = milesTowed;
+		
+		
+	}public Towing (Towing towingObject) {
+		super(towingObject.getProductCode(),towingObject.getProductType(),towingObject.getProductLabel());
+		this.costPerMile = towingObject.getCostPerMile();
+		this.milesTowed = towingObject.milesTowed;
 		
 		
 	}

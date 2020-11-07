@@ -7,9 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class NewDisplayFunctions {
-
-	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, ArrayList<Person> lpers,
-			List<Product> lprod) {
+	InvoiceCalculator iCalculator = new InvoiceCalculator();
+	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
 
 //		Display header 
 		System.out.println("Invoice Details:");
@@ -28,14 +27,14 @@ public class NewDisplayFunctions {
 			Customer verifiedCustomer = verifyCustomer(customerCode, lc);
 
 			displayDetailedInvoiceHeader(verifiedCustomer, verifiedPerson);
-//			Print the Products 
-
+ 
+			
 		}
 
 	}
 
 //	A function to verify a person is in the list persons 
-	private Person verifyPerson(String personCode, ArrayList<Person> lpers) {
+	private Person verifyPerson(String personCode, List<Person> lpers) {
 		// TODO Auto-generated method stub
 
 		Person verifiedPerson = null;
@@ -53,17 +52,13 @@ public class NewDisplayFunctions {
 
 //	A function to verify a Customer is in the list Customers 
 	private Customer verifyCustomer(String customerCode, List<Customer> lc) {
-		// TODO Auto-generated method stub
-
 		Customer verifiedCustomer = null;
 		for (Customer c : lc) {
 			if (c.getCustomerCode().equals(customerCode)) {
 				verifiedCustomer = c;
 			}
-
 		}
 		return verifiedCustomer;
-
 	}
 
 //	Display Header Function
@@ -108,9 +103,7 @@ public class NewDisplayFunctions {
 		} else {
 			System.out.printf("%10s \n", c.getName());
 		}
-		
-		
-		
+
 		Address customerAddress = c.getAddress();
 
 		System.out.printf("%10s \n", customerAddress.getStreet());
