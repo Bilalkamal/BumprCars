@@ -19,7 +19,7 @@ public class InvoiceReport {
 
 //This is the main function that generates the invoice reports, both summary and detailed reports. 
 //	It parses the invoices and passes them to the display functions class to do its calculations and write them to an output file
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		JDBCReader jr = new JDBCReader();
 		jr.createConnection();
 
@@ -35,7 +35,7 @@ public class InvoiceReport {
 		ndf.displayDetailedInvoice(listOfInvoices,listOfCustomers, listOfPersons,listOfProducts);
 
 
-
+		
 	}
 
 

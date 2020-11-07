@@ -8,8 +8,8 @@ import java.util.List;
 
 public class NewDisplayFunctions {
 
-	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers,
-			List<Product> lprod) {
+	
+	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
 
 //		Display header 
 		System.out.println("Invoice Details:");
@@ -33,6 +33,8 @@ public class NewDisplayFunctions {
 //			Print the Products 
 			printInvoiceInfo(inv);
 
+ 
+			
 		}
 
 	}
@@ -56,17 +58,13 @@ public class NewDisplayFunctions {
 
 //	A function to verify a Customer is in the list Customers 
 	private Customer verifyCustomer(String customerCode, List<Customer> lc) {
-		// TODO Auto-generated method stub
-
 		Customer verifiedCustomer = null;
 		for (Customer c : lc) {
 			if (c.getCustomerCode().equals(customerCode)) {
 				verifiedCustomer = c;
 			}
-
 		}
 		return verifiedCustomer;
-
 	}
 
 //	Display Header Function
@@ -111,9 +109,7 @@ public class NewDisplayFunctions {
 		} else {
 			System.out.printf(" ".repeat(10)+"%s %s \n", c.getName(),"(Personal Account)");
 		}
-		
-		
-		
+
 		Address customerAddress = c.getAddress();
 
 		System.out.printf(" ".repeat(10)+"%s \n", customerAddress.getStreet());

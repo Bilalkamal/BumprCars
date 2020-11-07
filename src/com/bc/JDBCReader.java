@@ -410,6 +410,7 @@ public class JDBCReader {
 					Double deposit = RSGetProduct.getDouble("deposit");
 					Double cleaningFee = RSGetProduct.getDouble("cleaningFee");
 					Rental rental = new Rental(productCode, productType, productLabel, dailyCost, deposit, cleaningFee);
+					
 					lst.add(rental);
 				} else if (productType.equals("F")) {
 					Double partsCost = RSGetProduct.getDouble("partsCost");
@@ -539,15 +540,22 @@ public class JDBCReader {
 				for (Product p : currentProducts) {
 					if (p.getProductCode().equals(productCode)) {
 						if (p.getProductType().equals("R")) {
+
+							System.out.println(productCode.toString());
 							product = new Rental((Rental) p, daysRented);
+							
 						} else if (p.getProductType().equals("F")) {
 							product = new Repair((Repair) p, hoursWorked);
+							
 						} else if (p.getProductType().equals("T")) {
 							product = new Towing((Towing) p, milesTowed);
+							
 						} else if (p.getProductType().equals("C") && (repairCode != null)) {
 							product = new Concession((Concession) p, quantity, repairCode);
+							
 						} else if (p.getProductType().equals("C")) {
 							product = new Concession((Concession) p, quantity);
+							
 						}
 					}
 				}

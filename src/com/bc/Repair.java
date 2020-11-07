@@ -22,9 +22,16 @@ public class Repair extends Product {
 	
 	
 	public Repair(Repair repairObject, Double hoursWorked) {
-		super(repairObject.getProductCode(),repairObject.getProductLabel(),repairObject.getProductType());
+		super(repairObject.getProductCode(),repairObject.getProductType(),repairObject.getProductLabel());
 		
 		this.hoursWorked = hoursWorked;
+		this.partsCost = repairObject.getPartsCost();
+		this.hourlyLaborCost = repairObject.getHourlyLaborCost();
+		
+	}public Repair(Repair repairObject) {
+		super(repairObject.getProductCode(),repairObject.getProductType(),repairObject.getProductLabel());
+		
+		this.hoursWorked = repairObject.hoursWorked;
 		this.partsCost = repairObject.getPartsCost();
 		this.hourlyLaborCost = repairObject.getHourlyLaborCost();
 		
