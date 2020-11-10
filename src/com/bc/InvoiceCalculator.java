@@ -4,15 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class InvoiceCalculator {
 
-	
-	
-/**
- * This will get an Invoice and send back the subtotal of all products
- */
+	/**
+	 * This will get an Invoice and send back the subtotal of all products
+	 */
 	Verifier v = new Verifier();
+
 	public Double calculateInvoiceSubtotal(Invoice invoice) {
 
 		List<Product> productList = invoice.getListOfProducts();
@@ -103,7 +101,7 @@ public class InvoiceCalculator {
 	 * @param Concession
 	 * @return Discount value for a concession item
 	 */
-	private Double getConcessionDiscount(Concession c) {
+	public Double getConcessionDiscount(Concession c) {
 
 		Double concessionDiscountDouble = 0.0;
 
@@ -123,7 +121,7 @@ public class InvoiceCalculator {
 	 * @param Invoice
 	 * @return
 	 */
-	private Double getTowingDiscount(Towing t, Invoice invoice) {
+	public Double getTowingDiscount(Towing t, Invoice invoice) {
 
 		List<Product> productsList = invoice.getListOfProducts();
 		Map<String, Integer> towingMap = new HashMap<String, Integer>();
@@ -147,26 +145,49 @@ public class InvoiceCalculator {
 	}
 
 	/**
+	 * This function calculates the total discounts on a certain invoice.
+	 * 
+	 * @param invoice
+	 * @return Double
+	 */
+	public Double calculateTotalDiscounts(Invoice invoice) {
+
+		Double invoiceTotalDiscountsDouble = 0.0;
+		List<Product> productsList = invoice.getListOfProducts();
+
+		for (Product product : productsList) {
+			if (product.getProductType().equals("T")) {
+
+				invoiceTotalDiscountsDouble += getTowingDiscount((Towing) product, invoice);
+			} else if (product.getProductType().equals("C")) {
+				invoiceTotalDiscountsDouble += getConcessionDiscount((Concession) product);
+			}
+		}
+		return invoiceTotalDiscountsDouble;
+
+	}
+
+	/**
 	 * This function takes in an invoice and calculates the total taxes for the
 	 * Invoice, based on the customer type.
 	 * 
 	 * @param Invoice
 	 * @return Total Taxes for an invoice
 	 */
-	private Double calculateTotalTaxes(Invoice invoice) {
+	public Double calculateTotalTaxes(Invoice invoice) {
 		Double totalTaxesForInvoice = 0.0;
 		List<Product> productsList = invoice.getListOfProducts();
 		Boolean isBusiness = null;
 		Double itemTaxDouble = 0.0;
 //		TODO: Verify customer Type 
 		Customer customer = v.verifyCustomer(invoice.getCustomerCode());
-		
-		if(customer.getCustomerType().equals("B")) {
+
+		if (customer.getCustomerType().equals("B")) {
 			isBusiness = true;
-		}else {
+		} else {
 			isBusiness = false;
 		}
-		
+
 		if (isBusiness) {
 			for (Product p : productsList) {
 				itemTaxDouble = calculateProductBusinessTax(p, invoice);
@@ -174,7 +195,7 @@ public class InvoiceCalculator {
 			}
 		} else {
 			for (Product p : productsList) {
-				itemTaxDouble = calculateProductPersonTax(p,invoice);
+				itemTaxDouble = calculateProductPersonTax(p, invoice);
 				totalTaxesForInvoice += itemTaxDouble;
 			}
 		}
@@ -182,36 +203,15 @@ public class InvoiceCalculator {
 		return totalTaxesForInvoice;
 	}
 
-	
-	
-	public Double calculateLoLoyaltyDiscount(Invoice invoice) {
-		List<Product> products= v.listOfProducts;
-		List<Customer> customers= v.listOfCustomers;
-		Customer c = v.verifyCustomer(invoice.getCustomerCode());
-		Person person = v.verifyPerson(invoice.getOwnerCode());
-		if (c.getCustomerType().equals("P")) {
-			 if (person.getEmailAddress().getLength() >1) {
-				//calaculate the discount & return it 
-				 
-				 
-			}
-				
-			}
-			return 0.0;
-		}
-		
-		
-		
-	
-	
 	/**
-	 * This will calculate the business tax, which is 4.25%, for a product.
-	 * It takes the invoice, because the towing needs the invoice to check for dicount.
+	 * This will calculate the business tax, which is 4.25%, for a product. It takes
+	 * the invoice, because the towing needs the invoice to check for dicount.
+	 * 
 	 * @param product
 	 * @param invoice
 	 * @return
 	 */
-	private Double calculateProductBusinessTax(Product product, Invoice invoice) {
+	public Double calculateProductBusinessTax(Product product, Invoice invoice) {
 
 		Double itemBusinessTaxDouble = 0.0;
 
@@ -229,14 +229,16 @@ public class InvoiceCalculator {
 
 		return 0.0425 * itemBusinessTaxDouble;
 	}
+
 	/**
-	 * This will calculate the business tax, which is 4.25%, for a product.
-	 * It takes the invoice, because the towing needs the invoice to check for dicount.
+	 * This will calculate the business tax, which is 4.25%, for a product. It takes
+	 * the invoice, because the towing needs the invoice to check for dicount.
+	 * 
 	 * @param product
 	 * @param invoice
 	 * @return
 	 */
-	private Double calculateProductPersonTax(Product product, Invoice invoice) {
+	public Double calculateProductPersonTax(Product product, Invoice invoice) {
 
 		Double itemBusinessTaxDouble = 0.0;
 
@@ -253,6 +255,215 @@ public class InvoiceCalculator {
 		}
 
 		return 0.08 * itemBusinessTaxDouble;
+	}
+
+	/**
+	 * This function takes a product and an invoice and calculate the product's
+	 * final price.
+	 * 
+	 * @param invoice
+	 * @param p
+	 * @return Double
+	 */
+
+	public Double calculateItemTotal(Invoice invoice, Product p) {
+		Double itemTotal = 0.0;
+		Double itemSubtotal = 0.0;
+		Double itemDiscount = 0.0;
+		Double itemTax = 0.0;
+		Customer customer = v.verifyCustomer(invoice.getCustomerCode());
+
+		if (p.getProductType().equals("R")) {
+			Rental rental = new Rental((Rental) p);
+			itemSubtotal = calculateRentalSubtotal(rental);
+		} else if (p.getProductType().equals("T")) {
+			Towing towing = new Towing((Towing) p);
+			itemSubtotal = calculateTowingSubtotal(towing);
+			itemDiscount = getTowingDiscount(towing, invoice);
+		}
+		if (p.getProductType().equals("F")) {
+			Repair repair = new Repair((Repair) p);
+			itemSubtotal = calculateRepairSubtotal(repair);
+		}
+		if (p.getProductType().equals("C")) {
+			Concession concession = new Concession((Concession) p);
+			itemSubtotal = calculateConcessionSubtotal(concession);
+			itemDiscount = getConcessionDiscount(concession);
+		}
+
+		if (customer.getCustomerType().equals("B")) {
+			itemTax = calculateProductBusinessTax(p, invoice);
+		} else {
+			itemTax = calculateProductPersonTax(p, invoice);
+		}
+
+		itemTotal = itemSubtotal + itemDiscount + itemTax;
+		return itemTotal;
+	}
+
+	/**
+	 * This function calculates the invoice item totals.
+	 * 
+	 * @param invoice
+	 * @return Double
+	 */
+
+	public Double calculateInvoiceItemTotals(Invoice invoice) {
+
+		Double invoiceItemTotalsDouble = 0.0;
+		List<Product> productList = invoice.getListOfProducts();
+
+		for (Product p : productList) {
+			invoiceItemTotalsDouble += calculateItemTotal(invoice, p);
+		}
+
+		return invoiceItemTotalsDouble;
+	}
+
+	/**
+	 * Checks if a business account fee is applicable to this invoice.
+	 * 
+	 * @param invoice
+	 * @return Boolean
+	 */
+	public Boolean checkBusinessAccount(Invoice invoice) {
+
+		Customer customer = v.verifyCustomer(invoice.getCustomerCode());
+		if (customer.getCustomerType().equals("B")) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * Checks if a loyalty discount is applicable to this invoice.
+	 * 
+	 * @param invoice
+	 * @return Boolean
+	 */
+	public Boolean checkLoyaltyDiscount(Invoice invoice) {
+
+		Person person = v.verifyPerson(invoice.getOwnerCode());
+		if (person.getEmailAddress().getLength() > 1) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * This function calculates the loyalty discount for an invoice.
+	 * 
+	 * @param invoice
+	 * @return
+	 */
+	public Double calculateLoyaltyDiscount(Invoice invoice) {
+
+		Double loyaltyDiscount = 0.0;
+		if (checkLoyaltyDiscount(invoice)) {
+			loyaltyDiscount = -0.05 * calculateInvoiceItemTotals(invoice);
+		}
+		return loyaltyDiscount;
+	}
+
+	/**
+	 * This function calculates the grand total of an invoice after checking the
+	 * business fee and loyalty discount.
+	 * 
+	 * @param invoice
+	 * @return Double
+	 */
+
+	public Double calculateGrandTotal(Invoice invoice) {
+
+		Double grandTotal = calculateInvoiceItemTotals(invoice);
+
+		if (checkBusinessAccount(invoice)) {
+			grandTotal += 75.0;
+		} else if (checkLoyaltyDiscount(invoice)) {
+			grandTotal += calculateLoyaltyDiscount(invoice);
+		}
+		return grandTotal;
+
+	}
+
+	/**
+	 * This functions calculates all subtotals on a list of invoices.
+	 * @param listOfInvoices
+	 * @return Double
+	 */
+	
+	public Double calculateAllInvoicesSubtotals(List<Invoice> listOfInvoices) {
+
+		Double allInvoicesSubtotals = 0.0;
+		for (Invoice invoice : listOfInvoices) {
+			allInvoicesSubtotals += calculateInvoiceSubtotal(invoice);
+		}
+		return allInvoicesSubtotals;
+	}
+
+	/**
+	 * This functions calculates all discounts on a list of invoices.
+	 * @param listOfInvoices
+	 * @return Double
+	 */
+	public Double calculateAllInvoicesDiscounts(List<Invoice> listOfInvoices) {
+
+		Double allInvoicesDiscounts = 0.0;
+
+		for (Invoice invoice : listOfInvoices) {
+			allInvoicesDiscounts += calculateTotalDiscounts(invoice);
+		}
+		return allInvoicesDiscounts;
+	}
+
+	/**
+	 * This functions calculates all fees on a list of invoices.
+	 * @param listOfInvoices
+	 * @return
+	 */
+	
+	public Double calculateAllInvoicesFees(List<Invoice> listOfInvoices) {
+		Double allInvoicesFees = 0.0;
+
+		for (Invoice invoice : listOfInvoices) {
+			if (checkBusinessAccount(invoice)) {
+				allInvoicesFees += 75.0;
+			}
+
+		}
+		return allInvoicesFees;
+
+	}
+
+	/**
+	 * This functions calculates all taxes on a list of invoices.
+	 * @param listOfInvoices
+	 * @return Double
+	 */
+	public Double calculateAllInvoicesTaxes(List<Invoice> listOfInvoices) {
+		Double allInvoicesTaxes = 0.0;
+
+		for (Invoice invoice : listOfInvoices) {
+			allInvoicesTaxes += calculateTotalTaxes(invoice);
+		}
+		return allInvoicesTaxes;
+	}
+
+	/**
+	 * This functions calculates all grand totals on a list of invoices.
+	 * @param listOfInvoices
+	 * @return Double
+	 */
+	public Double calculateAllInvoicesGrandTotals(List<Invoice> listOfInvoices) {
+		Double allInvoicesGrandTotals = 0.0;
+
+		for (Invoice invoice : listOfInvoices) {
+			allInvoicesGrandTotals += calculateGrandTotal(invoice);
+		}
+		return allInvoicesGrandTotals;
+		
 	}
 
 }
