@@ -87,8 +87,8 @@ public class NewDisplayFunctions {
 	private void printPersonInfo(Person p) {
 		System.out.print("Owner: \n");
 		System.out.printf(" ".repeat(10)+"%s, %s \n", p.getLastName(), p.getFirstName());
-		if (p.getEmailAddress() != null) {
-			System.out.printf(" ".repeat(10)+"%s \n", p.getEmailAddress().getEmailAddress());
+		if (p.getEmailAddress().getEmailAddress() != null) {
+			System.out.printf(" hi".repeat(10)+"%s \n", p.getEmailAddress().getEmailAddress());
 		} else {
 
 			System.out.printf(" ".repeat(10)+"%s \n", "[]");
@@ -96,7 +96,7 @@ public class NewDisplayFunctions {
 		Address personAddress = p.getAddress();
 
 		System.out.printf(" ".repeat(10)+"%s \n", personAddress.getStreet());
-		System.out.printf(" ".repeat(9)+"%s, %s %s %s \n", personAddress.getCity(), personAddress.getState(),
+		System.out.printf(" ".repeat(10)+"%s, %s %s %s \n", personAddress.getCity(), personAddress.getState(),
 				personAddress.getCountry(), personAddress.getZip());
 
 	}
