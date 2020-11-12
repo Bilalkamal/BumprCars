@@ -15,6 +15,8 @@ import java.util.List;
 
 import com.bc.ext.InvoiceData;
 
+
+
 public class InvoiceReport {
 
 //This is the main function that generates the invoice reports, both summary and detailed reports. 
@@ -27,8 +29,11 @@ public class InvoiceReport {
 		List<Person> listOfPersons = jr.loadAllPersons();
 		List<Customer> listOfCustomers = jr.loadAllCustomer();
 		List<Invoice> listOfInvoices = jr.loadAllInvoices();
+		MyLinkedList<Invoice> aDTInvoiceLinkedList = new MyLinkedList<Invoice>(new InvoiceComparator());
 		
-
+		for (Invoice inv: listOfInvoices) {
+			
+		}
 
 //		New Display function 
 		NewDisplayFunctions ndf = new NewDisplayFunctions();
