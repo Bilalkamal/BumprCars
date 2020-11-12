@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NewDisplayFunctions {
 
-	InvoiceCalculator iCalculator = new InvoiceCalculator();
+	InvoiceCalculator Calculator = new InvoiceCalculator();
 	
 	
 	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
@@ -89,7 +89,7 @@ public class NewDisplayFunctions {
 		System.out.print("Owner: \n");
 		System.out.printf(" ".repeat(10)+"%s, %s \n", p.getLastName(), p.getFirstName());
 		if (p.getEmailAddress().getEmailAddress() != null) {
-			System.out.printf(" hi".repeat(10)+"%s \n", p.getEmailAddress().getEmailAddress());
+			System.out.printf(" ".repeat(10)+"%s \n", p.getEmailAddress().getEmailAddress());
 		} else {
 
 			System.out.printf(" ".repeat(10)+"%s \n", "[]");
@@ -130,9 +130,44 @@ public class NewDisplayFunctions {
 		System.out.println("---".repeat(38));
 		for (Product p : productList) {
 			String productType = null;
+			 
+			String Productcode= p.getProductCode();
+			String Productlabel= p.getProductLabel();
+			String ProductType= p.getProductType();
+			double subtotal= 0.0;
+			double discount= 0.0;
+			double taxes= 0.0;
+			double total= 0.0;
+			//calculate product tax based on customer type
+			if (Calculator.checkBusinessAccount(I)) {
+				taxes=Calculator.calculateProductBusinessTax(p, I);
+			}else {
+				taxes=Calculator.calculateProductPersonTax(p, I);
+			} 
 			
-			System.out.println(p.getProductCode()+p.getProductType());
-//			
+			total=Calculator.calculateItemTotal(I, p);
+			
+			
+			//Calculations of subtotal,discount, and total for each product  
+			if (ProductType.equals("R")) {
+				subtotal=Calculator.calculateRentalSubtotal((Rental)p);
+				discount=0.0;	
+			}else if (ProductType.equals("F")) {
+				subtotal=Calculator.calculateRepairSubtotal((Repair)p);;
+				discount=0.0;	
+			}else if (ProductType.equals("T")) {
+				subtotal=Calculator.calculateTowingSubtotal((Towing)p);
+				discount=Calculator.getTowingDiscount((Towing)p, I);	
+			}else if (ProductType.equals("C")) {
+				subtotal=Calculator.calculateConcessionSubtotal((Concession)p);
+				discount=Calculator.getConcessionDiscount((Concession)p);
+			}
+		
+			
+			System.out.println(String.format("%3s %-25s $ %-2.2f %s $ %-10.2f $ %-10.2f $ %-10.2f",
+					Productcode + " ".repeat(10), Productlabel+" ".repeat(23), subtotal," ".repeat(10), discount,taxes,total));
+
+	
 		}
 
 		

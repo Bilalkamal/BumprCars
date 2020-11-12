@@ -540,8 +540,6 @@ public class JDBCReader {
 				for (Product p : currentProducts) {
 					if (p.getProductCode().equals(productCode)) {
 						if (p.getProductType().equals("R")) {
-
-							System.out.println(productCode.toString());
 							product = new Rental((Rental) p, daysRented);
 							
 						} else if (p.getProductType().equals("F")) {

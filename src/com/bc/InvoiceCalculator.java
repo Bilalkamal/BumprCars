@@ -132,8 +132,8 @@ public class InvoiceCalculator {
 
 		for (Product p : productsList) {
 			if (p.getProductType().equals("R")) {
-
-			} else if (p.getProductType().equals("f")) {
+				towingMap.put("R", towingMap.get("R") + 1);
+			} else if (p.getProductType().equals("F")) {
 				towingMap.put("F", towingMap.get("F") + 1);
 			}
 		}
@@ -221,10 +221,10 @@ public class InvoiceCalculator {
 			itemBusinessTaxDouble = calculateRepairSubtotal((Repair) product);
 		} else if (product.getProductType().equals("C")) {
 			itemBusinessTaxDouble = (calculateConcessionSubtotal((Concession) product)
-					- getConcessionDiscount((Concession) product));
+					+ getConcessionDiscount((Concession) product));
 		} else if (product.getProductType().equals("T")) {
 			itemBusinessTaxDouble = calculateTowingSubtotal((Towing) product)
-					- getTowingDiscount((Towing) product, invoice);
+					+ getTowingDiscount((Towing) product, invoice);
 		}
 
 		return 0.0425 * itemBusinessTaxDouble;
@@ -248,10 +248,10 @@ public class InvoiceCalculator {
 			itemBusinessTaxDouble = calculateRepairSubtotal((Repair) product);
 		} else if (product.getProductType().equals("C")) {
 			itemBusinessTaxDouble = (calculateConcessionSubtotal((Concession) product)
-					- getConcessionDiscount((Concession) product));
+					+ getConcessionDiscount((Concession) product));
 		} else if (product.getProductType().equals("T")) {
 			itemBusinessTaxDouble = calculateTowingSubtotal((Towing) product)
-					- getTowingDiscount((Towing) product, invoice);
+					+ getTowingDiscount((Towing) product, invoice);
 		}
 
 		return 0.08 * itemBusinessTaxDouble;
