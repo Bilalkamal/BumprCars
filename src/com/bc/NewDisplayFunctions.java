@@ -164,7 +164,7 @@ public class NewDisplayFunctions {
 			}
 		
 			
-			System.out.println(String.format("%3s %-25s $ %-2.2f %s $ %-10.2f $ %-10.2f $ %-10.2f",
+			System.out.println(String.format("%3s %25s $ %2.2f %s $ %10.2f $ %10.2f $ %10.2f",
 					Productcode + " ".repeat(10), Productlabel+" ".repeat(23), subtotal," ".repeat(10), discount,taxes,total));
 
 	
