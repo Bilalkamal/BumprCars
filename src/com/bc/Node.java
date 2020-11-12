@@ -4,28 +4,28 @@ package com.bc;
 
 public class Node<T> {
 	
-	private Invoice invoice;
-	private Node<Invoice> next;
+	private T item;
+	private Node<T> next;
 	
-	public Node(Invoice invoice) {
+	public Node(T item) {
 	
-		this.invoice = invoice;
+		this.item = item;
 		this.next = null;
 	}
 
-	public Invoice getInvoice() {
-		return invoice;
+	public T getItem() {
+		return item;
 	}
 
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
+	public void setItem(T item) {
+		this.item = item;
 	}
 
-	public Node<Invoice> getNext() {
+	public Node<T> getNext() {
 		return next;
 	}
 
-	public void setNext(Node<Invoice> next) {
+	public void setNext(Node<T> next) {
 		this.next = next;
 	}
 	

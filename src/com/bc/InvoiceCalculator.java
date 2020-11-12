@@ -227,7 +227,10 @@ public class InvoiceCalculator {
 					+ getTowingDiscount((Towing) product, invoice);
 		}
 
-		return 0.0425 * itemBusinessTaxDouble;
+	
+			return 0.0425 * itemBusinessTaxDouble;	
+		
+		
 	}
 
 	/**
@@ -240,21 +243,22 @@ public class InvoiceCalculator {
 	 */
 	public Double calculateProductPersonTax(Product product, Invoice invoice) {
 
-		Double itemBusinessTaxDouble = 0.0;
+		Double itemProductPersonTaxDouble = 0.0;
 
 		if (product.getProductType().equals("R")) {
-			itemBusinessTaxDouble = calculateRentalSubtotal((Rental) product);
+			itemProductPersonTaxDouble = calculateRentalSubtotal((Rental) product);
 		} else if (product.getProductType().equals("F")) {
-			itemBusinessTaxDouble = calculateRepairSubtotal((Repair) product);
+			itemProductPersonTaxDouble = calculateRepairSubtotal((Repair) product);
 		} else if (product.getProductType().equals("C")) {
-			itemBusinessTaxDouble = (calculateConcessionSubtotal((Concession) product)
+			itemProductPersonTaxDouble = (calculateConcessionSubtotal((Concession) product)
 					+ getConcessionDiscount((Concession) product));
 		} else if (product.getProductType().equals("T")) {
-			itemBusinessTaxDouble = calculateTowingSubtotal((Towing) product)
+			itemProductPersonTaxDouble = calculateTowingSubtotal((Towing) product)
 					+ getTowingDiscount((Towing) product, invoice);
 		}
-
-		return 0.08 * itemBusinessTaxDouble;
+		
+			return 0.08 * itemProductPersonTaxDouble;
+		
 	}
 
 	/**

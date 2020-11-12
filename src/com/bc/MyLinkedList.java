@@ -1,16 +1,61 @@
 package com.bc;
 
+import java.util.Comparator;
+
+
+
 public class MyLinkedList<T> {
 	private Node<T> head;
 	private int size; 
 	
-	public MyLinkedList()
+	
+	InvoiceCalculator iCalculator = new InvoiceCalculator();
+	Comparator<T> invoiceComparator;
+	
+	
+	public MyLinkedList(Comparator<T> invoiceComparator)
 	{
+		this.invoiceComparator = invoiceComparator;
 		this.head = null;
-		this.size = 0;		
+		this.size = 0;
+		
+		
 	}
 	
-	public void insertAtStart(T item)
+	
+	
+	
+	
+	
+	public void insertItem(T item)
+	{
+		Node<T> temp = new Node<T>(item); // step 0 
+		temp.setNext(this.head); // step 1
+		this.head = temp; //step 2
+		this.size++;
+		
+		
+		
+//		Case 1: Size is 0 	--> add this element
+//		Case 2: Size is 1 	--> compare it to the head  (Uses Comparator)
+		if (size == 1) {
+			if (invoiceComparator.compare(this.head.getItem(), item) >= 0){
+				insertAtEnd(item);
+			}else {
+				insertAtStart(item);
+			}
+		}
+		
+//		Case 3: Size is 2+ 	--> 
+		
+		
+		
+	}
+	
+	
+	
+	
+	private void insertAtStart(T item)
 	{
 		Node<T> temp = new Node<T>(item); // step 0 
 		temp.setNext(this.head); // step 1
@@ -59,7 +104,7 @@ public class MyLinkedList<T> {
 		return curr;
 	}
 	
-	public void insertAtIndex(int index, T item)
+	private void insertAtIndex(int index, T item)
 	{
 		if(index < 0 || index >= this.size)
 		{
@@ -79,7 +124,7 @@ public class MyLinkedList<T> {
 	}
 	
 	
-	public T removeAtIndex(int index)
+	private T removeAtIndex(int index)
 	{
 		if(this.head == null)
 		{
@@ -120,7 +165,7 @@ public class MyLinkedList<T> {
 		return this.size == 0;
 	}
 	
-	public void insertAtEnd(T item)
+	private void insertAtEnd(T item)
 	{
 		if(this.size == 0)
 		{
@@ -138,7 +183,7 @@ public class MyLinkedList<T> {
 		this.size++;
 	}
 	
-	public T removeFromStart()
+	private T removeFromStart()
 	{
 		if(this.empty()) {
 			throw new IllegalStateException("You are removing from an empty list!!!");
