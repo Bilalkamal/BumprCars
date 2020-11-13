@@ -29,16 +29,16 @@ public class MyLinkedList<T> {
 	
 	public void insertItem(T item)
 	{
-		Node<T> temp = new Node<T>(item); // step 0 
-		temp.setNext(this.head); // step 1
-		this.head = temp; //step 2
-		this.size++;
-		
-		
+		Node<T> temp = new Node<T>(item); // step 0
 		
 //		Case 1: Size is 0 	--> add this element
-//		Case 2: Size is 1 	--> compare it to the head  (Uses Comparator)
-		if (size == 1) {
+	if(size ==0){
+		temp.setNext(this.head); 
+		this.size++;
+	}
+
+//	Case 2: Size is 1 	--> compare it to the head  (Uses Comparator)
+	else if (size == 1) {
 			if (invoiceComparator.compare(this.head.getItem(), item) >= 0){
 				insertAtEnd(item);
 			}else {

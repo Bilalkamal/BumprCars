@@ -32,7 +32,7 @@ public class InvoiceReport {
 		MyLinkedList<Invoice> aDTInvoiceLinkedList = new MyLinkedList<Invoice>(new InvoiceComparator());
 		
 		for (Invoice inv: listOfInvoices) {
-			
+			aDTInvoiceLinkedList.insertItem(inv);
 		}
 
 //		New Display function 
