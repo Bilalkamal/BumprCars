@@ -104,6 +104,9 @@ public class MyLinkedList<T> {
 		return curr;
 	}
 	
+	
+	
+	
 	private void insertAtIndex(int index, T item)
 	{
 		if(index < 0 || index >= this.size)
