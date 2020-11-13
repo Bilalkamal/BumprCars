@@ -11,7 +11,7 @@ import java.util.List;
 public class NewDisplayFunctions {
 
 	InvoiceCalculator Calculator = new InvoiceCalculator();
-	
+	JDBCReader Jr = new JDBCReader();
 	
 	public void displayDetailedInvoice(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
 		
@@ -164,7 +164,7 @@ public class NewDisplayFunctions {
 			}
 		
 			
-			System.out.println(String.format("%3s %-25s $ %-2.2f %s $ %-10.2f $ %-10.2f $ %-10.2f",
+			System.out.println(String.format("%3s %25s $ %2.2f %s $ %10.2f $ %10.2f $ %10.2f",
 					Productcode + " ".repeat(10), Productlabel+" ".repeat(23), subtotal," ".repeat(10), discount,taxes,total));
 
 	
@@ -180,6 +180,29 @@ public class NewDisplayFunctions {
 //		System.out.printf(" ".repeat(10)+"%s, %s %s %s \n", customerAddress.getCity(), customerAddress.getState(),
 //				customerAddress.getCountry(), customerAddress.getZip());
 
+	}
+	private void printSummaryReport(List<Invoice> Invoices) {
+		System.out.println("Executive Summary Report:\n");
+		System.out.println(String.format("%s %10s %30s %20s %20s %10s %10s %10s", 
+				"Code","Owner","Customer Account",
+				"Subtotal","Discounts","Fees","Taxes","Total"));
+		System.out.println("---".repeat(41));
+		for (Invoice inv : Invoices) {
+			String invoiceCode = inv.getInvoiceCode();
+			//geting owenr first name
+			String owenrlastName = Jr.getPerson(Jr.getPersonId(inv.getOwnerCode())).getLastName();
+//			String owenrfirstName = Jr.getPerson(Jr.getPersonId(inv.getOwnerCode())).getLastName();
+			System.out.println(String.format("%s %s ",invoiceCode,owenrlastName ));
+		}
+		
+		
+	}
+	
+	
+	public void displayReports(List<Invoice> lInv, List<Customer> lc, List<Person> lpers, List<Product> lprod) {
+//		printSummaryReport(lInv);
+		displayDetailedInvoice(lInv,lc,lpers,lprod);
+		
 	}
 
 

@@ -22,5 +22,4 @@ public class InvoiceComparator implements Comparator<Invoice> {
 
 	
 	
-	
 }
