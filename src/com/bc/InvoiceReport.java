@@ -29,11 +29,15 @@ public class InvoiceReport {
 		List<Person> listOfPersons = jr.loadAllPersons();
 		List<Customer> listOfCustomers = jr.loadAllCustomer();
 		List<Invoice> listOfInvoices = jr.loadAllInvoices();
-		MyLinkedList<Invoice> aDTInvoiceLinkedList = new MyLinkedList<Invoice>(new InvoiceComparator());
+		MyLinkedList<Invoice> ADTInvoiceLinkedList = new MyLinkedList<Invoice>(new InvoiceComparator());
 		
 		for (Invoice inv: listOfInvoices) {
-			aDTInvoiceLinkedList.insertItem(inv);
+			ADTInvoiceLinkedList.insertItem(inv);
 		}
+		
+		
+		
+		
 
 //		New Display function 
 		NewDisplayFunctions ndf = new NewDisplayFunctions();
