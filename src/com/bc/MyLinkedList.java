@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 
 
+
+
 public class MyLinkedList<T> {
 	private Node<T> head;
 	private int size; 
@@ -34,19 +36,43 @@ public class MyLinkedList<T> {
 //		Case 1: Size is 0 	--> add this element
 	if(size ==0){
 		temp.setNext(this.head); 
+		this.head=temp;
 		this.size++;
+		return;
 	}
 
 //	Case 2: Size is 1 	--> compare it to the head  (Uses Comparator)
 	else if (size == 1) {
 			if (invoiceComparator.compare(this.head.getItem(), item) >= 0){
 				insertAtEnd(item);
+				this.size++;
 			}else {
 				insertAtStart(item);
+				this.size++;
 			}
 		}
 		
 //		Case 3: Size is 2+ 	--> 
+		if (size > 1) {
+			
+			//best case complicity time
+			if(invoiceComparator.compare(this.head.getItem(), item) >= 0) {
+				insertAtStart(item);
+				this.size++;
+				return;
+			}
+			Node<T> curr = this.head;//
+			Node<T> per = null;
+			while(curr!= null && invoiceComparator.compare(curr.getItem(), item) >= 0) {
+				per = curr;
+				curr = curr.getNext();
+				
+			}
+			per.setNext(temp);
+			temp.setNext(curr);//curr=null means 
+			
+			this.size++;
+		}
 		
 		
 		
@@ -57,9 +83,9 @@ public class MyLinkedList<T> {
 	
 	private void insertAtStart(T item)
 	{
-		Node<T> temp = new Node<T>(item); // step 0 
-		temp.setNext(this.head); // step 1
-		this.head = temp; //step 2
+		Node<T> temp = new Node<T>(item); //create temporary node
+		temp.setNext(this.head); // setnext to the head
+		this.head = temp; // set temp to be the new head in the linked list
 		this.size++;
 	}
 	
@@ -93,7 +119,7 @@ public class MyLinkedList<T> {
 	{
 		if(index < 0 || index >= this.size)
 		{
-			throw new IndexOutOfBoundsException("Index is not valuid!!");
+			throw new IndexOutOfBoundsException("Index is not vaild!!");
 		}
 		
 		Node<T> curr = this.head;
