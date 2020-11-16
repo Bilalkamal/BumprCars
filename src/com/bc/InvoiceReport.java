@@ -42,7 +42,7 @@ public class InvoiceReport {
 //		New Display function 
 		NewDisplayFunctions ndf = new NewDisplayFunctions();
 //		ndf.displayDetailedInvoice(listOfInvoices,listOfCustomers, listOfPersons,listOfProducts);
-		ndf.displayReports(listOfInvoices,listOfCustomers, listOfPersons,listOfProducts);
+		ndf.displayReports(ADTInvoiceLinkedList,listOfCustomers, listOfPersons,listOfProducts,listOfInvoices);
 
 
 		

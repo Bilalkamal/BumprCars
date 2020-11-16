@@ -97,6 +97,44 @@ public class JDBCReader {
 		}
 
 	}
+	
+	
+	public static Integer getCustomerId(String customerCode) {
+		Connection conn = createConnection();
+
+		String queryGetcustomerId = "select customerId from Customer where customerCode = ? ";
+		PreparedStatement preparedStatementGetCustomerIdId = null;
+		ResultSet resultSetGetCustomerID = null;
+		Integer customerId = null;
+
+		try {
+			preparedStatementGetCustomerIdId = conn.prepareStatement(queryGetcustomerId);
+			preparedStatementGetCustomerIdId.setString(1, customerCode);
+			resultSetGetCustomerID = preparedStatementGetCustomerIdId.executeQuery();
+
+			while (resultSetGetCustomerID.next()) {
+				customerId = resultSetGetCustomerID.getInt("customerId");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			preparedStatementGetCustomerIdId.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		if (customerId != null) {
+			return customerId;
+		} else {
+			return 0;
+		}
+
+	}
 
 	public static Person getPerson(int personId) {
 		Person person = null;

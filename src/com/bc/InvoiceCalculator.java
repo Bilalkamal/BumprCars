@@ -45,7 +45,7 @@ public class InvoiceCalculator {
 
 	public Double calculateRentalSubtotal(Rental rental) {
 
-		return rental.getRentCost();
+		return rental.getRentCostWithoutDeposit();
 
 	}
 
@@ -347,11 +347,13 @@ public class InvoiceCalculator {
 	 * @return Boolean
 	 */
 	public Boolean checkLoyaltyDiscount(Invoice invoice) {
-
-		Person person = v.verifyPerson(invoice.getOwnerCode());
-		if (person.getEmailAddress().getLength() > 1) {
-			return true;
+		
+		Customer customer = v.verifyCustomer(invoice.getCustomerCode());
+		
+		if (customer.getCustomerType().equals("P")) {
+			
 		}
+		
 		return false;
 
 	}

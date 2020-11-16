@@ -55,7 +55,7 @@ public class MyLinkedList<T> {
 				while (curr != null && invoiceComparator.compare(curr.getItem(), item) >= 0) {
 					per = curr;
 					curr = curr.getNext();
-					System.out.println(this.toString());
+					
 				}
 				per.setNext(temp);
 				temp.setNext(curr);
